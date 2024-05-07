@@ -11,11 +11,11 @@ namespace Testing5
         [TestMethod]
         public void InstanceOK()
         {
-            //create an instance of the class we want to create
+            //create an instance of the class we want to createe
             clsPayments APayments = new clsPayments();
 
             //test to see that it exists
-            Assert.IsNotNull(APayments);
+            Assert.IsNotNull(APayments); 
         }
     }
 }
