@@ -17,18 +17,24 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
         //create a new instance of clsPayments
         clsPayments APayments = new clsPayments();
-        //
-       
+        
         //capture Payment Status
-        APayments.PaymentsStatus = chkPaymentStatus.Checked;
+        APayments.PaymentsStatus = chkPaymentsStatus.Checked;
 
+        // Capture the payment details
+        APayments.OrderId = int.Parse(txtOrderId.Text);
 
+        APayments.BillingAddress = txtBillingAddress.Text;
 
+        APayments.PaymentMethod = txtPaymentsMethod.Text;
 
+        APayments.Amount = double.Parse(txtAmount.Text); 
 
+        APayments.PaymentsDate = DateTime.Parse(txtPaymentsDate.Text);  
 
-
-
+       
+        // Store the payment properties in the session object
+        Session["APayment"] = APayments;
 
         // navigate to the view page
         Response.Redirect("PaymentsViewer.aspx");
