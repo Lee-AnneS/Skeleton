@@ -22,15 +22,15 @@ public partial class _1_DataEntry : System.Web.UI.Page
         APayments.PaymentsStatus = chkPaymentsStatus.Checked;
 
         // Capture the payment details
-        APayments.OrderId = int.Parse(txtOrderId.Text);
+        APayments.OrderId = Convert.ToInt32(txtOrderId.Text);
 
         APayments.BillingAddress = txtBillingAddress.Text;
 
         APayments.PaymentMethod = txtPaymentsMethod.Text;
 
-        APayments.Amount = double.Parse(txtAmount.Text); 
+        APayments.Amount = Convert.ToDouble(txtAmount.Text); 
 
-        APayments.PaymentsDate = DateTime.Parse(txtPaymentsDate.Text);  
+        APayments.PaymentsDate = Convert.ToDateTime(DateTime.Now);  
 
        
         // Store the payment properties in the session object
