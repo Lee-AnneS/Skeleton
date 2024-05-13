@@ -25,7 +25,7 @@ public partial class _1Viewer : System.Web.UI.Page
         //display the stock quantity for this entry
         Response.Write(AStock.StockQuantity + "<br />");
         //display the created at for this entry
-        Response.Write(AStock.CreatedAt + "<br />");
+        Response.Write(AStock.DateAdded + "<br />");
         //display the Available for this entry
         Response.Write(AStock.Available + "<br />");
 

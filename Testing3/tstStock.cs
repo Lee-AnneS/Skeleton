@@ -29,16 +29,16 @@ namespace Testing5
             Assert.AreEqual(AStock.Available, TestData);
         }
         [TestMethod]
-        public void CreatedAtPropertyOK()
+        public void DateAddedPropertyOK()
         {
             //create an instance of the class we want to create
             clsStock AStock = new clsStock();
             //create some test data to assign to the property
             DateTime TestData = DateTime.Now.Date;
             //assign the data to the property
-            AStock.CreatedAt = TestData;
+            AStock.DateAdded = TestData;
             //test to see that the two values are the same
-            Assert.AreEqual(AStock.CreatedAt, TestData);
+            Assert.AreEqual(AStock.DateAdded, TestData);
         }
         [TestMethod]
         public void ProductIdPropertyOK()
@@ -223,7 +223,7 @@ namespace Testing5
             Assert.IsTrue(OK);
         }
         [TestMethod]
-        public void TestCreatedAtFound()
+        public void TestDateAddedFound()
         {
             //create an instance of the class we want to create
             clsStock AStock = new clsStock();
@@ -236,7 +236,7 @@ namespace Testing5
             //invoke the method
             Found = AStock.Find(ProductId);
             //check the date added property
-            if (AStock.CreatedAt != Convert.ToDateTime("05/05/2024"))
+            if (AStock.DateAdded != Convert.ToDateTime("05/05/2024"))
             {
                 OK = false;
             }

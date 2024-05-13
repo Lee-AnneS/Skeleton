@@ -29,7 +29,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //capture the stock quantity
         AStock.StockQuantity = Convert.ToInt32(txtStockQuantity.Text);
         //capture the created at
-        AStock.CreatedAt = Convert.ToDateTime(DateTime.Now);
+        AStock.DateAdded = Convert.ToDateTime(DateTime.Now);
         //capture the available check box
         AStock.Available = chkAvailable.Checked;
         //store the Product in the session object
@@ -64,7 +64,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
             txtDescription.Text = AStock.Description;
             txtPrice.Text = AStock.Price.ToString();
             txtStockQuantity.Text = AStock.StockQuantity.ToString();
-            txtCreatedAt.Text = AStock.CreatedAt.ToString();
+            txtDateAdded.Text = AStock.DateAdded.ToString();
             chkAvailable.Checked = AStock.Available;
         }
     }
