@@ -84,19 +84,19 @@ namespace ClassLibrary
             }
         }
         //private data member for the created at property
-        private DateTime mCreatedAt;
+        private DateTime mDateAdded;
         //Creater at public property
-        public DateTime CreatedAt
+        public DateTime DateAdded
         {
             get
             {
                 //this line of code sends data out of the property
-                return mCreatedAt;
+                return mDateAdded;
             }
             set
             {
                 //this line of code allows data into the property
-                mCreatedAt = value;
+                mDateAdded = value;
             }
         }
         //private data member for the Available property
@@ -133,7 +133,7 @@ namespace ClassLibrary
                 mDescription = Convert.ToString(DB.DataTable.Rows[0]["Description"]);
                 mPrice = Convert.ToDouble(DB.DataTable.Rows[0]["Price"]);
                 mStockQuantity = Convert.ToInt32(DB.DataTable.Rows[0]["StockQuantity"]);
-                mCreatedAt = Convert.ToDateTime(DB.DataTable.Rows[0]["CreatedAt"]);
+                mDateAdded = Convert.ToDateTime(DB.DataTable.Rows[0]["DateAdded"]);
                 mAvailable = Convert.ToBoolean(DB.DataTable.Rows[0]["Available"]);
 
                 // return that everything worked OK
