@@ -111,16 +111,38 @@ namespace ClassLibrary
         /****** FIND METHOD ******/
         public bool Find(int StaffId)
         {
-            //set the private data members to the test data value
-            mStaffId = 1;
-            mStaffFullName = "Lee-Anne Starkie";
-            mStaffDoB = Convert.ToDateTime("10/04/1999");
-            mStaffEmail = "p17206496@my365.dmu.ac.uk";
-            mNINumber = "AB123456C";
-            mSalary = 1000000.0000;
-            mPresentInBuilding = true;
-            //always return true
-            return true;
+            //create an instance of the data connection
+            clsDataConnection DB = new clsDataConnection();
+
+            //add the parameter for staff id to search for 
+            DB.AddParameter("@StaffId", StaffId);
+
+            //execute the stored procedure
+            DB.Execute("sproc_tblStaff_FilterByStaffId");
+
+            //if one record is found(there should either be one or zero)
+            
+            if (DB.Count == 1)
+            {
+                //copy the data from the database to the private data members
+                mStaffId = Convert.ToInt32(DB.DataTable.Rows[0]["StaffId"]);
+                mStaffFullName = Convert.ToString(DB.DataTable.Rows[0]["StaffFullName"]);
+                mStaffDoB = Convert.ToDateTime(DB.DataTable.Rows[0]["StaffDoB"]);
+                mStaffEmail = Convert.ToString(DB.DataTable.Rows[0]["StaffEmail"]);
+                mNINumber = Convert.ToString(DB.DataTable.Rows[0]["NINumber"]);
+                mSalary = Convert.ToDouble(DB.DataTable.Rows[0]["Salary"]);
+                mPresentInBuilding = Convert.ToBoolean(DB.DataTable.Rows[0]["PresentInTheBuilding"]);
+                
+                //return that everything worked OK
+                return true;
+            }
+            //if no record was found
+            else
+            {
+                //return false indicating there is a problem
+                return false;
+
+            }
         }
     }
 }
