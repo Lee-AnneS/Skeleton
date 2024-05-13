@@ -118,18 +118,33 @@ namespace ClassLibrary
         /****** FIND METHOD ******/
         public bool Find(int ProductId)
         {
-            //set the private data members to the test data value
-            mProductId = 3;
-            mName = "Milk";
-            mDescription = "Test Description";
-            mPrice = 5.50;
-            mStockQuantity = 1;
-            mCreatedAt = Convert.ToDateTime("23/12/2022");
-            mAvailable = true;
-            //always return true
-            return true;
+            //create an instance of the data connection
+            clsDataConnection DB = new clsDataConnection();
+            //Add the parameter for the Product id to search for
+            DB.AddParameter("@ProductId", ProductId);
+            // execute the stored procedure
+            DB.Execute("sproc_tblProducts_FilterByProductId");
+            // if one record is found (there should be either one or zero)
+            if (DB.Count == 1)
+            {
+                // Copy the data from the database to the private data members
+                mProductId = Convert.ToInt32(DB.DataTable.Rows[0]["ProductId"]);
+                mName = Convert.ToString(DB.DataTable.Rows[0]["Name"]);
+                mDescription = Convert.ToString(DB.DataTable.Rows[0]["Description"]);
+                mPrice = Convert.ToDouble(DB.DataTable.Rows[0]["Price"]);
+                mStockQuantity = Convert.ToInt32(DB.DataTable.Rows[0]["StockQuantity"]);
+                mCreatedAt = Convert.ToDateTime(DB.DataTable.Rows[0]["CreatedAt"]);
+                mAvailable = Convert.ToBoolean(DB.DataTable.Rows[0]["Available"]);
+
+                // return that everything worked OK
+                return true;
+            }
+            // if no record was found
+            else
+            {    // return false
+                return false;
+            }
+
         }
     }
-
-
 }

@@ -2,7 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 
-namespace Testing3
+namespace Testing5
 {
     [TestClass]
     public class tstStock
@@ -110,7 +110,7 @@ namespace Testing3
             //create a Boolean variable to store the results of the validation
             Boolean Found = false;
             //create some test data to use with the method
-            Int32 ProductId = 3;
+            Int32 ProductId = 5;
             //invoke the method
             Found = AStock.Find(ProductId);
             //test to see if the result is true
@@ -127,11 +127,11 @@ namespace Testing3
             //create a Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 ProductId = 3;
+            Int32 ProductId = 5;
             //invoke the method
             Found = AStock.Find(ProductId);
             //check the address id property
-            if (AStock.ProductId != 3)
+            if (AStock.ProductId != 5)
             {
                 OK = false;
             }
@@ -148,7 +148,7 @@ namespace Testing3
             //create a Boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 ProductId = 3;
+            Int32 ProductId = 5;
             //invoke the method
             Found = AStock.Find(ProductId);
             //check the Name property
@@ -169,11 +169,11 @@ namespace Testing3
             //create a Boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 ProductId = 3;
+            Int32 ProductId = 5;
             //invoke the method
             Found = AStock.Find(ProductId);
             //check the Description property
-            if (AStock.Description != "Test Description")
+            if (AStock.Description != "test")
             {
                 OK = false;
             }
@@ -190,11 +190,11 @@ namespace Testing3
             //create a boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 ProductId = 3;
+            Int32 ProductId = 5;
             //invoke the method
             Found = AStock.Find(ProductId);
             //check the post code property
-            if (AStock.Price != 5.5)
+            if (AStock.Price != 3.45)
             {
                 OK = false;
             }
@@ -211,11 +211,11 @@ namespace Testing3
             //create a boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 ProductId = 3;
+            Int32 ProductId = 5;
             //invoke the method
             Found = AStock.Find(ProductId);
             //check the county code property
-            if (AStock.StockQuantity != 1)
+            if (AStock.StockQuantity != 100)
             {
                 OK = false;
             }
@@ -232,11 +232,11 @@ namespace Testing3
             //create Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 ProductId = 3;
+            Int32 ProductId = 5;
             //invoke the method
             Found = AStock.Find(ProductId);
             //check the date added property
-            if (AStock.CreatedAt != Convert.ToDateTime("23/12/2022"))
+            if (AStock.CreatedAt != Convert.ToDateTime("05/05/2024"))
             {
                 OK = false;
             }
@@ -253,7 +253,7 @@ namespace Testing3
             //create Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 ProductId = 3;
+            Int32 ProductId = 5;
             //invoke the method
             Found = AStock.Find(ProductId);
             //check the Available property
