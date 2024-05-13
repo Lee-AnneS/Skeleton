@@ -26,15 +26,15 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
         APayments.BillingAddress = txtBillingAddress.Text;
 
-        APayments.PaymentMethod = txtPaymentsMethod.Text;
+        APayments.PaymentsMethod = txtPaymentsMethod.Text;
 
         APayments.Amount = Convert.ToDouble(txtAmount.Text); 
 
-        APayments.PaymentDate = Convert.ToDateTime(DateTime.Now);  
+        APayments.PaymentsDate = Convert.ToDateTime(DateTime.Now);  
 
        
         // Store the payment properties in the session object
-        Session["APayment"] = APayments;
+        Session["APayments"] = APayments;
 
         // navigate to the view page
         Response.Redirect("PaymentsViewer.aspx");

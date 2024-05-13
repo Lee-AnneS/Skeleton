@@ -23,29 +23,29 @@ namespace Testing5
         }
 
         [TestMethod]
-        public void PaymentStatusOK()
+        public void PaymentsStatusOK()
         {
             //create an instance of the class we want to createe 
             clsPayments APayments = new clsPayments();
             //create some test data to assign to the property 
             Boolean TestData = false;
             //assign the data to the property 
-            new clsPayments().PaymentStatus = TestData;
+            new clsPayments().PaymentsStatus = TestData;
             //test to see that the two values are the same 
-            Assert.AreEqual(new clsPayments().PaymentStatus, TestData);
+            Assert.AreEqual(new clsPayments().PaymentsStatus, TestData);
         }
 
         [TestMethod]
-        public void PaymentDateOK()
+        public void PaymentsDateOK()
         {
             //create an instance of the class we want to createe 
             clsPayments APayments = new clsPayments();
             //create some test data to assign to the property 
             DateTime TestData = DateTime.Now.Date;
             //assign the data to the property 
-            APayments.PaymentDate = TestData;
+            APayments.PaymentsDate = TestData;
             //test to see that the two values are the same 
-            Assert.AreEqual(APayments.PaymentDate, TestData);
+            Assert.AreEqual(APayments.PaymentsDate, TestData);
         }
 
         [TestMethod]
@@ -88,16 +88,16 @@ namespace Testing5
         }
 
         [TestMethod]
-        public void PaymentMethodOK()
+        public void PaymentsMethodOK()
         {
             //create an instance of the class we want to createe 
             clsPayments APayments = new clsPayments();
             //create some test data to assign to the property 
             string TestData = "Apple Pay";
             //assign the data to the property 
-            APayments.PaymentMethod = TestData;
+            APayments.PaymentsMethod = TestData;
             //test to see that the two values are the same 
-            Assert.AreEqual(APayments.PaymentMethod, TestData);
+            Assert.AreEqual(APayments.PaymentsMethod, TestData);
         }
 
         [TestMethod]
@@ -106,7 +106,7 @@ namespace Testing5
             //create an instance of the class we want to createe 
             clsPayments APayments = new clsPayments();
             //create some test data to assign to the property 
-            double TestData = 2.22;
+            double TestData = 3.8800;
             //assign the data to the property 
             APayments.Amount = TestData;
             //test to see that the two values are the same 
@@ -122,7 +122,7 @@ namespace Testing5
             //create a boolean variable to store the results of the validation
             Boolean Found = false;
             //create some test data to use with the method
-            Int32 PaymentsId = 22;
+            Int32 PaymentsId = 1;
             //invoke the method
             Found = APayments.Find(PaymentsId);
             //test to see if the result is true
@@ -138,11 +138,11 @@ namespace Testing5
             //create a Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 PaymentsId = 22;
+            Int32 PaymentsId = 1;
             //invoke the method
             Found = APayments.Find(PaymentsId);
             //check the payments ID
-            if (APayments.PaymentsId != 22) 
+            if (APayments.PaymentsId != 1) 
             { 
                 OK = false; 
             }
@@ -158,11 +158,11 @@ namespace Testing5
             //create a Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 PaymentsId = 22;
+            Int32 PaymentsId = 1;
             //invoke the method
             Found = APayments.Find(PaymentsId);
             //check the amounts
-            if (APayments.Amount != 2.22)
+            if (APayments.Amount != 3.8800)
             {
                 OK = false;
             }
@@ -171,7 +171,7 @@ namespace Testing5
         }
 
         [TestMethod]
-        public void TestPaymentDateFound()
+        public void TestPaymentsDateFound()
         {
             // create an instance of the class we want to create
             clsPayments APayments = new clsPayments();
@@ -180,11 +180,11 @@ namespace Testing5
             // create a Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             // create some test data to use with the method
-            Int32 PaymentsId = 22;
+            Int32 PaymentsId = 1;
             //invoke method
             Found = APayments.Find(PaymentsId);
             // check the dateadded property
-            if (APayments.PaymentDate != Convert.ToDateTime("22/02/2022"))
+            if (APayments.PaymentsDate != Convert.ToDateTime("16/10/2024"))
             {
                 OK = false;
             }
@@ -200,14 +200,16 @@ namespace Testing5
             Boolean Found = false;
             //create a Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
-            // create some test data to use with the method
-            Int32 PaymentsId = 22;
             //create some test data to use with the method
-            Int32 OrderId = 20;
+            Int32 PaymentsId = 1;
+            //invoke the method
+            Found = APayments.Find(PaymentsId);
+            //create some test data to use with the method
+            Int32 OrderId = 7;
             //invoke the method
             Found = APayments.Find(OrderId);
             //check the order ID
-            if (APayments.OrderId != 20)
+            if (APayments.OrderId != 7)
             {
                 OK = false;
             }
@@ -224,14 +226,14 @@ namespace Testing5
             Boolean OK = true;
 
             //create some test data to use with this method
-            Int32 PaymentsId = 22;
+            Int32 PaymentsId = 1;
 
             //create some test data to use with the method
             //string BillingAddress = "Flat 6 St.Matthews house NG4 5LX";
             //invoke the method
             Found = APayments.Find(PaymentsId);
             //check the billing address 
-            if (APayments.BillingAddress != "Flat 6 St.Matthews house NG4 5LX")
+            if (APayments.BillingAddress != "Flat 66 Soya Lane NW4 6ZQ")
             {
                 OK = false;
             }
@@ -240,7 +242,7 @@ namespace Testing5
         }
 
         [TestMethod]
-        public void TestPaymentStatusFound()
+        public void TestPaymentsStatusFound()
         {  //create an instance of the class we want to create
             clsPayments APayments = new clsPayments();
             //create a boolean variable to store the result of the serach
@@ -249,12 +251,12 @@ namespace Testing5
             Boolean OK = true;
 
             //create some test data to use with this method
-            Int32 PaymentsId = 22;
+            Int32 PaymentsId = 1;
 
             //invoke the method
             Found = APayments.Find(PaymentsId);
             //check the billing address ID
-            if (APayments.PaymentStatus != true)
+            if (APayments.PaymentsStatus != true)
             {
                 OK = false;
             }
@@ -263,7 +265,7 @@ namespace Testing5
         }
 
         [TestMethod]
-        public void TestPaymentMethodFound()
+        public void TestPaymentsMethodFound()
         {  //create an instance of the class we want to create
             clsPayments APayments = new clsPayments();
             //create a boolean variable to store the result of the serach
@@ -271,11 +273,11 @@ namespace Testing5
             //create a Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 PaymentsId = 22;
+            Int32 PaymentsId = 1;
             //invoke the method
             Found = APayments.Find(PaymentsId);
             //check the payment method
-            if (APayments.PaymentMethod != "Apple Pay")
+            if (APayments.PaymentsMethod != "Apple Pay")
             {
                 OK = false;
             }
