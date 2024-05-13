@@ -5,31 +5,31 @@ namespace ClassLibrary
     public class clsPayments
     {
         //private data member for payments status
-        private Boolean mPaymentStatus;
+        private Boolean mPaymentsStatus;
 
-        public bool PaymentStatus 
+        public bool PaymentsStatus 
         {
             get
             { // this line of code sends data out of the property
-                return mPaymentStatus;
+                return mPaymentsStatus;
             }     
             set
             {
-                mPaymentStatus = value;
+                mPaymentsStatus = value;
             }
         }
 
         // private data member for the date addded property
-        private DateTime mPaymentDate;
-        public DateTime PaymentDate 
+        private DateTime mPaymentsDate;
+        public DateTime PaymentsDate 
         { 
             get
             {   //this line of code sends data out of the property
-                return mPaymentDate; 
+                return mPaymentsDate; 
             }
             set    
             {    // this line of code allows data into the property
-                mPaymentDate = value; 
+                mPaymentsDate = value; 
             }
         }
 
@@ -78,17 +78,17 @@ namespace ClassLibrary
             }
         }
         // private data member for the paymentmethod property
-        private String mPaymentMethod;
+        private String mPaymentsMethod;
         // paymentmethod public property
-        public string PaymentMethod 
+        public string PaymentsMethod 
         {
             get
             {     // this line of code sends data out of the property
-                return mPaymentMethod;
+                return mPaymentsMethod;
             }
             set
             {  // this line of code allows data into the property
-                mPaymentMethod = value;
+                mPaymentsMethod = value;
             }
         }
         // private data member for amount property
@@ -112,7 +112,7 @@ namespace ClassLibrary
             //Add the parameter for the Payment id to search for
             DB.AddParameter("@PaymentsId", PaymentsId);
             // execute the stored procedure
-            DB.Execute("sproc_tblPayment_FilterByAddressId");
+            DB.Execute("sproc_tblPayments_FilterByPaymentsId");
             // if one record is found (there should be either one or zero)
             if (DB.Count == 1)
             {
@@ -120,10 +120,10 @@ namespace ClassLibrary
                 mPaymentsId = Convert.ToInt32(DB.DataTable.Rows[0]["PaymentsId"]);
                 mOrderId = Convert.ToInt32(DB.DataTable.Rows[0]["OrderId"]);
                 mBillingAddress = Convert.ToString(DB.DataTable.Rows[0]["BillingAddress"]);
-                mPaymentMethod = Convert.ToString(DB.DataTable.Rows[0]["PaymentMethod"]);
+                mPaymentsMethod = Convert.ToString(DB.DataTable.Rows[0]["PaymentsMethod"]);
                 mAmount = Convert.ToDouble(DB.DataTable.Rows[0]["Amount"]);
-                mPaymentDate = Convert.ToDateTime(DB.DataTable.Rows[0]["PaymentDate"]);
-                mPaymentStatus = Convert.ToBoolean(DB.DataTable.Rows[0]["PaymentStatus"]);
+                mPaymentsDate = Convert.ToDateTime(DB.DataTable.Rows[0]["PaymentsDate"]);
+                mPaymentsStatus = Convert.ToBoolean(DB.DataTable.Rows[0]["PaymentsStatus"]);
 
                 // return that everything worked OK
                 return true;
