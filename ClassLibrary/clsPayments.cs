@@ -5,31 +5,31 @@ namespace ClassLibrary
     public class clsPayments
     {
         //private data member for payments status
-        private Boolean mPaymentsStatus;
+        private Boolean mPaymentStatus;
 
-        public bool PaymentsStatus 
+        public bool PaymentStatus 
         {
             get
             { // this line of code sends data out of the property
-                return mPaymentsStatus;
+                return mPaymentStatus;
             }     
             set
             {
-                mPaymentsStatus = value;
+                mPaymentStatus = value;
             }
         }
 
         // private data member for the date addded property
-        private DateTime mPaymentsDate;
-        public DateTime PaymentsDate 
+        private DateTime mPaymentDate;
+        public DateTime PaymentDate 
         { 
             get
             {   //this line of code sends data out of the property
-                return mPaymentsDate; 
+                return mPaymentDate; 
             }
             set    
             {    // this line of code allows data into the property
-                mPaymentsDate = value; 
+                mPaymentDate = value; 
             }
         }
 
@@ -104,19 +104,38 @@ namespace ClassLibrary
                 mAmount = value;
             }
         }
-
+        //..............000000000000.....FIND METHOD............000000000......//
         public bool Find(int PaymentsId)
         {
-            // set the private data memeber to the test data value
-            mPaymentsId = 22;
-            mPaymentsDate = Convert.ToDateTime("22/02/2022");
-            mOrderId = 20;
-            mBillingAddress = "Flat 6 St.Matthews house NG4 5LX";
-            mPaymentMethod = "Apple Pay";
-            mAmount = 2.22;
-            mPaymentsStatus = true;
-            // always return true
-            return true;
+            //create an instance of the data connection
+            clsDataConnection DB = new clsDataConnection();
+            //Add the parameter for the Payment id to search for
+            DB.AddParameter("@PaymentsId", PaymentsId);
+            // execute the stored procedure
+            DB.Execute("sproc_tblPayment_FilterByAddressId");
+            // if one record is found (there should be either one or zero)
+            if (DB.Count == 1)
+            {
+                // Copy the data from the database to the private data members
+                mPaymentsId = Convert.ToInt32(DB.DataTable.Rows[0]["PaymentsId"]);
+                mOrderId = Convert.ToInt32(DB.DataTable.Rows[0]["OrderId"]);
+                mBillingAddress = Convert.ToString(DB.DataTable.Rows[0]["BillingAddress"]);
+                mPaymentMethod = Convert.ToString(DB.DataTable.Rows[0]["PaymentMethod"]);
+                mAmount = Convert.ToDouble(DB.DataTable.Rows[0]["Amount"]);
+                mPaymentDate = Convert.ToDateTime(DB.DataTable.Rows[0]["PaymentDate"]);
+                mPaymentStatus = Convert.ToBoolean(DB.DataTable.Rows[0]["PaymentStatus"]);
+
+                // return that everything worked OK
+                return true;
+            }
+
+            // if no record was found
+            else
+            {    // return false
+                return false;
+            }
+
         }
+
     }
 }

@@ -14,14 +14,14 @@
 <body style="height: 287px">
     <form id="form1" runat="server">
         <div>
-            <asp:Label ID="lblPaymentId" runat="server" height="19px" style="z-index: 1; left: 25px; top: 46px; position: absolute" Text="Payment ID" width="104px"></asp:Label>
+            <asp:Label ID="lblPaymentId" runat="server" height="19px" style="z-index: 1; left: 25px; top: 46px; position: absolute" Text="Payments ID" width="104px"></asp:Label>
         </div>
-         <asp:TextBox ID="txtPaymentId" runat="server" style="z-index: 1; left: 149px; top: 42px; position: absolute; width: 131px"></asp:TextBox>
+         <asp:TextBox ID="txtPaymentsId" runat="server" style="z-index: 1; left: 149px; top: 42px; position: absolute; width: 131px"></asp:TextBox>
         <asp:TextBox ID="txtOrderId" runat="server" height="22px" style="z-index: 1; left: 149px; top: 71px; position: absolute" width="131px"></asp:TextBox>
         <asp:TextBox ID ="txtBillingAddress" runat="server" height="22px" style="z-index: 1; left: 149px; top: 106px; position: absolute" width="131px"></asp:TextBox>
         <asp:TextBox ID="txtPaymentsMethod" runat="server" height="22px" style="z-index: 1; left: 149px; top: 137px; position: absolute" width="131px"></asp:TextBox>
         <asp:TextBox ID="txtAmount" runat="server" height="22px" style="z-index: 1; left: 149px; top: 173px; position: absolute" width="131px"></asp:TextBox>
-        <asp:TextBox ID="txtPaymentsDate" runat="server" height="22px" style="z-index: 1; left: 149px; top: 208px; position: absolute" width="131px"></asp:TextBox>
+        <asp:TextBox ID="txtPaymentDate" runat="server" height="22px" style="z-index: 1; left: 149px; top: 208px; position: absolute" width="131px"></asp:TextBox>
         <p>
             <asp:Label ID="lblOrderId" runat="server" height="19px" style="z-index: 1; left: 25px; position: absolute; top: 77px" Text="Order ID" width="104px"></asp:Label>
         </p>
