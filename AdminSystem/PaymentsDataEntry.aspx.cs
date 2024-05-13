@@ -30,7 +30,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
         APayments.Amount = Convert.ToDouble(txtAmount.Text); 
 
-        APayments.PaymentsDate = Convert.ToDateTime(DateTime.Now);  
+        APayments.PaymentDate = Convert.ToDateTime(DateTime.Now);  
 
        
         // Store the payment properties in the session object

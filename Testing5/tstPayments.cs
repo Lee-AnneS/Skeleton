@@ -23,29 +23,29 @@ namespace Testing5
         }
 
         [TestMethod]
-        public void PaymentsStatusOK()
+        public void PaymentStatusOK()
         {
             //create an instance of the class we want to createe 
             clsPayments APayments = new clsPayments();
             //create some test data to assign to the property 
             Boolean TestData = false;
             //assign the data to the property 
-            new clsPayments().PaymentsStatus = TestData;
+            new clsPayments().PaymentStatus = TestData;
             //test to see that the two values are the same 
-            Assert.AreEqual(new clsPayments().PaymentsStatus, TestData);
+            Assert.AreEqual(new clsPayments().PaymentStatus, TestData);
         }
 
         [TestMethod]
-        public void PaymentsDateOK()
+        public void PaymentDateOK()
         {
             //create an instance of the class we want to createe 
             clsPayments APayments = new clsPayments();
             //create some test data to assign to the property 
             DateTime TestData = DateTime.Now.Date;
             //assign the data to the property 
-            APayments.PaymentsDate = TestData;
+            APayments.PaymentDate = TestData;
             //test to see that the two values are the same 
-            Assert.AreEqual(APayments.PaymentsDate, TestData);
+            Assert.AreEqual(APayments.PaymentDate, TestData);
         }
 
         [TestMethod]
@@ -171,7 +171,7 @@ namespace Testing5
         }
 
         [TestMethod]
-        public void TestPaymentsDateFound()
+        public void TestPaymentDateFound()
         {
             // create an instance of the class we want to create
             clsPayments APayments = new clsPayments();
@@ -184,7 +184,7 @@ namespace Testing5
             //invoke method
             Found = APayments.Find(PaymentsId);
             // check the dateadded property
-            if (APayments.PaymentsDate != Convert.ToDateTime("22/02/2022"))
+            if (APayments.PaymentDate != Convert.ToDateTime("22/02/2022"))
             {
                 OK = false;
             }
@@ -240,7 +240,7 @@ namespace Testing5
         }
 
         [TestMethod]
-        public void TestPaymentsStatusFound()
+        public void TestPaymentStatusFound()
         {  //create an instance of the class we want to create
             clsPayments APayments = new clsPayments();
             //create a boolean variable to store the result of the serach
@@ -254,7 +254,7 @@ namespace Testing5
             //invoke the method
             Found = APayments.Find(PaymentsId);
             //check the billing address ID
-            if (APayments.PaymentsStatus != true)
+            if (APayments.PaymentStatus != true)
             {
                 OK = false;
             }
