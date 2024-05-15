@@ -1,6 +1,7 @@
 ﻿using ClassLibrary;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Linq.Expressions;
 
 namespace Testing2
 {
@@ -18,7 +19,7 @@ namespace Testing2
         }
 
         [TestMethod]
-        public void CustomerIDPropertyOK()
+        public void CustomerIdPropertyOK()
         {
             //create an instance of the class we want to create
             clsCustomer ACustomer = new clsCustomer();
@@ -27,10 +28,10 @@ namespace Testing2
             Int32 TestData = 1;
 
             //assign the data to the property
-            ACustomer.CustomerID = TestData;
+            ACustomer.CustomerId = TestData;
 
             //test to see that the two values are the same
-            Assert.AreEqual(ACustomer.CustomerID, TestData);
+            Assert.AreEqual(ACustomer.CustomerId, TestData);
         }
 
         [TestMethod]
@@ -129,5 +130,109 @@ namespace Testing2
             //test to see that the two values are the same 
             Assert.AreEqual(ACustomer.Active, TestData);
         }
+
+        [TestMethod]
+        public void FindMethodOK()
+        {
+            //create an instance of the class we want to create 
+            clsCustomer ACustomer = new clsCustomer();
+
+            //create a Boolean variable to store the results of the validation
+            Boolean Found = false;
+
+            //create some test data to use with the method
+            Int32 CustomerId = 3;
+
+            //invoke the method
+            Found = ACustomer.Find(CustomerId);
+
+            //test to see if the result is true 
+            Assert.IsTrue(Found);
+        }
+
+        [TestMethod]
+        public void TestCustomerIdFound()
+        {
+            //create an instance of the class we want to create
+            clsCustomer ACustomer = new clsCustomer();
+
+            //create a Boolean variable to store the result of the search 
+            Boolean Found = false;
+
+            //create a Boolean  variable to record if the data is OK )assume it is)
+            Boolean OK = true;
+
+            //create some test data to use with the method 
+            Int32 CustomerId = 5;
+
+            //invoke the method
+            Found = ACustomer.Find(CustomerId);
+
+            //check the customer id 
+            if (ACustomer.CustomerId != 5)
+            {
+                OK = false;
+            }
+
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestCustomerNameFound()
+        {
+            //create an instance of the class we want to create 
+            clsCustomer ACustomer = new clsCustomer();
+
+            //create a boolean variable to store the result of the search 
+            Boolean Found = false;
+
+            //create a Boolean variable to record if the data is OK (assme it is)
+            Boolean OK = true;
+
+            //create some test data to use with the method
+            Int32 CustomerId = 5;
+
+            //invoke the method
+            Found = ACustomer.Find(CustomerId);
+
+            //check the name property
+            if (ACustomer.CustomerName != "Tavleen Kaur")
+            {
+                OK = false;
+            }
+
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestCustomerDoBFound()
+        {
+            //create an instance of the class we want to create
+            clsCustomer ACustomer = new clsCustomer();
+
+            //create a Boolean variable to store the result of the search
+            Boolean Found = false;
+
+            //create Boolean variable to record if the data is OK (assume it is)
+            Boolean OK = true;
+
+            //create some test data to use with the method
+            Int32 CustomerId = 5;
+
+            //invoke the method
+            Found = ACustomer.Find(CustomerId);
+
+            //check the customer Date of birth
+            if (ACustomer.CustomerDoB != Convert.ToDateTime("01/01/2000"))
+            {
+                OK = false;
+            }
+
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+
     }
 }
