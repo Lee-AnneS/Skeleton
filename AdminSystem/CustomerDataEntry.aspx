@@ -13,7 +13,8 @@
         <asp:TextBox ID="txtCustomerId" runat="server" style="z-index: 1; left: 136px; top: 33px; position: absolute" height="22px" width="128px"></asp:TextBox>
         <asp:Label ID="lblCustomerName" runat="server" style="z-index: 1; left: 10px; top: 72px; position: absolute" Text="Name" height="19px" width="91px"></asp:Label>
         <asp:TextBox ID="txtCustomerDoB" runat="server" style="z-index: 1; left: 136px; top: 111px; position: absolute" height="22px" width="128px"></asp:TextBox>
-        <asp:TextBox ID="txtCustomerEmail" runat="server" OnTextChanged="txtCustomerEmail_TextChanged" style="z-index: 1; left: 136px; top: 147px; position: absolute" height="22px" width="128px"></asp:TextBox>
+        <!-- i just changed the line of code below cos it was bugging xx -->
+        <asp:TextBox ID="txtCustomerEmail" runat="server" style="z-index: 1; left: 136px; top: 147px; position: absolute" height="22px" width="128px"></asp:TextBox>
         <asp:TextBox ID="txtCustomerName" runat="server" style="z-index: 1; left: 136px; top: 72px; position: absolute" height="22px" width="128px"></asp:TextBox>
         <asp:Label ID="lblCustomerDoB" runat="server" style="z-index: 1; left: 10px; top: 112px; position: absolute; margin-bottom: 118px;" Text="Date Of Birth" height="19px" width="91px"></asp:Label>
         <asp:Label ID="lblCustomerEmail" runat="server" style="z-index: 1; left: 10px; top: 148px; position: absolute" Text="Email" height="19px" width="91px"></asp:Label>

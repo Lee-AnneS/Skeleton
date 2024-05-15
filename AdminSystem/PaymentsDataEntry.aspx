@@ -14,9 +14,11 @@
 <body style="height: 287px">
     <form id="form1" runat="server">
         <div>
+
             <asp:Label ID="lblPaymentId" runat="server" height="19px" style="z-index: 1; left: 25px; top: 46px; position: absolute" Text="Payments ID" width="104px"></asp:Label>
         </div>
          <asp:TextBox ID="txtPaymentsId" runat="server" style="z-index: 1; left: 149px; top: 42px; position: absolute; width: 131px"></asp:TextBox>
+        <asp:Button ID="btnFind" runat="server" Text="Find" OnClick="btnNew_Click" style="z-index: 1; left: 300px; top: 42px; position: absolute" />
         <asp:TextBox ID="txtOrderId" runat="server" height="22px" style="z-index: 1; left: 149px; top: 71px; position: absolute" width="131px"></asp:TextBox>
         <asp:TextBox ID ="txtBillingAddress" runat="server" height="22px" style="z-index: 1; left: 149px; top: 106px; position: absolute" width="131px"></asp:TextBox>
         <asp:TextBox ID="txtPaymentsMethod" runat="server" height="22px" style="z-index: 1; left: 149px; top: 137px; position: absolute" width="131px"></asp:TextBox>
