@@ -11,20 +11,18 @@ using static System.Net.WebRequestMethods;
 namespace Testing5
 {
     [TestClass]
-
     public class tstPayments
     {
+
         // good test data
         //create some test data to pass the method
         string OrderId = "9";
         string BillingAddress = "44 Bath Lane, Corby";
         string PaymentsMethod = "Revolut";
         string Amount = "6.2";
-        string PaymentDate = DateTime.Now.ToShortDateString();
+        string PaymentsDate = DateTime.Now.ToShortDateString();
 
-    }
-    public class tstPayments
-    {
+
         [TestMethod]
         public void InstanceOK()
         {
@@ -311,7 +309,13 @@ namespace Testing5
             // test to see that the result is correct
             Assert.IsTrue(OK);
         }
-
+        //000000000000000000 testing validation code   0000000000000000000 //
+        [TestMethod]
+        public void TestPaymentsMethodStatusFound() 
+        {
+        
+        
+        }
     }
 
 }

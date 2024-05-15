@@ -137,5 +137,9 @@ namespace ClassLibrary
 
         }
 
+        public string Valid(string orderId, string billingAddress, string paymentsMethod, string amount, object paymentsDate)
+        {
+            return "";
+        }
     }
 }
