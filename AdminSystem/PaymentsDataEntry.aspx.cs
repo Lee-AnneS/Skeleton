@@ -39,4 +39,32 @@ public partial class _1_DataEntry : System.Web.UI.Page
         // navigate to the view page
         Response.Redirect("PaymentsViewer.aspx");
     }
+
+    protected void btnNew_Click(object sender, EventArgs e)
+    {
+        // create an instance of the Payments class
+        clsPayments APayments = new clsPayments();
+        // create a variable to store the primary key
+        Int32 PaymentsId;
+        //create a variable to store the result of the find operation
+        Boolean Found = false;
+        //get the primary key entered by the user
+        PaymentsId = Convert.ToInt32(txtPaymentsId.Text);
+        //FIND THE RECORD
+        Found = APayments.Find(PaymentsId);
+        //if found
+        if (Found == true)
+        {
+            //display the values of the properties in the form
+            txtOrderId.Text = APayments.OrderId.ToString();
+            txtBillingAddress.Text = APayments.BillingAddress;
+            txtPaymentsMethod.Text = APayments.PaymentsMethod.ToString();
+            txtAmount.Text = APayments.Amount.ToString();
+            txtPaymentDate.Text = APayments.PaymentsDate.ToString();
+            chkPaymentsStatus.Checked = APayments.PaymentsStatus;
+
+
+
+        }
+    }
 }
