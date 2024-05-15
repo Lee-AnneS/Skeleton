@@ -207,7 +207,7 @@ namespace Testing5
             //create some test data to use with the method
             Int32 OrderId = 7;
             //invoke the method
-            Found = APayments.Find(OrderId);
+            Found = APayments.Find(PaymentsId);
             //check the order ID
             if (APayments.OrderId != 7)
             {
