@@ -11,6 +11,18 @@ using static System.Net.WebRequestMethods;
 namespace Testing5
 {
     [TestClass]
+
+    public class tstPayments
+    {
+        // good test data
+        //create some test data to pass the method
+        string OrderId = "9";
+        string BillingAddress = "44 Bath Lane, Corby";
+        string PaymentsMethod = "Revolut";
+        string Amount = "6.2";
+        string PaymentDate = DateTime.Now.ToShortDateString();
+
+    }
     public class tstPayments
     {
         [TestMethod]
@@ -113,6 +125,21 @@ namespace Testing5
             Assert.AreEqual(APayments.Amount, TestData);
 
         }
+
+        [TestMethod]
+        public void ValidMethodOK()
+        {
+            //Create an instance of the class we want to create
+            clsPayments APayments = new clsPayments();
+            //string variable to store any error message
+            string Error = "";
+            //invoke the method
+            Error = APayments.Valid(OrderId, BillingAddress, PaymentsMethod, Amount, PaymentsDate);
+            // test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+
         // ......................find test method ...................
         [TestMethod]
         public void FindMethodOK()
