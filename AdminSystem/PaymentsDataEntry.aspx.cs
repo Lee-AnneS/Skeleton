@@ -19,7 +19,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         clsPayments APayments = new clsPayments();
         
         //capture Payment Status
-        APayments.PaymentStatus = chkPaymentsStatus.Checked;
+        APayments.PaymentsStatus = chkPaymentsStatus.Checked;
 
         // Capture the payment details
         APayments.OrderId = Convert.ToInt32(txtOrderId.Text);
