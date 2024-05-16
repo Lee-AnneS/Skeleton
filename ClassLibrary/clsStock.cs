@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 
 namespace ClassLibrary
 {
@@ -115,7 +116,10 @@ namespace ClassLibrary
                 mAvailable = value;
             }
         }
-        /****** FIND METHOD ******/
+        /*******************************************************/
+        /********************* FIND METHOD *********************/
+        /*******************************************************/
+
         public bool Find(int ProductId)
         {
             //create an instance of the data connection
@@ -144,7 +148,99 @@ namespace ClassLibrary
             {    // return false
                 return false;
             }
+        }
+        /*******************************************************/
+        /**************** Valid Method *************************/
+        /*******************************************************/
 
+        public string Valid(string Name, string Description, string Price, string StockQuantity, string DateAdded)
+        {
+            //create a string variable to store the error
+            String Error = "";
+            /**************** Name *************************/
+            //if the Name is blank
+            if (Name.Length == 0)
+            {
+                //record the error 
+                Error = Error + "The name may not be blank : ";
+            }
+            if (Name.Length > 10)
+            {
+                //record the error
+                Error = Error + "The name must be less than 10 characters : ";
+                
+            }
+            /**************** Date Added *************************/
+            //create a temporary variable to store the date values
+            DateTime DateTemp;
+            //create an instance of DateTime to compare with DateTemp
+            //in the if statements
+            DateTime DateComp = DateTime.Now.Date;
+            try
+            {
+                //copy the dateAdded value to the DateTemp variable
+                DateTemp = Convert.ToDateTime(DateAdded);
+                //check to see if the date is less than today's date
+                if (DateTemp < DateComp)
+                {
+                    //record the error
+                    Error = Error + "The date cannot be in the past : ";
+                }
+                //check to see if the date is greater than today's date
+                if (DateTemp > DateComp)
+                {
+                    //record the error
+                    Error = Error + "The date cannot be in the future : ";
+                }
+            }
+            catch
+            {
+                //recod the error
+                Error = Error + "The date was not a valid date : ";
+            }
+
+            /**************** Description *************************/
+            //is the Description  blank
+            if (Description.Length == 0)
+            {
+                //record the error
+                Error = Error + "The description not be blank : ";
+            }
+            //if the description is too long
+            if (Description.Length > 50)
+            {
+                //record the error
+                Error = Error + "The description must be less than 50 characters : ";
+            }
+            /**************** Price *************************/
+            //is the Price blank
+            if (Price.Length == 0)
+            {
+                //record the error
+                Error = Error + "The Price may not be blank : ";
+            }
+            //if the Price is too long
+            if (Price.Length > 20)
+            {
+                //record the error
+                Error = Error + "The Price must be less than 50 characters : ";
+            }
+            /**************** StockQuantity *************************/
+            //is the StockQuantity blank
+            if (StockQuantity.Length == 0)
+            {
+                //record the error
+                Error = Error + "The Stock Quantity may not be blank : ";
+            }
+            //if the town is too long
+            if (StockQuantity.Length > 50)
+            {
+                //record the error
+                Error = Error + "The Stock Quantity must be less than 50 characters : ";
+            }
+
+            //return the error
+            return Error;
         }
     }
 }
