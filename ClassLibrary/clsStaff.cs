@@ -5,10 +5,9 @@ namespace ClassLibrary
 {
     public class clsStaff
     {
-        //practical 9 - private data member for the Staff ID property
+        //private data member for the Staff ID property
         private Int32 mStaffId;
-
-        //practical 9 - Staff Id public property
+        //Staff Id public property
         public int StaffID
         {
             get
@@ -20,10 +19,9 @@ namespace ClassLibrary
                 mStaffId = value;
             }
         }
-        //practical 9 - private data member for the Staff Full Name property
+        //private data member for the Staff Full Name property
         private String mStaffFullName;
-
-        //practical 9 - Staff Full Name public property
+        //Staff Full Name public property
         public String StaffFullName
         {
             get
@@ -35,11 +33,9 @@ namespace ClassLibrary
                 mStaffFullName = value;
             }
         }
-
-
-        //practical 9 - private data member for the Staff DoB property
+        //private data member for the Staff DoB property
         private DateTime mStaffDoB;
-        //practical 9 - Staff DoB public property
+        //Staff DoB public property
         public DateTime StaffDoB
         {
             get
@@ -51,11 +47,9 @@ namespace ClassLibrary
                 mStaffDoB = value;
             }
         }
-
-
-        //practical 9 - private data member for the Staff Email property
+        //private data member for the Staff Email property
         private string mStaffEmail;
-        //practical 9 - Staff Email public property
+        //Staff Email public property
         public string StaffEmail
         {
             get
@@ -67,11 +61,9 @@ namespace ClassLibrary
                 mStaffEmail = value;
             }
         }
-
-
-        //practical 9 - private data member for the NINumber property
+        //private data member for the NINumber property
         private string mNINumber;
-        //practical 9 - Staff Id public property
+        //NI Number public property
         public string NINumber
         {
             get
@@ -83,11 +75,9 @@ namespace ClassLibrary
                 mNINumber = value;
             }
         }
-
-
-        //practical 9 - private data member for the Salary property
+        // private data member for the Salary property
         private double mSalary;
-        //practical 9 - Salary public property
+        //Salary public property
         public double Salary
         {
             get
@@ -99,11 +89,9 @@ namespace ClassLibrary
                 mSalary = value;
             }
         }
-
-
-        //practical 9 - private data member for Present In Building property
+        //private data member for Present In Building property
         private bool mPresentInBuilding;
-        //practical 9 - Present In Building public property
+        //Present In Building public property
         public bool PresentInBuilding
         {
             get
@@ -121,15 +109,11 @@ namespace ClassLibrary
         {
             //create an instance of the data connection
             clsDataConnection DB = new clsDataConnection();
-
             //add the parameter for staff id to search for 
             DB.AddParameter("@StaffId", StaffId);
-
             //execute the stored procedure
             DB.Execute("sproc_tblStaff_FilterByStaffId");
-
             //if one record is found(there should either be one or zero)
-
             if (DB.Count == 1)
             {
                 //copy the data from the database to the private data members
@@ -139,8 +123,7 @@ namespace ClassLibrary
                 mStaffEmail = Convert.ToString(DB.DataTable.Rows[0]["StaffEmail"]);
                 mNINumber = Convert.ToString(DB.DataTable.Rows[0]["NINumber"]);
                 mSalary = Convert.ToDouble(DB.DataTable.Rows[0]["Salary"]);
-                mPresentInBuilding = Convert.ToBoolean(DB.DataTable.Rows[0]["PresentInTheBuilding"]);
-
+                mPresentInBuilding = Convert.ToBoolean(DB.DataTable.Rows[0]["PresentInBuilding"]);
                 //return that everything worked OK
                 return true;
             }
@@ -149,135 +132,95 @@ namespace ClassLibrary
             {
                 //return false indicating there is a problem
                 return false;
-
             }
         }
 
-        public string Valid(string staffFullName, string staffDoB, string staffEmail, string NINumber, double salary)
+        public string Valid(string staffFullName, string staffDoB, string staffEmail, string nINumber, string salary)
         {
-            /*******************************************************/
             /***************** Variables *****************/
-            /*******************************************************/
-
             //create string variable to store the error
             String Error = "";
             //create a temporary variable to store the data values
             DateTime DateTemp;
 
-            /*******************************************************/
             /***************** Staff Full Name *****************/
-            /*******************************************************/
-
             //if the StaffFullName  is blank
             if (staffFullName.Length == 0)
             {
                 //record the error
-                Error = Error + "The Staff Full Name may not be blank : ";
+                Error = Error + "Error:The Staff Full Name may not be blank : ";
             }
             //if the Staff Name is greater than 50 characters
-            if (StaffFullName.Length > 50)
+            if (staffFullName.Length > 50)
             {
                 //record the error
-                Error = Error + "The Staff Full Name must be less than 50 characters : ";
+                Error = Error + "Error:The Staff Full Name must be less than 50 characters : ";
             }
 
-            /*******************************************************/
             /***************** Staff DoB *****************/
-            /*******************************************************/
-
             //create an instance of DateTime tot compare with DateTemp
             //in the if statements
             DateTime DateComp = DateTime.Now.Date;
-
             try
             {
                 //copy the staff DoB value to the DateTemp variable
-                DateTemp = Convert.ToDateTime(StaffDoB);
-
-                if (DateTemp < DateComp)//compare date added with date
+                DateTemp = Convert.ToDateTime(staffDoB);
+                if (DateTemp < DateComp)//compare staff DoB added with date
                 {
                     //record the error
-                    Error = Error + "The Staff DoB cannot be in the past : ";
+                    Error = Error + "Error:The Staff DoB cannot be in the past : ";
                 }
                 //check to see if the date is greater than todays date
                 if (DateTemp > DateComp)
                 {
                     //record the error
-                    Error = Error + "The Staff DoB cannot be in the future : ";
+                    Error = Error + "Error:The Staff DoB cannot be in the future : ";
                 }
             }
             catch
             {
                 //record the error
-                Error = Error + "The data was not a valid date : ";
+                Error = Error + "Error: You need to enter a date or the date entered was not a valid date : ";
             }
 
-            /*******************************************************/
             /***************** Staff Email *****************/
-            /*******************************************************/
-
             //if the staffEmail is greater than 75 characters
             if (staffEmail.Length > 75)
             {
                 //record the error
-                Error = Error + "The Staff Email must be less than 75 characters : ";
+                Error = Error + "Error:The Staff Email must be less than 75 characters : ";
             }
 
-            /*******************************************************/
             /***************** NI Number *****************/
-            /*******************************************************/
-
-            //if the NINumber is greater than 50 characters
-            if (NINumber.Length > 9)
+            //if the NINumber is less than 9 characters and more than 0 characters
+            if (nINumber.Length < 9)
+                if (nINumber.Length > 0)
+                {
+                //record the error
+                Error = Error + "Error:The Staff NI Number cannot be less than 9 characters : ";
+            }
+            //if the NINumber is greater than 9 characters
+            if (nINumber.Length > 9)
             {
                 //record the error
-                Error = Error + "The Staff Full NI Number be less than 9 characters : ";
+                Error = Error + "Error:The Staff NI Number cannot be more than 9 characters : ";
             }
 
-            /*******************************************************/
             /********************* Salary **************************/
-            /*******************************************************/
-           
             //if the Salary  is blank 
-            if (Salary == 0.00)
+            if (salary.Length == 0)
             {
                 //record the error 
-                Error = Error + "The Salary may not be blank : ";
+                Error = Error + "Error:The Salary value may not be blank : ";
             }
-
-            //if the Salary is greater than 50 characters 
-            if (Salary > 999999999999999999.99)
+            //if the Salary is greater than 20 characters (data type == decimal(18,2))
+            if (salary.Length > 20)
             {
                 //record the error 
-                Error = Error + "The Salary must be less than £999999999999999999.99 : ";
+                Error = Error + "Error:The Salary must be less than £999999999999999999.99 : ";
             }
-
-            /**
-                 try 
-            { 
-                //if the Salary  is blank 
-                if (salary == 0.00) 
-                { 
-                    //record the error 
-                    Error = Error + "The Salary may not be blank : "; 
-                } 
-
-                //check to see if the date is greater than todays date 
-                if (salary > 999999999999999999.99) 
-                { 
-                    //record the error 
-                    Error = Error + "The Salary must be less than £999999999999999999.99 : "; 
-                } 
-            } 
-            catch 
-            { 
-                //record the error 
-                Error = Error + "The Salary can only be numbers : "; 
-            } **/
-
-
-            //return any error messages 
-            return Error;
+         //return any error messages 
+         return Error;
         }
     }
 }
