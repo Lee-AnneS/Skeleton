@@ -13,6 +13,18 @@ namespace ClassLibrary
         //private data member for the customer DoB property
         private DateTime mCustomerDoB;
 
+        //private data member for the customer email property
+        private string mCustomerEmail;
+
+        //private data member for the customer address property
+        private string mCustomerAddress;
+
+        //private data member for the number of order property
+        private Int32 mNumOrder;
+
+        //private data member for the number of order property
+        private Boolean mActive;
+
         //customerId public property
         public Int32 CustomerId
         {
@@ -58,13 +70,65 @@ namespace ClassLibrary
             }
         }
 
-        public string CustomerEmail { get; set; }
+        //customerEmail public property
+        public String CustomerEmail
+        {
+            get
+            {
+                //this line of code sends data out of the property
+                return mCustomerEmail;
+            }
+            set
+            {
+                //this line of code allows data into the property
+                mCustomerEmail = value;
+            }
+        }
 
-        public string CustomerAddress { get; set; }
+        //customerAddress public property
+        public String CustomerAddress
+        {
+            get
+            {
+                //this line of code sends data out of the property
+                return mCustomerAddress;
+            }
+            set
+            {
+                //this line of code allows data into the property
+                mCustomerAddress = value;
+            }
+        }
 
-        public int NumOrder { get; set; }
+        //NumOrder public property
+        public Int32 NumOrder
+        {
+            get
+            {
+                //this line of code sends data out of the property
+                return mNumOrder;
+            }
+            set
+            {
+                //this line of code allows data into the property
+                mNumOrder = value;
+            }
+        }
 
-        public bool Active { get; set; }
+        //Acvite public property
+        public bool Active
+        {
+            get
+            {
+                //this line of code sends data out of the property
+                return mActive;
+            }
+            set
+            {
+                //this line of code allows data into the property
+                mActive = value;
+            }
+        }
 
         public bool Find(int customerId)
         {
@@ -72,6 +136,10 @@ namespace ClassLibrary
             mCustomerId = 5;
             mCustomerName = "Tavleen Kaur";
             mCustomerDoB = Convert.ToDateTime("01/01/2000");
+            mCustomerEmail = "tkaur@gmail.com";
+            mCustomerAddress = "12 Ash Road, XXX XXX";
+            mNumOrder = 10;
+            mActive = true;
 
             //always return true 
             return true;
