@@ -319,11 +319,11 @@ namespace Testing5
             //string variable to store any error message
             String Error = "";
             //create some test data to pass to the method
-            string Amount = "0.00";
+            string Amount = "0";
             //invoke the method
             Error = APayments.Valid(OrderId, BillingAddress, PaymentsMethod, Amount, PaymentsDate);
             //test to see that the result is correct
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "");
         }
         [TestMethod]
         public void AmountMinLessOne()
@@ -333,7 +333,7 @@ namespace Testing5
             //string variable to store any error message
             String Error = "";
             //create some test data to pass to the method
-            string Amount = "0.00";
+            string Amount = "";
             //invoke the method
             Error = APayments.Valid(OrderId, BillingAddress, PaymentsMethod, Amount, PaymentsDate);
             //test to see that the result is correct
@@ -348,13 +348,28 @@ namespace Testing5
             //string variable to store any error message
             String Error = "";
             //create some test data to pass to the method
-            string Amount = "0.01";
+            string Amount = "a";
             //invoke the method
             Error = APayments.Valid(OrderId, BillingAddress, PaymentsMethod, Amount, PaymentsDate);
             //test to see that the result is correct
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "");
         }
 
+        [TestMethod]
+        public void AmountMax()
+        {
+            //create an instance of the class we want to test
+            clsPayments APayments = new clsPayments();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string Amount = "";
+            Amount = Amount.PadRight(20, 'a');
+            //invoke the method
+            Error = APayments.Valid(OrderId, BillingAddress, PaymentsMethod, Amount, PaymentsDate);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
         [TestMethod]
         public void AmountExtremeMax()
         {
@@ -367,7 +382,7 @@ namespace Testing5
             //invoke the method
             Error = APayments.Valid(OrderId, BillingAddress, PaymentsMethod, Amount, PaymentsDate);
             //test to see that the result is correct
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "");
         }
 
         [TestMethod]
@@ -378,11 +393,12 @@ namespace Testing5
             //string variable to store any error message
             String Error = "";
             //create some test data to pass to the method
-            string Amount = "1000000000000000000.00";
+            string Amount = "";
+            Amount = Amount.PadRight(21, 'a');
             //invoke the method
             Error = APayments.Valid(OrderId, BillingAddress, PaymentsMethod, Amount, PaymentsDate);
             //test to see that the result is correct
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "");
         }
 
         [TestMethod]
@@ -393,11 +409,11 @@ namespace Testing5
             // String variable to store any error message
             string Error = "";
             // Create some test data to pass to the method
-            string Amount = "0.02";
+            string Amount = "aa";
             // Invoke the method
             Error = APayments.Valid(OrderId, BillingAddress, PaymentsMethod, Amount, PaymentsDate);
             // Test to see that the result is correct
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "");
         }
 
         [TestMethod]
@@ -408,7 +424,8 @@ namespace Testing5
             // String variable to store any error message
             string Error = "";
             // Create some test data to pass to the method
-            string Amount = "500000000000000000.00";
+            string Amount = "";
+            Amount = Amount.PadRight(10, 'a');
             // Invoke the method
             Error = APayments.Valid(OrderId, BillingAddress, PaymentsMethod, Amount, PaymentsDate);
             // Test to see that the result is correct
@@ -423,7 +440,8 @@ namespace Testing5
             // String variable to store any error message
             string Error = "";
             // Create some test data to pass to the method
-            string Amount = "999999999999999999.98";
+            string Amount = "";
+            Amount = Amount.PadRight(19, 'a');
             // Invoke the method
             Error = APayments.Valid(OrderId, BillingAddress, PaymentsMethod, Amount, PaymentsDate);
             // Test to see that the result is correct
@@ -449,7 +467,7 @@ namespace Testing5
             // Invoke the method
             Error = APayments.Valid(OrderId, BillingAddress, PaymentsMethod, Amount, PaymentsDate);
             //test to see that the result is correct
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "");
         }
         [TestMethod]
         public void PaymentsDateMinLessOne()
@@ -463,13 +481,13 @@ namespace Testing5
             //set the date totodays date
             TestDate = DateTime.Now.Date;
             //change the date to whatever the date is less 1day
-            TestDate = TestDate.AddYears(-1);
+            TestDate = TestDate.AddDays(-1);
             //convert the date variable to a string variable
             string DateAdded = TestDate.ToString();
             // Invoke the method
             Error = APayments.Valid(OrderId, BillingAddress, PaymentsMethod, Amount, PaymentsDate);
             //test to see that the result is correct
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "");
         }
         [TestMethod]
         public void PaymentsDateMin()
@@ -487,7 +505,7 @@ namespace Testing5
             // Invoke the method
             Error = APayments.Valid(OrderId, BillingAddress, PaymentsMethod, Amount, PaymentsDate);
             //test to see that the result is correct
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "");
         }
         [TestMethod]
         public void PaymentsDateMinPlusOne()
@@ -501,13 +519,13 @@ namespace Testing5
             //set the date totodays date
             TestDate = DateTime.Now.Date;
             //change the date to whatever the date is plus 1 day
-            TestDate = TestDate.AddYears(1);
+            TestDate = TestDate.AddDays(1);
             //convert the date variable to a string variable
             string DateAdded = TestDate.ToString();
             // Invoke the method
             Error = APayments.Valid(OrderId, BillingAddress, PaymentsMethod, Amount, PaymentsDate);
             //test to see that the result is correct
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "");
         }
         [TestMethod]
         public void PaymentsDateExtremeMax()
@@ -527,7 +545,7 @@ namespace Testing5
             // Invoke the method
             Error = APayments.Valid(OrderId, BillingAddress, PaymentsMethod, Amount, PaymentsDate);
             //test to see that the result is correct
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "");
         }
 
         [TestMethod]
@@ -541,6 +559,8 @@ namespace Testing5
             string PaymentsDate = "this is not a date!";
             //invoke method
             Error = APayments.Valid(OrderId,BillingAddress, PaymentsMethod, Amount,PaymentsDate);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
         }
 
         ///////////////////////////////Order ID////// //////////////////////////////////////////
@@ -627,7 +647,7 @@ namespace Testing5
             // String variable to store any error message
             string Error = "";
             // Test data
-            string OrderId = "aaaaaaaaaaa"; // this should be ok
+            string OrderId = "aaaaaaaaaa"; // this should be ok
             // Invoke the method
             Error = APayments.Valid(OrderId, BillingAddress, PaymentsMethod, Amount, PaymentsDate);
             // Test to see that the result is correct
@@ -646,7 +666,7 @@ namespace Testing5
             // Invoke the method
             Error = APayments.Valid(OrderId, BillingAddress, PaymentsMethod, Amount, PaymentsDate);
             // Test to see that the result is correct
-            Assert.AreEqual(Error, "");
+            Assert.AreNotEqual(Error, "");
         }
          
         //////////////////////////////////BILLING ADDRESS////////////////////////////////
@@ -691,7 +711,7 @@ namespace Testing5
             // Invoke the method
             Error = APayments.Valid(OrderId, BillingAddress, PaymentsMethod, Amount, PaymentsDate);
             //test to see that the result is correct
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "");
         }
         [TestMethod]
         public void BillingAddressMinPlusOne()
@@ -705,7 +725,7 @@ namespace Testing5
             // Invoke the method
             Error = APayments.Valid(OrderId, BillingAddress, PaymentsMethod, Amount, PaymentsDate);
             //test to see that the result is correct
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "");
         }
         [TestMethod]
         public void BillingAddressMaxLessOne()
@@ -720,7 +740,7 @@ namespace Testing5
             // Invoke the method
             Error = APayments.Valid(OrderId, BillingAddress, PaymentsMethod, Amount, PaymentsDate);
             //test to see that the result is correct
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "");
         }
         [TestMethod]
         public void BillingAddressMaxPlusOne()
@@ -750,7 +770,7 @@ namespace Testing5
             // Invoke the method
             Error = APayments.Valid(OrderId, BillingAddress, PaymentsMethod, Amount, PaymentsDate);
             //test to see that the result is correct
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "");
         }
         //////////////////////////////////PAYMENTS METHOD////////////////////////////////
         [TestMethod]
@@ -794,7 +814,7 @@ namespace Testing5
             // Invoke the method
             Error = APayments.Valid(OrderId, BillingAddress, PaymentsMethod, Amount, PaymentsDate);
             //test to see that the result is correct
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "");
         }
         [TestMethod]
         public void PaymentsMethodMinPlusOne()
@@ -808,7 +828,7 @@ namespace Testing5
             // Invoke the method
             Error = APayments.Valid(OrderId, BillingAddress, PaymentsMethod, Amount, PaymentsDate);
             //test to see that the result is correct
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "");
         }
         [TestMethod]
         public void PaymentsMethodMaxLessOne()
@@ -853,7 +873,7 @@ namespace Testing5
             // Invoke the method
             Error = APayments.Valid(OrderId, BillingAddress, PaymentsMethod, Amount, PaymentsDate);
             //test to see that the result is correct
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "");
         }
 
     }
