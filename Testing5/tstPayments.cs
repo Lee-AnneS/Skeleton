@@ -3,6 +3,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 using System;
+using System.IO;
 using System.Security.Policy;
 using static System.Net.WebRequestMethods;
 
@@ -309,13 +310,552 @@ namespace Testing5
             // test to see that the result is correct
             Assert.IsTrue(OK);
         }
-        //000000000000000000 testing validation code   0000000000000000000 //
+        //000000000000000000000000000 PAYMENTS AMOUNT TESTING  00000000000000000000000000000000000 //
         [TestMethod]
-        public void TestPaymentsMethodStatusFound() 
+        public void AmountExtremeMin()
         {
-        
-        
+            //create an instance of the class we want to test
+            clsPayments APayments = new clsPayments();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string Amount = "0.00";
+            //invoke the method
+            Error = APayments.Valid(OrderId, BillingAddress, PaymentsMethod, Amount, PaymentsDate);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
         }
+        [TestMethod]
+        public void AmountMinLessOne()
+        {
+            //create an instance of the class we want to test
+            clsPayments APayments = new clsPayments();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string Amount = "0.00";
+            //invoke the method
+            Error = APayments.Valid(OrderId, BillingAddress, PaymentsMethod, Amount, PaymentsDate);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void AmountMin()
+        {
+            //create an instance of the class we want to test
+            clsPayments APayments = new clsPayments();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string Amount = "0.01";
+            //invoke the method
+            Error = APayments.Valid(OrderId, BillingAddress, PaymentsMethod, Amount, PaymentsDate);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void AmountExtremeMax()
+        {
+            //create an instance of the class we want to test
+            clsPayments APayments = new clsPayments();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string Amount = "999999999999999999.99";
+            //invoke the method
+            Error = APayments.Valid(OrderId, BillingAddress, PaymentsMethod, Amount, PaymentsDate);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void AmountMaxPlusOne()
+        {
+            //create an instance of the class we want to test
+            clsPayments APayments = new clsPayments();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string Amount = "1000000000000000000.00";
+            //invoke the method
+            Error = APayments.Valid(OrderId, BillingAddress, PaymentsMethod, Amount, PaymentsDate);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void AmountMinPlusOne()
+        {
+            // Create an instance of the class we want to test
+            clsPayments APayments = new clsPayments();
+            // String variable to store any error message
+            string Error = "";
+            // Create some test data to pass to the method
+            string Amount = "0.02";
+            // Invoke the method
+            Error = APayments.Valid(OrderId, BillingAddress, PaymentsMethod, Amount, PaymentsDate);
+            // Test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void AmountMid()
+        {
+            // Create an instance of the class we want to test
+            clsPayments APayments = new clsPayments();
+            // String variable to store any error message
+            string Error = "";
+            // Create some test data to pass to the method
+            string Amount = "500000000000000000.00";
+            // Invoke the method
+            Error = APayments.Valid(OrderId, BillingAddress, PaymentsMethod, Amount, PaymentsDate);
+            // Test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void AmountMaxLessOne()
+        {
+            // Create an instance of the class we want to test
+            clsPayments APayments = new clsPayments();
+            // String variable to store any error message
+            string Error = "";
+            // Create some test data to pass to the method
+            string Amount = "999999999999999999.98";
+            // Invoke the method
+            Error = APayments.Valid(OrderId, BillingAddress, PaymentsMethod, Amount, PaymentsDate);
+            // Test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+        ///////////////////////////Payments date//////////////////////////////////////////////
+
+        [TestMethod]
+        public void PaymentsDateExtremeMin()
+        {
+            //create an instance of the class we want to create
+            clsPayments APayments = new clsPayments();
+            //string variable to store any error message
+            String Error = "";
+            //create a variable to store the test date data
+            DateTime TestDate;
+            //set the date totodays date
+            TestDate = DateTime.Now.Date;
+            //change the date to whatever the date is less 100 years
+            TestDate = TestDate.AddYears(-100);
+            //convert the date variable to a string variable
+            string DateAdded = TestDate.ToString();
+            // Invoke the method
+            Error = APayments.Valid(OrderId, BillingAddress, PaymentsMethod, Amount, PaymentsDate);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void PaymentsDateMinLessOne()
+        {
+            //create an instance of the class we want to create
+            clsPayments APayments = new clsPayments();
+            //string variable to store any error message
+            String Error = "";
+            //create a variable to store the test date data
+            DateTime TestDate;
+            //set the date totodays date
+            TestDate = DateTime.Now.Date;
+            //change the date to whatever the date is less 1day
+            TestDate = TestDate.AddYears(-1);
+            //convert the date variable to a string variable
+            string DateAdded = TestDate.ToString();
+            // Invoke the method
+            Error = APayments.Valid(OrderId, BillingAddress, PaymentsMethod, Amount, PaymentsDate);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void PaymentsDateMin()
+        {
+            //create an instance of the class we want to create
+            clsPayments APayments = new clsPayments();
+            //string variable to store any error message
+            String Error = "";
+            //create a variable to store the test date data
+            DateTime TestDate;
+            //set the date totodays date
+            TestDate = DateTime.Now.Date;
+            //convert the date variable to a string variable
+            string DateAdded = TestDate.ToString();
+            // Invoke the method
+            Error = APayments.Valid(OrderId, BillingAddress, PaymentsMethod, Amount, PaymentsDate);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void PaymentsDateMinPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsPayments APayments = new clsPayments();
+            //string variable to store any error message
+            String Error = "";
+            //create a variable to store the test date data
+            DateTime TestDate;
+            //set the date totodays date
+            TestDate = DateTime.Now.Date;
+            //change the date to whatever the date is plus 1 day
+            TestDate = TestDate.AddYears(1);
+            //convert the date variable to a string variable
+            string DateAdded = TestDate.ToString();
+            // Invoke the method
+            Error = APayments.Valid(OrderId, BillingAddress, PaymentsMethod, Amount, PaymentsDate);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void PaymentsDateExtremeMax()
+        {
+            //create an instance of the class we want to create
+            clsPayments APayments = new clsPayments();
+            //string variable to store any error message
+            String Error = "";
+            //create a variable to store the test date data
+            DateTime TestDate;
+            //set the date totodays date
+            TestDate = DateTime.Now.Date;
+            //change the date to whatever the date is plus 100 years
+            TestDate = TestDate.AddYears(100);
+            //convert the date variable to a string variable
+            string DateAdded = TestDate.ToString();
+            // Invoke the method
+            Error = APayments.Valid(OrderId, BillingAddress, PaymentsMethod, Amount, PaymentsDate);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PaymentsDateInvalidData()
+        {
+            // create an instance of the class we want to create
+            clsPayments APayments = new clsPayments();
+            //string variable to store any error message
+            String Error = "";
+            // set the paymentsdate to a non date value
+            string PaymentsDate = "this is not a date!";
+            //invoke method
+            Error = APayments.Valid(OrderId,BillingAddress, PaymentsMethod, Amount,PaymentsDate);
+        }
+
+        ///////////////////////////////Order ID////// //////////////////////////////////////////
+        [TestMethod]
+        public void OrderIdMin()
+        {
+            // Create an instance of the class we want to test
+            clsPayments APayments = new clsPayments();
+            // String variable to store any error message
+            string Error = "";
+            // Test data
+            string OrderId = "a"; // this should be ok
+            // Invoke the method
+            Error = APayments.Valid(OrderId, BillingAddress, PaymentsMethod, Amount, PaymentsDate);
+            // Test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void OrderIdMinPlusOne()
+        {
+            // Create an instance of the class we want to test
+            clsPayments APayments = new clsPayments();
+            // String variable to store any error message
+            string Error = "";
+            // Test data
+            string OrderId = "aa"; // this should be ok
+            // Invoke the method
+            Error = APayments.Valid(OrderId, BillingAddress, PaymentsMethod, Amount, PaymentsDate);
+            // Test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void OrderIdMaxLessOne()
+        {
+            // Create an instance of the class we want to test
+            clsPayments APayments = new clsPayments();
+            // String variable to store any error message
+            string Error = "";
+            // Test data
+            string OrderId = "aaaaaaaaa"; // this should be ok
+            // Invoke the method
+            Error = APayments.Valid(OrderId, BillingAddress, PaymentsMethod, Amount, PaymentsDate);
+            // Test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void OrderIdMax()
+        {
+            // Create an instance of the class we want to test
+            clsPayments APayments = new clsPayments();
+            // String variable to store any error message
+            string Error = "";
+            // Test data
+            string OrderId = "aaaaaaaaaa"; // this should be ok
+            // Invoke the method
+            Error = APayments.Valid(OrderId, BillingAddress, PaymentsMethod, Amount, PaymentsDate);
+            // Test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void OrderIdMid()
+        {
+            // Create an instance of the class we want to test
+            clsPayments APayments = new clsPayments();
+            // String variable to store any error message
+            string Error = "";
+            // Test data
+            string OrderId = "aaaaa"; // this should be ok
+            // Invoke the method
+            Error = APayments.Valid(OrderId, BillingAddress, PaymentsMethod, Amount, PaymentsDate);
+            // Test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void OrderIdMaxPlusOne()
+        {
+            // Create an instance of the class we want to test
+            clsPayments APayments = new clsPayments();
+            // String variable to store any error message
+            string Error = "";
+            // Test data
+            string OrderId = "aaaaaaaaaaa"; // this should be ok
+            // Invoke the method
+            Error = APayments.Valid(OrderId, BillingAddress, PaymentsMethod, Amount, PaymentsDate);
+            // Test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void OrderIdExtremeMax()
+        {
+            // Create an instance of the class we want to test
+            clsPayments APayments = new clsPayments();
+            // String variable to store any error message
+            string Error = "";
+            // create some test data to pass to the method
+            string OrderId = "aaaaaaa"; // this should fail
+            OrderId = OrderId.PadRight(500,'a');
+            // Invoke the method
+            Error = APayments.Valid(OrderId, BillingAddress, PaymentsMethod, Amount, PaymentsDate);
+            // Test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+         
+        //////////////////////////////////BILLING ADDRESS////////////////////////////////
+        [TestMethod]
+        public void BillingAddressExtremeMax()
+        {
+            //create an instance of the class we want to create
+            clsPayments APayments = new clsPayments();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string BillingAddress = "";
+            BillingAddress = BillingAddress.PadRight(500, 'a');//this should fail
+            // Invoke the method
+            Error = APayments.Valid(OrderId, BillingAddress, PaymentsMethod, Amount, PaymentsDate);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void BillingAddressMinLessOne()
+        {
+            //create an instance of the class we want to create
+            clsPayments APayments = new clsPayments();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string BillingAddress = ""; //should fail
+            // Invoke the method
+            Error = APayments.Valid(OrderId, BillingAddress, PaymentsMethod, Amount, PaymentsDate);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void BillingAddressMin()
+        {
+            //create an instance of the class we want to create
+            clsPayments APayments = new clsPayments();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string BillingAddress = "a";
+            // Invoke the method
+            Error = APayments.Valid(OrderId, BillingAddress, PaymentsMethod, Amount, PaymentsDate);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void BillingAddressMinPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsPayments APayments = new clsPayments();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string BillingAddress = "aa";
+            // Invoke the method
+            Error = APayments.Valid(OrderId, BillingAddress, PaymentsMethod, Amount, PaymentsDate);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void BillingAddressMaxLessOne()
+        {
+            //create an instance of the class we want to create
+            clsPayments APayments = new clsPayments();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string BillingAddress = "";
+            BillingAddress = BillingAddress.PadRight(99, 'a');//this should be okay
+            // Invoke the method
+            Error = APayments.Valid(OrderId, BillingAddress, PaymentsMethod, Amount, PaymentsDate);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void BillingAddressMaxPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsPayments APayments = new clsPayments();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string BillingAddress = "";
+            BillingAddress = BillingAddress.PadRight(101, 'a');//this should fail
+            // Invoke the method
+            Error = APayments.Valid(OrderId, BillingAddress, PaymentsMethod, Amount, PaymentsDate);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void BillingAddressMid()
+        {
+            //create an instance of the class we want to create
+            clsPayments APayments = new clsPayments();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string BillingAddress = "";
+            BillingAddress = BillingAddress.PadRight(50, 'a');//this should be okay
+            // Invoke the method
+            Error = APayments.Valid(OrderId, BillingAddress, PaymentsMethod, Amount, PaymentsDate);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+        //////////////////////////////////PAYMENTS METHOD////////////////////////////////
+        [TestMethod]
+        public void PaymentsMethodExtremeMax()
+        {
+            //create an instance of the class we want to create
+            clsPayments APayments = new clsPayments();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string PaymentsMethod = "";
+            PaymentsMethod = PaymentsMethod.PadRight(100, 'a');//this should fail
+            // Invoke the method
+            Error = APayments.Valid(OrderId, BillingAddress, PaymentsMethod, Amount, PaymentsDate);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void PaymentsMethodMinLessOne()
+        {
+            //create an instance of the class we want to create
+            clsPayments APayments = new clsPayments();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string PaymentsMethod = ""; //should fail
+            // Invoke the method
+            Error = APayments.Valid(OrderId, BillingAddress, PaymentsMethod, Amount, PaymentsDate);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void PaymentsMethodMin()
+        {
+            //create an instance of the class we want to create
+            clsPayments APayments = new clsPayments();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string PaymentsMethod = "a";
+            // Invoke the method
+            Error = APayments.Valid(OrderId, BillingAddress, PaymentsMethod, Amount, PaymentsDate);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void PaymentsMethodMinPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsPayments APayments = new clsPayments();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string PaymentsMethod = "aa";
+            // Invoke the method
+            Error = APayments.Valid(OrderId, BillingAddress, PaymentsMethod, Amount, PaymentsDate);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void PaymentsMethodMaxLessOne()
+        {
+            //create an instance of the class we want to create
+            clsPayments APayments = new clsPayments();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string PaymentsMethod = "";
+            PaymentsMethod = PaymentsMethod.PadRight(59, 'a');//this should be okay
+            // Invoke the method
+            Error = APayments.Valid(OrderId, BillingAddress, PaymentsMethod, Amount, PaymentsDate);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void PaymentsMethodMaxPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsPayments APayments = new clsPayments();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string PaymentsMethod = "";
+            PaymentsMethod = PaymentsMethod.PadRight(51, 'a');//this should fail
+            // Invoke the method
+            Error = APayments.Valid(OrderId, BillingAddress, PaymentsMethod, Amount, PaymentsDate);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void PaymentsMethodMid()
+        {
+            //create an instance of the class we want to create
+            clsPayments APayments = new clsPayments();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string PaymentsMethod = "";
+            PaymentsMethod = PaymentsMethod.PadRight(25, 'a');//this should be okay
+            // Invoke the method
+            Error = APayments.Valid(OrderId, BillingAddress, PaymentsMethod, Amount, PaymentsDate);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
     }
 
 }
