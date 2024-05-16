@@ -19,23 +19,45 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //create a new instance of clsStock
         clsStock AStock = new clsStock();
         //capture the productid no
-        AStock.ProductId = Convert.ToInt32(txtProductId.Text);
+        string ProductId = txtProductId.Text;
         //capture the name 
-        AStock.Name = txtName.Text;
+        string Name = txtName.Text;
         //capture the Description 
-        AStock.Description = txtDescription.Text;
+        string Description = txtDescription.Text;
         //capture the price 
-        AStock.Price = Convert.ToDouble(txtPrice.Text);
+        string Price = txtPrice.Text;
         //capture the stock quantity
-        AStock.StockQuantity = Convert.ToInt32(txtStockQuantity.Text);
+        string StockQuantity = txtStockQuantity.Text;
         //capture the created at
-        AStock.DateAdded = Convert.ToDateTime(DateTime.Now);
+        string DateAdded = txtDateAdded.Text;
         //capture the available check box
-        AStock.Available = chkAvailable.Checked;
-        //store the Product in the session object
-        Session["AStock"] = AStock;
-        //navigate to the view page
-        Response.Redirect("StockViewer.aspx");
+        string Available = chkAvailable.Text;
+        //variable to store any error messages
+        string Error = "";
+        Error = AStock.Valid(Name, Description, Price, StockQuantity, DateAdded);
+        if (Error == "") 
+        {
+            //capture the name 
+            AStock.Name = Name;
+            //capture the Description 
+            AStock.Description = Description;
+            //capture the Price 
+            AStock.Price = Convert.ToDouble(Price);
+            //capture the StockQuantity 
+            AStock.StockQuantity = Convert.ToInt32(StockQuantity);
+            //capture the Description 
+            AStock.DateAdded = Convert.ToDateTime(DateAdded);
+            //store the stock in the session object
+            Session["AStock"] = AStock;
+            //navigate to the view page
+            Response.Redirect("StockViewer.aspx");
+        }
+        else 
+        {
+            //display the error message
+            lblError.Text = Error;
+        }
+
     }
 
     protected void Button1_Click(object sender, EventArgs e)
