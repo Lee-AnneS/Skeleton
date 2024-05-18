@@ -18,18 +18,18 @@
             <asp:Label ID="lblPaymentId" runat="server" height="19px" style="z-index: 1; left: 25px; top: 46px; position: absolute" Text="Payments ID" width="104px"></asp:Label>
         </div>
          <asp:TextBox ID="txtPaymentsId" runat="server" style="z-index: 1; left: 149px; top: 42px; position: absolute; width: 131px"></asp:TextBox>
-        <asp:Button ID="btnFind" runat="server" Text="Find" OnClick="btnNew_Click" style="z-index: 1; left: 300px; top: 42px; position: absolute" />
+        <asp:Button ID="btnFind" runat="server" Text="Find" OnClick="btnFind_Click" style="z-index: 1; left: 300px; top: 42px; position: absolute" />
         <asp:TextBox ID="txtOrderId" runat="server" height="22px" style="z-index: 1; left: 149px; top: 71px; position: absolute" width="131px"></asp:TextBox>
         <asp:TextBox ID ="txtBillingAddress" runat="server" height="22px" style="z-index: 1; left: 149px; top: 106px; position: absolute" width="131px"></asp:TextBox>
         <asp:TextBox ID="txtPaymentsMethod" runat="server" height="22px" style="z-index: 1; left: 149px; top: 137px; position: absolute" width="131px"></asp:TextBox>
         <asp:TextBox ID="txtAmount" runat="server" height="22px" style="z-index: 1; left: 149px; top: 173px; position: absolute" width="131px"></asp:TextBox>
-        <asp:TextBox ID="txtPaymentDate" runat="server" height="22px" style="z-index: 1; left: 149px; top: 208px; position: absolute" width="131px"></asp:TextBox>
+        <asp:TextBox ID="txtPaymentsDate" runat="server" height="22px" style="z-index: 1; left: 149px; top: 208px; position: absolute" width="131px"></asp:TextBox>
         <p>
             <asp:Label ID="lblOrderId" runat="server" height="19px" style="z-index: 1; left: 25px; position: absolute; top: 77px" Text="Order ID" width="104px"></asp:Label>
         </p>
         <asp:Label ID="lblBillingAddress" runat="server" height="19px" style="z-index: 1; left: 25px; top: 110px; position: absolute" Text="Billing Address" width="104px"></asp:Label>
         <asp:Label ID="lblPaymentsMethod" runat="server" style="z-index: 1; left: 25px; top: 145px; position: absolute" Text="Payments Method"></asp:Label>
-        <asp:Label ID="lblPaymentDate" runat="server" height="19px" style="z-index: 1; left: 25px; top: 216px; position: absolute" Text="Payment Date" width="104px"></asp:Label>
+        <asp:Label ID="lblPaymentsDate" runat="server" height="19px" style="z-index: 1; left: 25px; top: 216px; position: absolute" Text="Payment Date" width="104px"></asp:Label>
         <asp:Label ID="lblAmount" runat="server" height="19px" style="z-index: 1; left: 25px; top: 178px; position: absolute" Text="Amount" width="104px"></asp:Label>
         <p>
             &nbsp;</p>
