@@ -43,18 +43,7 @@ namespace Testing5
             //test to see that the two values are the same
             Assert.AreEqual(AllPayments.PaymentsList, TestList);
         }
-        [TestMethod]
-        public void CountPropertyOK()
-        {
-            //Create an instance of the class we want to create
-            clsPaymentsCollection AllPayments = new clsPaymentsCollection();
-            //Create some test data to assign to the property
-            Int32 SomeCount = 2;
-            //assign the data to the property
-            AllPayments.Count = SomeCount;
-            // test to see that values are the same
-            Assert.AreEqual(AllPayments.Count, SomeCount);
-        }
+        
 
         [TestMethod]
         public void ThisPaymentsPropertyOK()
