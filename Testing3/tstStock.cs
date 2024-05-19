@@ -3,7 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.IO;
 
-namespace Testing5
+namespace Testing3
 {
     [TestClass]
     public class tstStock
