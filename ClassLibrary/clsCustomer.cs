@@ -130,19 +130,43 @@ namespace ClassLibrary
             }
         }
 
-        public bool Find(int customerId)
-        {
-            //set the private data members to the test data value 
-            mCustomerId = 5;
-            mCustomerName = "Tavleen Kaur";
-            mCustomerDoB = Convert.ToDateTime("01/01/2000");
-            mCustomerEmail = "tkaur@gmail.com";
-            mCustomerAddress = "12 Ash Road, XXX XXX";
-            mNumOrder = 10;
-            mActive = true;
+        /****** FIND METHOD ******/
+        /*************************/
 
-            //always return true 
-            return true;
+        public bool Find(int CustomerId)
+        {
+            //create an instance of the data connection 
+            clsDataConnection DB = new clsDataConnection();
+
+            //add the parameter for the customer id to serach for
+            DB.AddParameter("@CustomerId", CustomerId);
+
+            //excute the stored procedure
+            DB.Execute("sproc_tblCustomer_FilterByCustomerId");
+
+            //if one record is found (there should be either one or zero)
+            if (DB.Count == 1)
+            {
+                //copy the data from the database to the private data members
+                mCustomerId = Convert.ToInt32(DB.DataTable.Rows[0]["CustomerId"]);
+                mCustomerName = Convert.ToString(DB.DataTable.Rows[0]["CustomerName"]);
+                mCustomerDoB = Convert.ToDateTime(DB.DataTable.Rows[0]["CustomerDoB"]);
+                mCustomerEmail = Convert.ToString(DB.DataTable.Rows[0]["CustomerEmail"]);
+                mCustomerAddress = Convert.ToString(DB.DataTable.Rows[0]["CustomerAddress"]);
+                mNumOrder = Convert.ToInt32(DB.DataTable.Rows[0]["NumOrder"]);
+                mActive = Convert.ToBoolean(DB.DataTable.Rows[0]["Active"]);
+
+                //return that everything worked OK
+                return true;
+            }
+
+            //if no record found
+            else
+            {
+                //return flase indicatinf there is a problem
+                return false;
+            }
+    
         }
     }
 }

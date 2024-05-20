@@ -137,42 +137,58 @@ namespace ClassLibrary
 
         }
 
-        public string Valid(string orderId, string billingAddress, string paymentsMethod, string amount, object paymentsDate)
+        public string Valid(string orderId, string billingAddress, string paymentsMethod, string amount, string paymentsDate)
         {
             //create a string variable to store the error
             String Error = "";
             //-----------------------PaymentsDate-----------------------//
             //create a temporary variable to store the date values
             DateTime DateTemp;
+
             //----------------------------Amount-----------------------//
             //if the Amount is blank
-            if(amount.Length == 0)
+            if (amount.Length == 0)
             {
                 //record the error
                 Error = Error + "The Amount may not be blank : ";
             }
+
             //-----------------------------OrderID------------------------//
             // if the order ID is longer than 10 characters
-            if (orderId.Length > 10) 
+            if (orderId.Length > 10)
             {
                 //record the error
                 Error = Error + "The order number must be less than 10 characters : ";
             }
             //----------------------PaymentsDate----------------------//
+            DateTime DateComp = DateTime.Now.Date;
+
+            try
+            {
+            
             // copy the payments date value to the datetemp variable
             DateTemp = Convert.ToDateTime(paymentsDate);
             //check to see if the date is less than todays date 
-            if (DateTemp < DateTime.Now.Date) 
-            {
+                if (DateTemp < DateComp) //compare paymentDate with date
+               {
                 // record the error
                 Error = Error + " The date cannot be in the past : ";
-            }
-            //check to see if the date is greater than todays date 
-            if (DateTemp > DateTime.Now.Date)
-            {
+               }
+                 //check to see if the date is greater than todays date 
+                 if (DateTemp > DateComp)
+                {
                 // record the error
                 Error = Error + " The date cannot be in the future : ";
+                 }
+              }
+             catch
+            {
+                //record the error
+                Error = Error + "The date was not a valid date : ";
             }
+
+
+
             //--------------------BillingAdress-------------------//
             //if the BillingAddress is blank
             if (billingAddress.Length == 0)

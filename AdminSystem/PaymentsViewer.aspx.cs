@@ -16,5 +16,16 @@ public partial class _1Viewer : System.Web.UI.Page
         APayments = (clsPayments)Session["APayments"];
         //display the OrderID for this entry
         Response.Write(APayments.OrderId);
+        //display the Biiling Address
+        Response.Write(APayments.BillingAddress);
+        //display the Payment Method
+        Response.Write(APayments.PaymentsMethod);
+        //display the Amount
+        Response.Write(APayments.Amount);
+        //display the Payments Date
+        Response.Write(APayments.PaymentsDate);
+        //display the payments status
+        Response.Write(APayments.PaymentsStatus);
+        
     }
 }

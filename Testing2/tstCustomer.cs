@@ -151,7 +151,7 @@ namespace Testing2
             Boolean Found = false;
 
             //create some test data to use with the method
-            Int32 CustomerId = 3;
+            Int32 CustomerId = 5;
 
             //invoke the method
             Found = ACustomer.Find(CustomerId);
@@ -210,7 +210,7 @@ namespace Testing2
             Found = ACustomer.Find(CustomerId);
 
             //check the name property
-            if (ACustomer.CustomerName != "Tavleen Kaur")
+            if (ACustomer.CustomerName != "Kim Kardashian")
             {
                 OK = false;
             }
@@ -238,7 +238,7 @@ namespace Testing2
             Found = ACustomer.Find(CustomerId);
 
             //check the customer Date of birth
-            if (ACustomer.CustomerDoB != Convert.ToDateTime("01/01/2000"))
+            if (ACustomer.CustomerDoB != Convert.ToDateTime("30/01/1996"))
             {
                 OK = false;
             }
@@ -266,7 +266,7 @@ namespace Testing2
             Found = ACustomer.Find(CustomerId);
 
             //check the customer email
-            if (ACustomer.CustomerEmail != "tkaur@gmail.com")
+            if (ACustomer.CustomerEmail != "kim1996@hotmail.com")
             {
                 OK = false;
             }
@@ -294,7 +294,7 @@ namespace Testing2
             Found = ACustomer.Find(CustomerId);
 
             //check the customer address
-            if (ACustomer.CustomerAddress != "12 Ash Road, XXX XXX")
+            if (ACustomer.CustomerAddress != "18 Princes Road, Doncaster,DN4 5LW")
             {
                 OK = false;
             }
@@ -322,7 +322,7 @@ namespace Testing2
             Found = ACustomer.Find(CustomerId);
 
             //check the customer address
-            if (ACustomer.NumOrder != 10)
+            if (ACustomer.NumOrder != 2)
             {
                 OK = false;
             }
@@ -350,7 +350,7 @@ namespace Testing2
             Found = ACustomer.Find(CustomerId);
 
             //check the customer address
-            if (ACustomer.Active != true)
+            if (ACustomer.Active != false)
             {
                 OK = false;
             }
