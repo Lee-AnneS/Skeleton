@@ -168,5 +168,79 @@ namespace ClassLibrary
             }
     
         }
+
+        public string Valid(string customerName, string customerDoB, string customerEmail, string customerAddress, string numOrder)
+        {
+            //create a string variable to store the error
+            String Error = "";
+            //create a temporary variable to store the data values
+            DateTime DateTemp;
+            
+            //if the customerName is blank
+            if (customerName.Length == 0)
+            {
+                //record the error
+                Error = Error + "The CustomerName may not be blank : ";
+            }
+            //if the customerName is greater than 50
+            if (customerName.Length > 50)
+            {
+                //record the error
+                Error = Error + "The CustomerName must be less than 50 characters : ";
+            }
+
+            //create an instance of DateTime to compare with DateTemp
+            //in the if statements
+            DateTime DateComp = DateTime.Now.Date;
+
+            try
+            {
+                //copy the customerDoB value to the DateTemp variable
+                DateTemp = Convert.ToDateTime(customerDoB);
+                if (DateTemp < DateComp)//compare customerDoB added with date
+                {
+                    //record the error
+                    Error = Error + "The date cannot be in the past : ";
+                }
+                //check to see if the date is greater than todays date
+                if (DateTemp > DateComp)
+                {
+                    //record the error
+                    Error = Error + "The date cannot be in the future : ";
+                }
+            }
+            catch
+            {
+                //record the error
+                Error = Error + "The date was not a valid date : ";
+            }
+
+            
+            //if the customerEmail is greater than 75
+            if (customerEmail.Length > 75)
+            {
+                //record the error
+                Error = Error + "The CustomerEmail must be less than 75 characters : ";
+            }
+
+            //if the customerAddress is blank
+            if (customerAddress.Length == 0)
+            {
+                //record the error
+                Error = Error + "The CustomerAddress may not be blank : ";
+            }
+            //if the customerAddress is greater than 100
+            if (customerAddress.Length > 100)
+            {
+                //record the error
+                Error = Error + "The CustomerAddress must be less than 100 characters : ";
+            }
+
+            //return any error messages
+            return Error;
+        }
+
+
+
     }
 }
