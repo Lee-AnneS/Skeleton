@@ -192,10 +192,14 @@ namespace ClassLibrary
             }
 
             /***************** NI Number *****************/
+            if (nINumber.Length == 0)
+            {
+                //record the error
+                Error = Error + "";
+            }
             //if the NINumber is less than 9 characters and more than 0 characters
             if (nINumber.Length < 9)
-                if (nINumber.Length > 0)
-                {
+            { 
                 //record the error
                 Error = Error + "Error:The Staff NI Number cannot be less than 9 characters : ";
             }
