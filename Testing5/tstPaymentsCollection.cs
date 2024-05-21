@@ -92,6 +92,35 @@ namespace Testing5
             //test to see that the two values are the same
             Assert.AreEqual(AllPayments.Count, TestList.Count);    
         }
+        [TestMethod]
+        public void AddMethodOK()
+        {
+            //create an instance of the class we want to create
+            clsPaymentsCollection AllPayments = new clsPaymentsCollection();
+            //create the item of test data
+            clsPayments TestItem = new clsPayments();
+            //variable to store the primary key
+            Int32 PrimaryKey = 0;
+            //set its properties
+            TestItem.PaymentsStatus = true;
+            TestItem.PaymentsId = 2;
+            TestItem.OrderId = 2;
+            TestItem.BillingAddress = "57 Tattenham Crescent, Epsom KT18 5NX";
+            TestItem.PaymentsMethod = "Debit Card";
+            TestItem.Amount = 4.8800;
+            TestItem.PaymentsDate = DateTime.Now;
+            //set ThisPayments to the test data
+            AllPayments.ThisPayments = TestItem;
+            //add the record
+            PrimaryKey = AllPayments.Add();
+            //set the primary key of the test data
+            TestItem.PaymentsId = PrimaryKey;
+            //find the record
+            AllPayments.ThisPayments.Find(PrimaryKey);
+            //test to see that the two values are the same 
+            Assert.AreEqual(AllPayments.ThisPayments, TestItem);
+
+        }
 
 
     }
