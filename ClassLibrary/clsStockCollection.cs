@@ -81,22 +81,39 @@ namespace ClassLibrary
             }
         }
 
+        /**************** Add Method *******************************/
         public int Add()
         {
             //adds a record to the database based on the values of mThisStock
             //connect to the database
             clsDataConnection DB = new clsDataConnection();
             //set the parameters for the stored procedure
-          
             DB.AddParameter("@Name", mThisStock.Name);
             DB.AddParameter("@Description", mThisStock.Description);
             DB.AddParameter("@Price", mThisStock.Price);
             DB.AddParameter("@StockQuantity", mThisStock.StockQuantity);
             DB.AddParameter("@DateAdded", mThisStock.DateAdded);
             DB.AddParameter("@Available", mThisStock.Available);
-
             //execute the query returning the primary key value
             return DB.Execute("sproc_tblProducts_Insert");
+        }
+
+        /**************** Update Method *******************************/
+        public int Update()
+        {
+            //update an existing record to the database based on the values of ThisStock
+            //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            //set the parameters for the stored procedure
+            DB.AddParameter("@ProductId", mThisStock.ProductId);
+            DB.AddParameter("@Name", mThisStock.Name);
+            DB.AddParameter("@Description", mThisStock.Description);
+            DB.AddParameter("@Price", mThisStock.Price);
+            DB.AddParameter("@StockQuantity", mThisStock.StockQuantity);
+            DB.AddParameter("@DateAdded", mThisStock.DateAdded);
+            DB.AddParameter("@Available", mThisStock.Available);
+            //execute the query returning the primary key value
+            return DB.Execute("sproc_tblProducts_Update");
         }
     }
 }
