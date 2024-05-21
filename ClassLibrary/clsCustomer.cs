@@ -236,6 +236,13 @@ namespace ClassLibrary
                 Error = Error + "The CustomerAddress must be less than 100 characters : ";
             }
 
+            //if the NumOrder is greater than 100
+            if (numOrder.Length > 100)
+            {
+                //record the error
+                Error = Error + "The NumOrder must be less than 100 characters : ";
+            }
+
             //return any error messages
             return Error;
         }

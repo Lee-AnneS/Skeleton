@@ -1027,6 +1027,168 @@ namespace Testing2
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
+
+        /******************NUMORDER TESTING******************/
+        /**********************************************************/
+
+        [TestMethod]
+        public void NumOrderMinLessOne()
+        {
+            //create an instance of the new class we want to create
+            clsCustomer ACustomer = new clsCustomer();
+
+            //string variable to store any error message
+            string Error = "";
+
+            //create some test data to pass to the method
+            string NumOrder = ""; //this should trigger an error
+
+            //invoke the method
+            Error = ACustomer.Valid(CustomerName, CustomerDoB, CustomerEmail, CustomerAddress, NumOrder);
+
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void NumOrderMin()
+        {
+            //create an instance of the class we want to create
+            clsCustomer ACustomer = new clsCustomer();
+
+            //string variable to store any error message
+            String Error = "";
+
+            //create some test data to pass to the method
+            string NumOrder = ""; //this should be ok
+
+            //invoke the method
+            Error = ACustomer.Valid(CustomerName, CustomerDoB, CustomerEmail, CustomerAddress, NumOrder);
+
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void NumOrderMinPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsCustomer ACustomer = new clsCustomer();
+
+            //string variable to store any error message
+            String Error = "";
+
+            //create some test data to pass to the method
+            string NumOrder = "aa"; //this should be ok
+
+            //invoke the method
+            Error = ACustomer.Valid(CustomerName, CustomerDoB, CustomerEmail, CustomerAddress, NumOrder);
+
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void NumOrderMaxLessOne()
+        {
+            //create an instance of the class we want to create
+            clsCustomer ACustomer = new clsCustomer();
+
+            //string variable to store any error message
+            String Error = "";
+
+            //create some test data to pass to the method
+            string NumOrder = "";
+            NumOrder = NumOrder.PadRight(99, 'a');
+
+            //invoke the method
+            Error = ACustomer.Valid(CustomerName, CustomerDoB, CustomerEmail, CustomerAddress, NumOrder);
+
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void NumOrderMax()
+        {
+            //create an instance of the class we want to create
+            clsCustomer ACustomer = new clsCustomer();
+
+            //string variable to store any error message
+            String Error = "";
+
+            //create some test data to pass to the method
+            string NumOrder = "";
+            NumOrder = NumOrder.PadRight(100, 'a');
+
+            //invoke the method
+            Error = ACustomer.Valid(CustomerName, CustomerDoB, CustomerEmail, CustomerAddress, NumOrder);
+
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void NumOrderMaxPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsCustomer ACustomer = new clsCustomer();
+
+            //string variable to store any error message
+            String Error = "";
+
+            //create some test data to pass to the method
+            string NumOrder = "";
+            NumOrder = NumOrder.PadRight(101, 'a'); //this should fail
+
+            //invoke the method
+            Error = ACustomer.Valid(CustomerName, CustomerDoB, CustomerEmail, CustomerAddress, NumOrder);
+
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void NumOrderMid()
+        {
+            //create an instance of the class we want to create
+            clsCustomer ACustomer = new clsCustomer();
+
+            //string variable to store any error message
+            String Error = "";
+
+            //create some test data to pass to the method
+            string NumOrder = "";
+            NumOrder = NumOrder.PadRight(50, 'a');
+
+            //invoke the method
+            Error = ACustomer.Valid(CustomerName, CustomerDoB, CustomerEmail, CustomerAddress, NumOrder);
+
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void NumOrderExtremeMax()
+        {
+            //create an instance of the class we want to create
+            clsCustomer ACustomer = new clsCustomer();
+
+            //string variable to store any error message
+            String Error = "";
+
+            //create some test data to pass to the method
+            string NumOrder = "";
+            NumOrder = NumOrder.PadRight(500, 'a');//this should fail
+
+            //invoke the method
+            Error = ACustomer.Valid(CustomerName, CustomerDoB, CustomerEmail, CustomerAddress, NumOrder);
+
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        
     }
 }
 
