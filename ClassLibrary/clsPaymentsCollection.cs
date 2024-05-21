@@ -90,10 +90,17 @@ namespace ClassLibrary
         public int Add()
         {
             //adds a record to the database based on the values of mThisPayments
-            //set the primary key value of the new record
-            mThisPayments.PaymentsId = 123;
-            //return the primary key of the new record
-            return mThisPayments.PaymentsId;
+            //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            //set the parameters for the stored procedure
+            DB.AddParameter("OrderId", mThisPayments.OrderId);
+            DB.AddParameter("BillingAddress", mThisPayments.BillingAddress);
+            DB.AddParameter("PaymentsMethod", mThisPayments.PaymentsMethod);
+            DB.AddParameter("Amount", mThisPayments.Amount);
+            DB.AddParameter("PaymentsDate", mThisPayments.PaymentsDate);
+            DB.AddParameter("PaymentsStatus", mThisPayments.PaymentsStatus);
+            //execute the query returning the primary key value 
+            return DB.Execute("sproc_tblPayments_Insert");
         }
     }
 }
