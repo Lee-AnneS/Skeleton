@@ -1188,7 +1188,27 @@ namespace Testing2
             Assert.AreNotEqual(Error, "");
         }
 
-        
+        [TestMethod]
+        public void NumOrderInvalidData()
+        {
+            //create an instance of the class we want to create
+            clsCustomer ACustomer = new clsCustomer();
+
+            //string variable to store any error message
+            String Error = "";
+
+            //set the CustomerDoB to a nin date value
+            string NumOrder = "this is not a number!";
+
+            //invoke the method 
+            Error = ACustomer.Valid(CustomerName, CustomerDoB, CustomerEmail, CustomerAddress, NumOrder);
+
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+
+        }
+
+
     }
 }
 

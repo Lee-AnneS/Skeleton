@@ -1,9 +1,14 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using ClassLibrary;
+
+
+//there was an error in the code
+//to fix it i added USING SYSTEM
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {

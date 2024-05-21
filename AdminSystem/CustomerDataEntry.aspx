@@ -19,7 +19,7 @@
         <asp:Label ID="lblCustomerEmail" runat="server" style="z-index: 1; left: 10px; top: 148px; position: absolute" Text="Email" height="19px" width="91px"></asp:Label>
         <asp:Label ID="lblCustomerAddress" runat="server" style="z-index: 1; left: 10px; top: 184px; position: absolute" Text="Address" height="19px" width="91px"></asp:Label>
         <asp:TextBox ID="txtCustomerAddress" runat="server" style="z-index: 1; left: 136px; top: 180px; position: absolute; height: 22px;" width="128px"></asp:TextBox>
-        <asp:Label ID="lblNumOrder" runat="server" style="z-index: 1; left: 10px; top: 222px; position: absolute; bottom: 211px;" Text="Num Of Order" height="19px" width="91px"></asp:Label>
+        <asp:Label ID="lblNumOrder" runat="server" style="z-index: 1; left: 10px; position: absolute; top: 224px; bottom: 399px;" Text="Num Of Order" height="19px" width="91px"></asp:Label>
         <asp:TextBox ID="txtNumOrder" runat="server" style="z-index: 1; left: 136px; top : 226px; position: absolute; bottom: 337px;" height="22px" width="128px"></asp:TextBox>
         <asp:CheckBox ID="chkActive" runat="server" style="z-index: 1; left: 137px; top: 269px; position: absolute; margin-top: 0px;" Text="Active" />
         <asp:Label ID="lblError" runat="server" BorderColor="Red" style="z-index: 1; left: 10px; top: 303px; position: absolute"></asp:Label>
