@@ -118,6 +118,46 @@ namespace Testing3
             //test to see that the two values are the same
             Assert.AreEqual(AllStock.ThisStock, TestItem);
         }
+        /**************** Update Method *******************************/
+        [TestMethod]
+        public void UpdateMethodOK()
+        {
+            //crete an instance of the class we want to create
+            clsStockCollection AllStock = new clsStockCollection();
+            //crete the item of test data
+            clsStock TestItem = new clsStock();
+            //variable to store the primary key
+            Int32 PrimaryKey = 0;
+            //set its properties
+            TestItem.Name = "test";
+            TestItem.Description = "This is a test";
+            TestItem.Price = 5.00;
+            TestItem.StockQuantity = 100;
+            TestItem.DateAdded = DateTime.Now;
+            TestItem.Available = true;
+            //set ThisStock to the test date
+            AllStock.ThisStock = TestItem;
+            //add the record
+            PrimaryKey = AllStock.Add();
+            //set this product to the test data
+            TestItem.ProductId = PrimaryKey;
+            //modify the test record
+            TestItem.Name = "test modified";
+            TestItem.Description = "Another test";
+            TestItem.Price = 7.00;
+            TestItem.StockQuantity = 2;
+            TestItem.DateAdded = DateTime.Now;
+            TestItem.Available = false;
+            //set ThisStock to the test date
+            AllStock.ThisStock = TestItem;
+            //update the record
+            PrimaryKey = AllStock.Update();
+            //find the record
+            AllStock.ThisStock.Find(PrimaryKey);
+            //test to see that the two values are the same
+            Assert.AreEqual(AllStock.ThisStock, TestItem);
+        }
     }
+
 }
 
