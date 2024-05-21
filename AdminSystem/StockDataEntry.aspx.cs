@@ -47,21 +47,22 @@ public partial class _1_DataEntry : System.Web.UI.Page
             AStock.StockQuantity = Convert.ToInt32(StockQuantity);
             //capture the Description 
             AStock.DateAdded = Convert.ToDateTime(DateAdded);
-            //store the stock in the session object
-            Session["AStock"] = AStock;
+            //capture the Available
+            AStock.Available = chkAvailable.Checked;
+            //create a new insance of the  stock collection
+            clsStockCollection StockList = new clsStockCollection();
+            //set the ThisStock property
+            StockList.ThisStock = AStock;
+            //Add the new record
+            StockList.Add();
             //navigate to the view page
-            Response.Redirect("StockViewer.aspx");
+            Response.Redirect("StockList.aspx");
         }
         else 
         {
             //display the error message
             lblError.Text = Error;
         }
-
-    }
-
-    protected void Button1_Click(object sender, EventArgs e)
-    {
 
     }
 
@@ -89,5 +90,10 @@ public partial class _1_DataEntry : System.Web.UI.Page
             txtDateAdded.Text = AStock.DateAdded.ToString();
             chkAvailable.Checked = AStock.Available;
         }
+    }
+
+    protected void Button1_Click(object sender, EventArgs e)
+    {
+
     }
 }

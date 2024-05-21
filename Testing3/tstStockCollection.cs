@@ -43,19 +43,6 @@ namespace Testing3
             Assert.AreEqual(AllStocks.StockList, TestList);
         }
         [TestMethod]
-        public void CountPropertyOk()
-        {
-            //create an instance od the class we want to create
-            clsStockCollection AllStocks = new clsStockCollection();
-            //create some test data to assign to the property
-            Int32 SomeCount = 3;
-            //assign the data to the property
-            AllStocks.Count = SomeCount;
-            //test to see that two values are the same
-            Assert.AreEqual(AllStocks.Count, SomeCount);
-
-        }
-        [TestMethod]
         public void ThisStockProtertyOk()
         {
             //create an instance od the class we want to create
@@ -101,14 +88,36 @@ namespace Testing3
             //test to see that the two values are the same
             Assert.AreEqual(AllStocks.Count, TestList.Count);
         }
+       
+        /**************** Add Method *******************************/
         [TestMethod]
-        public void TwoRecordsPresent() 
+        public void AddMethodOK() 
         {
-            clsStockCollection AllStocks = new clsStockCollection();
-            Assert.AreEqual(AllStocks.Count, 3);
+            //crete an instance of the class we want to create
+            clsStockCollection AllStock  = new clsStockCollection();
+            //crete the item of test data
+            clsStock TestItem = new clsStock();
+            //variable to store the primary key
+            Int32 PrimaryKey = 0;
+            //set its properties
+            TestItem.ProductId = 1;
+            TestItem.Name = "test";
+            TestItem.Description = "This is a test";
+            TestItem.Price = 5.00;
+            TestItem.StockQuantity = 100;
+            TestItem.DateAdded = DateTime.Now;
+            TestItem.Available = true;
+            //set ThisStock to the test date
+            AllStock.ThisStock = TestItem;
+            //add the record
+            PrimaryKey = AllStock.Add();
+            //set this product to the test data
+            TestItem.ProductId = PrimaryKey;
+            //find the record
+            AllStock.ThisStock.Find(PrimaryKey);
+            //test to see that the two values are the same
+            Assert.AreEqual(AllStock.ThisStock, TestItem);
         }
-
-
     }
 }
 
