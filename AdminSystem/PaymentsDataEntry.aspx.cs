@@ -129,17 +129,17 @@ public partial class _1_DataEntry : System.Web.UI.Page
     void DisplayPayments()
     {
         //create an instance of the payments
-        clsPaymentsCollection Payments = new clsPaymentsCollection();
+        clsPaymentsCollection PaymentsBook = new clsPaymentsCollection();
         //find the record to update
-        Payments.ThisPayments.Find(PaymentsId);
+        PaymentsBook.ThisPayments.Find(PaymentsId);
         //display the data for the record
-        txtPaymentsId.Text = Payments.ThisPayments.PaymentsId.ToString();
-        txtOrderId.Text = Payments.ThisPayments.OrderId.ToString();
-        txtBillingAddress.Text = Payments.ThisPayments.BillingAddress.ToString();
-        txtPaymentsMethod.Text = Payments.ThisPayments.PaymentsMethod.ToString();
-        txtAmount.Text = Payments.ThisPayments.Amount.ToString();
-        txtPaymentsDate.Text = Payments.ThisPayments.PaymentsDate.ToString();
-        chkPaymentsStatus.Checked = Payments.ThisPayments.PaymentsStatus;
+        txtPaymentsId.Text = PaymentsBook.ThisPayments.PaymentsId.ToString();
+        txtOrderId.Text = PaymentsBook.ThisPayments.OrderId.ToString();
+        txtBillingAddress.Text = PaymentsBook.ThisPayments.BillingAddress.ToString();
+        txtPaymentsMethod.Text = PaymentsBook.ThisPayments.PaymentsMethod.ToString();
+        txtAmount.Text = PaymentsBook.ThisPayments.Amount.ToString();
+        txtPaymentsDate.Text = PaymentsBook.ThisPayments.PaymentsDate.ToString();
+        chkPaymentsStatus.Checked = PaymentsBook.ThisPayments.PaymentsStatus;
         
     }
 }

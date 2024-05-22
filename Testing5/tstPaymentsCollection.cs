@@ -161,6 +161,36 @@ namespace Testing5
             //test to see if ThisPayments matvhes the test data
             Assert.AreEqual(AllPayments.ThisPayments, TestItem);
         }
-
+        [TestMethod]
+        public void DeleteMethodOK() 
+        { 
+            //CREATE AN INSTANCE OF THE CLASS WE WANT TO CREATE
+            clsPaymentsCollection AllPayments = new clsPaymentsCollection();
+            //create the item of test data
+            clsPayments TestItem = new clsPayments();
+            //variable to store the primary key
+            Int32 PrimaryKey = 0;
+            //set its properties
+            TestItem.PaymentsStatus = true;
+            TestItem.OrderId = 7;
+            TestItem.BillingAddress  = "Mansion 22 Giraffe Lane NW4 6RE";
+            TestItem.PaymentsMethod = "Pay Pal";
+            TestItem.Amount = 2.2200;
+            TestItem.PaymentsDate = DateTime.Now;
+            //set ThisPayments to the test data
+            AllPayments.ThisPayments = TestItem ;
+            //add the record
+            PrimaryKey = AllPayments.Add();
+            //set the primary key of the test data  
+            TestItem.PaymentsId = PrimaryKey;
+            //find the record
+            AllPayments.ThisPayments.Find(PrimaryKey);
+            //delet the record
+            AllPayments.Delete();
+            //now find the record
+            Boolean Found = AllPayments.ThisPayments.Find(PrimaryKey);
+            //test to see that the record was not found
+            Assert.IsFalse(Found);
+        }
     }
 }

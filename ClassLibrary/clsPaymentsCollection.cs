@@ -120,5 +120,16 @@ namespace ClassLibrary
             DB.Execute("sproc_tblPayments_Update");
            
         }
+
+        public void Delete()
+        {
+            //deletes the record pointed to by thisPayments
+            //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            //set the parameters for the stored procedure
+            DB.AddParameter("@PaymentsId", mThisPayments.PaymentsId);
+            //execute the stored procedure
+            DB.Execute("sproc_tblPayments_Delete");
+        }
     }
 }
