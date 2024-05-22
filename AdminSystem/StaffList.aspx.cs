@@ -32,6 +32,39 @@ public partial class _1_List : System.Web.UI.Page
         //bind the data to the list
         lstStaffList.DataBind();
     }
+
+    protected void btnAdd_Click(object sender, EventArgs e)
+    {
+        //store -1 into the session object to indicate this is a new record
+        Session["StaffId"] = -1;
+        //redirect to the data entry page
+        Response.Redirect("StaffDataEnrty.aspx");
+    }
+
+    protected void btnEdit_Click(object sender, EventArgs e)
+    {
+        //variable to store the primary key value of the record to be edited
+        Int32 StaffId;
+        //if a record is selected from the list
+        if(lstStaffList.SelectedIndex != -1) //first checks to see if the list has been selected
+        { 
+            //get the primary key value of the record to edit
+            StaffId = Convert.ToInt32(lstStaffList.SelectedValue);// If it has, pick up the primary key
+                                                                  // value via the SelectedValue property of the list box.
+                                                                  //store the data in the session object
+            Session["StaffId"] = StaffId; // Assuming it has we then place the primary key value into the session object.
+            //redirect to the edit page
+            Response.Redirect("StaffDataEntry.aspx"); // Then we redirect to the page AnAddress.aspx.
+        }
+        else //if nbo record has been selected
+        {
+            lblError.Text = "Please select a record from the list to edit";
+            // The error label will display a message to the user if a list item hasn’t been selected.
+        }
+        //Each item in the list has an index from 0 to N. If the first item is clicked, accessing SelectedIndex will
+        //produce a value of 0.If nothing has been selected then the SelectedIndex will be - 1 so we need to tell
+        //the user to click something.
+    }
 }
 
 

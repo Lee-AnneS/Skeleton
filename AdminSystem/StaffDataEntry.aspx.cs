@@ -8,8 +8,37 @@ using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
+    //variable to store the primary key with page level scope
+    Int32 StaffId;
     protected void Page_Load(object sender, EventArgs e)
     {
+        //get the number of the address to be processed
+        StaffId = Convert.ToInt32(Session["StaffId"]);
+        if (IsPostBack == false)
+        {
+            //if this is not a new record
+            if (StaffId != -1)
+            {
+                //display the current data for the record
+                DisplayStaff();
+            }
+        }
+    }
+
+    void DisplayStaff()
+    {
+        //create an instance of the Staff 
+        clsStaffCollection StaffBook = new clsStaffCollection();
+        //find the record to update
+        StaffBook.ThisStaff.Find(StaffId);
+        //display the data for the record
+        txtStaffId.Text = StaffBook.ThisStaff.StaffID.ToString();
+        txtStaffFullName.Text = StaffBook.ThisStaff.StaffFullName;
+        txtStaffDoB.Text = StaffBook.ThisStaff.StaffDoB.ToString();
+        txtStaffEmail.Text = StaffBook.ThisStaff.StaffEmail;
+        txtNINumber.Text = StaffBook.ThisStaff.NINumber;
+        txtSalary.Text = StaffBook.ThisStaff.Salary.ToString();
+        chkPresentInBuilding.Text = StaffBook.ThisStaff.PresentInBuilding.ToString();
     }
     protected void btnOK_Click(object sender, EventArgs e)
     {
@@ -33,6 +62,8 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Error = AStaff.Valid(StaffFullName, StaffDoB, StaffEmail, NINumber, Salary);
         if (Error == "")
         {
+            //CAPTURE STAFF ID
+            AStaff.StaffID = StaffId; //IMPORTANT!!
             //capture the Staff Full Name
             AStaff.StaffFullName = StaffFullName;
             //capture Staff DoB -- AStaff.StaffDoB = Convert.ToDateTime(txtStaffDoB.Text); use date format given in examples
@@ -43,12 +74,31 @@ public partial class _1_DataEntry : System.Web.UI.Page
             AStaff.NINumber = NINumber;
             //capture Salary
             AStaff.Salary = Convert.ToDouble(Salary);
+            //capture PresentInBuilding
+            AStaff.PresentInBuilding = chkPresentInBuilding.Checked;
+            //create a new instance of the address collection
+            clsStaffCollection StaffList = new clsStaffCollection();
 
-            //store the Staff Full Name in the session object
-            Session["AStaff"] = AStaff;
-
-            //navigate to the view page
-            Response.Redirect("StaffViewer.aspx");
+            //if this is a new record i.e. StaffID =-1 then add the data
+            if (StaffId == -1)
+            {
+                //set ThisStaff property
+                StaffList.ThisStaff = AStaff;
+                //add the new record 
+                StaffList.Add();
+            }
+            //otherwise it must be an update
+            else
+            {
+                //find the record to update
+                StaffList.ThisStaff.Find(StaffId);
+                //set ThisStaff property
+                StaffList.ThisStaff = AStaff;
+                //update the record
+                StaffList.Update();
+            }
+            //redirect back to the list page
+            Response.Redirect("StaffList.aspx");
         }
         else
         {

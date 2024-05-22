@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 
 namespace ClassLibrary
 {
@@ -7,6 +8,8 @@ namespace ClassLibrary
     {
         //private data member for the list
         List<clsStaff> mStaffList = new List<clsStaff>();
+        //private data member for thisStaff
+        clsStaff mThisStaff = new clsStaff();
 
         //public property for the staff list
         public List<clsStaff> StaffList
@@ -36,7 +39,20 @@ namespace ClassLibrary
             }
         }
 
-        public clsStaff ThisStaff { get; set; }
+        //public porperty for ThisStaff
+        public clsStaff ThisStaff
+        {
+            get
+            {
+                //return the private data
+                return mThisStaff;
+            }
+            set
+            {
+                //set the private data
+                mThisStaff = value;
+            }
+        }
 
         //constructor for the class
         public clsStaffCollection()
@@ -69,6 +85,40 @@ namespace ClassLibrary
                 //point to the next record
                 Index++;
             }
+
+           
+        }
+
+        public int Add()
+        {
+            //adds a record to the database based on the values of mThisAddress
+            //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            //set the parameters for the stored procedure
+            DB.AddParameter("@StaffFullName", mThisStaff.StaffFullName);
+            DB.AddParameter("@StaffDoB", mThisStaff.StaffDoB);
+            DB.AddParameter("@StaffEmail", mThisStaff.StaffEmail);
+            DB.AddParameter("@NINumber", mThisStaff.NINumber);
+            DB.AddParameter("@Salary", mThisStaff.Salary);
+            DB.AddParameter("@PresentInBuilding", mThisStaff.PresentInBuilding);
+            //execute the query returning the primary key value
+             return DB.Execute("sproc_tblStaff_Insert");
+        }
+
+        public void Update()
+        {
+            //update existing record to the database based on the values of mThisAddress
+            //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            //set the parameters for the stored procedure
+            DB.AddParameter("@StaffFullName", mThisStaff.StaffFullName);
+            DB.AddParameter("@StaffDoB", mThisStaff.StaffDoB);
+            DB.AddParameter("@StaffEmail", mThisStaff.StaffEmail);
+            DB.AddParameter("@NINumber", mThisStaff.NINumber);
+            DB.AddParameter("@Salary", mThisStaff.Salary);
+            DB.AddParameter("@PresentInBuilding", mThisStaff.PresentInBuilding);
+            //execute the query returning the primary key value
+            DB.Execute("sproc_tblStaff_Update");
         }
     }
 }
