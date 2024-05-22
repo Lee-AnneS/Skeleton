@@ -10,7 +10,10 @@
     <form id="form1" runat="server">
         <div>
         </div>
-        <asp:ListBox ID="lstPaymentsList" runat="server" style="z-index: 1; left: 10px; top: 34px; position: absolute; height: 384px; width: 530px"></asp:ListBox>
+        <asp:ListBox ID="lstPaymentsList" runat="server" style="z-index: 1; left: 10px; top: 30px; position: absolute; height: 384px; width: 530px"></asp:ListBox>
+        <asp:Button ID="btnAdd" runat="server" OnClick="btnAdd_Click" style="z-index: 1; left: 17px; top: 429px; position: absolute" Text="Add" />
+        <asp:Button ID="btnEdit" runat="server" OnClick="btnEdit_Click" style="z-index: 1; left: 80px; top: 430px; position: absolute" Text="Edit" />
+        <asp:Button ID="lblError" runat="server" style="z-index: 1; left: 43px; top: 466px; position: absolute" />
     </form>
 </body>
 </html>

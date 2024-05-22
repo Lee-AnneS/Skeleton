@@ -231,7 +231,7 @@ namespace Testing5
             //invoke the method
             Found = APayments.Find(PaymentsId);
             //create some test data to use with the method
-            Int32 OrderId = 7;
+           // Int32 OrderId = 7;
             //invoke the method
             Found = APayments.Find(PaymentsId);
             //check the order ID

@@ -92,6 +92,7 @@ namespace Testing5
             //test to see that the two values are the same
             Assert.AreEqual(AllPayments.Count, TestList.Count);    
         }
+
         [TestMethod]
         public void AddMethodOK()
         {
@@ -122,6 +123,44 @@ namespace Testing5
 
         }
 
+        [TestMethod]
+        public void UpdateMethodOK()
+        {
+            //Create an instance of the Class we want to create
+            clsPaymentsCollection AllPayments = new clsPaymentsCollection();
+            //create the item of the test data
+            clsPayments TestItem = new clsPayments();
+            //variable to store the primary key
+            Int32 PrimaryKey = 0;
+            //set its properties
+            TestItem.PaymentsStatus = true;
+            TestItem.OrderId = 7;
+            TestItem.BillingAddress = "Flat 66 Soya Lane NW4 6ZQ";
+            TestItem.PaymentsMethod = "Apple Pay";
+            TestItem.Amount = 3.8800;
+            TestItem.PaymentsDate = DateTime.Now;
+            //set thisPayments to the test data
+            AllPayments.ThisPayments = TestItem;
+            //add the record
+            PrimaryKey = AllPayments.Add();
+            //set the primary key of the test data
+            TestItem.PaymentsId = PrimaryKey;
+            //modify the test record
+            TestItem.PaymentsStatus = false;
+            TestItem.OrderId = 7;
+            TestItem.BillingAddress = "Mansion 22 Vegan Lane NW4 6RE";
+            TestItem.PaymentsMethod = "Debit Card";
+            TestItem.Amount = 8.7200;
+            TestItem.PaymentsDate = DateTime.Now;
+            //set the record based on the new test data
+            AllPayments.ThisPayments = TestItem;
+            //update the record
+            AllPayments.Update();
+            //find the record
+            AllPayments.ThisPayments.Find(PrimaryKey);
+            //test to see if ThisPayments matvhes the test data
+            Assert.AreEqual(AllPayments.ThisPayments, TestItem);
+        }
 
     }
 }
