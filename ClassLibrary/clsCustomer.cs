@@ -236,11 +236,20 @@ namespace ClassLibrary
                 Error = Error + "The CustomerAddress must be less than 100 characters : ";
             }
 
-            // check ifnumOrder is a valid number
+
+            /*// check ifnumOrder is a valid number
             if (!int.TryParse(numOrder, out _))
             {
                 Error = Error + "The Numorder must be a valid number : ";
-            }
+            }*/
+            //if the customerAddress is blank
+            /*if (numOrder.Length == 0)
+            {
+                //record the error
+                Error = Error + "The NumOrder may not be blank : ";
+            }*/
+
+
             //if the NumOrder is greater than 100
             if (numOrder.Length > 100)
             {
