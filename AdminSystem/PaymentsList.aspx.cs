@@ -39,4 +39,33 @@ public partial class _1_List : System.Web.UI.Page
 
 
 
+
+    protected void btnAdd_Click(object sender, EventArgs e)
+    {
+        //store -1 into the session object to indicate this is a new record
+        Session["PaymentsId"] = -1;
+        //redirect to the data entry page
+        Response.Redirect("PaymentsDataEntry.aspx");
+    }
+
+
+    protected void btnEdit_Click(object sender, EventArgs e)
+    {
+        //variable to store the primary key value of the record to be edited
+        Int32 PaymentsId;
+        //if a record has been selected from the list
+        if (lstPaymentsList.SelectedIndex != -1)
+        {
+            //get the primary key value of the record to edit
+            PaymentsId = Convert.ToInt32(lstPaymentsList.SelectedValue);
+            //store the data in the session object
+            Session["PaymentsId"]= PaymentsId;
+            //redirect to the edit page
+            Response.Redirect("PaymentsDataEntry.aspx");
+        }
+        else   //if no record has been selected
+        {
+            lblError.Text = "Please select a record from the list to edit";
+        }
+    }
 }
