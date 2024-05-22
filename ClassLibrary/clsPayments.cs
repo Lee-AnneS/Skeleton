@@ -65,7 +65,7 @@ namespace ClassLibrary
             }
         }
         // private data member for billing address
-        private string mBillingAddress;
+        private String mBillingAddress;
         public string BillingAddress
         {
             get 
