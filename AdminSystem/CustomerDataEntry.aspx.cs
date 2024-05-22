@@ -60,12 +60,20 @@ public partial class _1_DataEntry : System.Web.UI.Page
             //capture the NumOrder
             ACustomer.NumOrder = Convert.ToInt32(NumOrder);
 
-            //store the name in the session object
-            Session["ACustomer"] = ACustomer;
+            //capture active
+            ACustomer.Active = chkActive.Checked;
 
-            //navigate to the view page
-            Response.Redirect("CustomerViewer.aspx");
+            //create a new instance of the customer collection
+            clsCustomerCollection CustomerList = new clsCustomerCollection();   
 
+            //set the ThisCustomer property
+            CustomerList.ThisCustomer = ACustomer;
+
+            //add the new record
+            CustomerList.Add();
+
+            //redirect back to the list page 
+            Response.Redirect("CustomerList.aspx");
 
         }
         else
