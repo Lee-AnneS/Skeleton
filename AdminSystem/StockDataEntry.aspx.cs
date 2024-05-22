@@ -49,8 +49,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
         //create a new instance of clsStock
         clsStock AStock = new clsStock();
-        //capture the productid no
-        string ProductId = txtProductId.Text;
+        
         //capture the name 
         string Name = txtName.Text;
         //capture the Description 
@@ -69,7 +68,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         if (Error == "") 
         {
             //capture the product id 
-            AStock.ProductId = Convert.ToInt32(ProductId);
+            AStock.ProductId = ProductId;
             //capture the name 
             AStock.Name = Name;
             //capture the Description 
@@ -85,9 +84,10 @@ public partial class _1_DataEntry : System.Web.UI.Page
             //create a new insance of the  stock collection
             clsStockCollection StockList = new clsStockCollection();
             //if this is a new record i.e ProductId = -1 then add the data
-            if (Convert.ToInt32(ProductId) == -1)
+            if (ProductId == -1)
             {
-                //set the ThisStock property 
+               
+                //set the ThisStock property
                 StockList.ThisStock = AStock;
                 //add th new record
                 StockList.Add();
@@ -95,7 +95,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
             else 
             {
                 // find the record to update
-                StockList.ThisStock.Find(Convert.ToInt32(ProductId));
+                StockList.ThisStock.Find(ProductId);
                 //set the ThisStock property
                 StockList.ThisStock = AStock;
                 //update the record
@@ -138,6 +138,8 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
     protected void ButtonCancel_Click(object sender, EventArgs e)
     {
+        //navigate to the view page
+        Response.Redirect("StockList.aspx");
 
     }
 }

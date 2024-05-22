@@ -46,9 +46,10 @@ public partial class _1_List : System.Web.UI.Page
     {
         //variable to store the primary key value od the record to be edited
         Int32 ProductId;
+        //if a record has been seleced from the list
         if (lstStockList.SelectedIndex != -1)
         {
-            //get the primary key value of the record to edit
+            //get the primary key value of the record to be edit
             ProductId = Convert.ToInt32(lstStockList.SelectedValue);
             //store the data in the session object
             Session["ProductId"] = ProductId;
@@ -60,6 +61,28 @@ public partial class _1_List : System.Web.UI.Page
             //if no record has been selected
             lblError.Text = "Please select a record from the list to edit";
         }
+    }
+
+    protected void btnDelete_Click(object sender, EventArgs e)
+    {
+        //variable to store the primary key value od the record to be delete
+        Int32 ProductId;
+        //if a record has been seleced from the list
+        if (lstStockList.SelectedIndex != -1)
+        {
+            //get the primary key value of the record to be delete
+            ProductId = Convert.ToInt32(lstStockList.SelectedValue);
+            //store the data in the session object
+            Session["ProductId"] = ProductId;
+            //redirect to the edit page
+            Response.Redirect("StockConfirmDelete.aspx");
+        }
+        else
+        {
+            //if no record has been selected
+            lblError.Text = "Please select a record from the list to delete";
+        }
+
     }
 }
 
