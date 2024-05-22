@@ -52,7 +52,7 @@ namespace Testing3
             //set its properties
             TestStock.Available = true;
             TestStock.ProductId = 3;
-            TestStock.Name = "Test";
+            TestStock.Name = "Chocolate";
             TestStock.DateAdded = DateTime.Now;
             TestStock.Description = "This is a test";
             TestStock.Price = 5.00;
@@ -76,7 +76,7 @@ namespace Testing3
             //set its properties
             TestStock.Available = true;
             TestStock.ProductId = 3;
-            TestStock.Name = "Test";
+            TestStock.Name = "Chocolate";
             TestStock.DateAdded = DateTime.Now;
             TestStock.Description = "This is a test";
             TestStock.Price = 5.00;
@@ -101,7 +101,7 @@ namespace Testing3
             Int32 PrimaryKey = 0;
             //set its properties
             TestItem.ProductId = 1;
-            TestItem.Name = "test";
+            TestItem.Name = "Add";
             TestItem.Description = "This is a test";
             TestItem.Price = 5.00;
             TestItem.StockQuantity = 100;
@@ -129,7 +129,7 @@ namespace Testing3
             //variable to store the primary key
             Int32 PrimaryKey = 0;
             //set its properties
-            TestItem.Name = "test";
+            TestItem.Name = "Gelato";
             TestItem.Description = "This is a test";
             TestItem.Price = 5.00;
             TestItem.StockQuantity = 100;
@@ -142,7 +142,7 @@ namespace Testing3
             //set this product to the test data
             TestItem.ProductId = PrimaryKey;
             //modify the test record
-            TestItem.Name = "test modified";
+            TestItem.Name = "modified";
             TestItem.Description = "Another test";
             TestItem.Price = 7.00;
             TestItem.StockQuantity = 2;
@@ -169,7 +169,7 @@ namespace Testing3
             Int32 PrimaryKey = 0;
             //set its properties
             TestItem.ProductId = 1;
-            TestItem.Name = "test";
+            TestItem.Name = "Delete";
             TestItem.Description = "This is a test";
             TestItem.Price = 5.00;
             TestItem.StockQuantity = 100;
@@ -189,7 +189,50 @@ namespace Testing3
             //test to see that record was not found
             Assert.IsFalse(Found);
         }
-    }
+        /****************  filter by name Method *******************************/
+        [TestMethod]
+        public void ReportByNameMethodOK() 
+        {
+            //crete an instance of the class containg unifiltered results
+            clsStockCollection AllStock = new clsStockCollection();
+            //crete an instance of the filtered data
+            clsStockCollection FilterStock = new clsStockCollection();
+            //apply a Name doesn't exist
+            FilterStock.ReportByName("xxxx");
+            //test to see that the two values are the same
+            Assert.AreEqual(0, FilterStock.Count);
+        }
+        [TestMethod]
+        public void ReportByNameTestDataFound()
+        {
+            //crete an instance of the filtered data
+            clsStockCollection FilterStock = new clsStockCollection();
+            //variable to store the outcome
+            Boolean OK = true;
+            //apply a Name doesn't exist
+            FilterStock.ReportByName("Milk");
+            //check that the correct number of records are found
+            if (FilterStock.Count == 2) 
+            {
+                //check to see that the first record is 5
+                if (FilterStock.StockList[0].ProductId != 5) 
+                {
+                    OK = false;
+                }
+                //check to see that the first record is 89
+                if (FilterStock.StockList[1].ProductId != 89) 
+                {
+                    OK = false;
+                }
+            }
+            else 
+            {
+                OK = false;
+            }
+            //test to see that there are no records
+            Assert.IsTrue(OK);  
+        }
+    }   
 
 }
 

@@ -84,5 +84,40 @@ public partial class _1_List : System.Web.UI.Page
         }
 
     }
+
+    protected void btnApplyFilter_Click(object sender, EventArgs e)
+    {
+        //create an instance of the stock object
+        clsStockCollection AStock = new clsStockCollection();
+        //retrieve the value of name from the presentation layer
+        AStock.ReportByName(txtNameFilter.Text);
+        //set the data source to the list of stock in the collection
+        lstStockList.DataSource = AStock.StockList;
+        //set the name of the primary key
+        lstStockList.DataValueField = "ProductId";
+        //set the name of the field to display
+        lstStockList.DataTextField = "Name";
+        //bind the data to the list
+        lstStockList.DataBind();
+    }
+
+    protected void btnClearFilter_Click(object sender, EventArgs e)
+    {
+        //create an instance of the stock object
+        clsStockCollection AStock = new clsStockCollection();
+        //set an empty string
+        AStock.ReportByName("");
+        //clear any existing filter to tidy up the interface
+        txtNameFilter.Text = "";
+        //set the data source to the list of stock in the collection
+        lstStockList.DataSource = AStock.StockList;
+        //set the name of the primary key
+        lstStockList.DataValueField = "ProductId";
+        //set the name of the field to display
+        lstStockList.DataTextField = "Name";
+        //bind the data to the list
+        lstStockList.DataBind();
+
+    }
 }
 

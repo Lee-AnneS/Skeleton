@@ -16,8 +16,8 @@ namespace ClassLibrary
             clsDataConnection DB = new clsDataConnection();
             //execute the stored procedure
             DB.Execute("sproc_tblProducts_SelectAll");
-            //get the count of records
-            RecordCount = DB.Count;
+            //populate the stored procedure
+            PopulateArray(DB);
             //while there are records to process
             while (Index < RecordCount)
             {
@@ -36,6 +36,36 @@ namespace ClassLibrary
                 //point at the next record
                 Index++;
 
+            }
+        }
+        void PopulateArray(clsDataConnection DB)
+        {
+            //populates the array list based on the data table in the parameter DB
+            //variable for the index
+            Int32 Index = 0;
+            //variable to store the record count
+            Int32 RecordCount = 0;
+            //get the count of records
+            RecordCount = DB.Count;
+            //clear the private array list
+            mStockList = new List<clsStock>();
+            //while there are records to process
+            while (Index < RecordCount)
+            {
+                //create a blank address
+                clsStock AStock = new clsStock();
+                //read in the fields for the current record
+                AStock.ProductId = Convert.ToInt32(DB.DataTable.Rows[Index]["ProductId"]);
+                AStock.Name = Convert.ToString(DB.DataTable.Rows[Index]["Name"]);
+                AStock.Description = Convert.ToString(DB.DataTable.Rows[Index]["Description"]);
+                AStock.Price = Convert.ToDouble(DB.DataTable.Rows[Index]["Price"]);
+                AStock.StockQuantity = Convert.ToInt32(DB.DataTable.Rows[Index]["StockQuantity"]);
+                AStock.DateAdded = Convert.ToDateTime(DB.DataTable.Rows[Index]["DateAdded"]);
+                AStock.Available = Convert.ToBoolean(DB.DataTable.Rows[Index]["Available"]);
+                //add the record to the private data member
+                mStockList.Add(AStock);
+                //point at the next record
+                Index++;
             }
         }
         //privare data member for the list
@@ -126,5 +156,19 @@ namespace ClassLibrary
             //execute the query returning the primary key value
             DB.Execute("sproc_tblProducts_Delete");
         }
+        /**************** Filter by Name Method *******************************/
+        public void ReportByName(string Name)
+        {
+            //filters the records based on a full or partial name
+            //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            //set the parameters for the stored procedure
+            DB.AddParameter("@Name", Name);
+            //execute the query returning the primary key value
+            DB.Execute("sproc_tblProducts_FilterByName");
+            //populate the array list with the data table
+            PopulateArray(DB);
+        }
+       
     }
 }
