@@ -24,10 +24,10 @@ namespace Testing3
             //test to check if it exists
             Assert.IsNotNull(AStock);
         }
-        [TestMethod]
         /*******************************************************/
         /***************PROPERTY OK  TEST***********************/
         /*******************************************************/
+        [TestMethod]
         public void AvailablePropertyOK()
         {
             //create an instance of the class we want to create
@@ -294,9 +294,23 @@ namespace Testing3
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
-        
+
 
         /******************Name Validation TEST**************/
+        [TestMethod]
+        public void NameMinLessOne()
+        {
+            //create an instance of the class we want to create
+            clsStock AStock = new clsStock();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string Name = ""; //this should trigger an error
+            //invoke the method
+            Error = AStock.Valid(Name, Description, Price, StockQuantity, DateAdded);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
         [TestMethod]
         public void NameMin()
         {
@@ -356,7 +370,7 @@ namespace Testing3
             Assert.AreEqual(Error, "");
         }
         [TestMethod]
-        public void NameMid()
+        public void NameMid() 
         {
             //create an instance of the class we want to create
             clsStock AStock = new clsStock();
@@ -370,7 +384,7 @@ namespace Testing3
             Assert.AreEqual(Error, "");
         }
         [TestMethod]
-        public void NameMaxPlusOne()
+        public void NameMaxPlusOne() 
         {
             //create an instance of the class we want to create
             clsStock AStock = new clsStock();
@@ -385,7 +399,7 @@ namespace Testing3
             Assert.AreNotEqual(Error, "");
         }
         [TestMethod]
-        public void NameExtremeMax()
+        public void NameExtremeMax() 
         {
             //create an instance of the class we want to create
             clsStock AStock = new clsStock();
@@ -514,7 +528,20 @@ namespace Testing3
             Assert.AreNotEqual(Error, "");
         }
         /******************Description Validation TEST**************/
-
+        [TestMethod]
+        public void DescriptionMinLessOne()
+        {
+            //create an instance of the class we want to create
+            clsStock AStock = new clsStock();
+            //string variable to store any error message
+            String Error = "";
+            //this should pass
+            string Description = "";
+            //invoke the method
+            Error = AStock.Valid(Name, Description, Price, StockQuantity, DateAdded);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
         [TestMethod]
         public void DescriptionMin()
         {
@@ -599,6 +626,21 @@ namespace Testing3
             Error = AStock.Valid(Name, Description, Price, StockQuantity, DateAdded);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void DescriptionExtremMax()
+        {
+            //create an instance of the class we want to create
+            clsStock AStock = new clsStock();
+            //string variable to store any error message
+            String Error = "";
+            //this should fail
+            string Description = "";
+            Description = Description.PadRight(500, 'a');
+            //invoke the method
+            Error = AStock.Valid(Name, Description, Price, StockQuantity, DateAdded);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
         }
         /******************Price Validation TEST**************/
 
@@ -704,6 +746,35 @@ namespace Testing3
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
+        [TestMethod]
+        public void PriceExtremeMax()
+        {
+            //create an instance of the class we want to create
+            clsStock AStock = new clsStock();
+            //string variable to store any error message
+            String Error = "";
+            //this should fail
+            string Price = "";
+            Price = Price.PadRight(500, 'a');
+            //invoke the method
+            Error = AStock.Valid(Name, Description, Price, StockQuantity, DateAdded);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void PriceInvalidData()
+        {
+            //create an instance of the class we want to create
+            clsStock AStock = new clsStock();
+            //string variable to store any error message
+            String Error = "";
+            //this should fail
+            string Price = "this is not a number!"; 
+            //invoke the method
+            Error = AStock.Valid(Name, Description, Price, StockQuantity, DateAdded);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
         /******************Stock Quantity Validation TEST**************/
 
         [TestMethod]
@@ -807,6 +878,21 @@ namespace Testing3
             Error = AStock.Valid(Name, Description, Price, StockQuantity, DateAdded);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void StockQuantityExtremMax()
+        {
+            //create an instance of the class we want to create
+            clsStock AStock = new clsStock();
+            //string variable to store any error message
+            String Error = "";
+            //this shold fail
+            string StockQuantity = "";
+            StockQuantity = StockQuantity.PadRight(500, 'a');
+            //invoke the method
+            Error = AStock.Valid(Name, Description, Price, StockQuantity, DateAdded);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
         }
     }
 }
