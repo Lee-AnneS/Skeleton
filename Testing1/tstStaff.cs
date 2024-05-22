@@ -688,7 +688,7 @@ namespace Testing1
             //invoke the method
             Error = AStaff.Valid(StaffFullName, StaffDoB, StaffEmail, NINumber, Salary);
             //test to see that the result is correct
-            Assert.AreEqual(Error, "");
+            Assert.AreNotEqual(Error, "");
         }
 
         [TestMethod]
