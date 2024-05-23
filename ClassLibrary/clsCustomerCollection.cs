@@ -115,5 +115,23 @@ namespace ClassLibrary
             return DB.Execute("sproc_tblCustomer_Insert");
         }
 
+        public void Update()
+        {
+            //update an existing record based on the values of thisCustomer
+            //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+
+            //set the parameters for the new stored procedure
+            DB.AddParameter("@CustomerId", mThisCustomer.CustomerId);
+            DB.AddParameter("@CustomerName", mThisCustomer.CustomerName);
+            DB.AddParameter("@CustomerDoB", mThisCustomer.CustomerDoB);
+            DB.AddParameter("@CustomerEmail", mThisCustomer.CustomerEmail);
+            DB.AddParameter("@CustomerAddress", mThisCustomer.CustomerAddress);
+            DB.AddParameter("@NumOrder", mThisCustomer.NumOrder);
+            DB.AddParameter("@Active", mThisCustomer.Active);
+
+            //execute the stored procedure
+            DB.Execute("sproc_tblCustomer_Update");
+        }
     }
 }

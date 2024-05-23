@@ -8,7 +8,7 @@ namespace ClassLibrary
         private Int32 mCustomerId;
 
         //private data member for the customer name property
-        private string mCustomerName;
+        private String mCustomerName;
 
         //private data member for the customer DoB property
         private DateTime mCustomerDoB;
@@ -41,7 +41,7 @@ namespace ClassLibrary
         }
 
         //customerName public property
-        public string CustomerName
+        public String CustomerName
         {
             get
             {
