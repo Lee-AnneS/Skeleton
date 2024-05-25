@@ -10,7 +10,7 @@
     <form id="form1" runat="server">
         <div>
         </div>
-        <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 340px; top: 291px; position: absolute" Text="Cancel" />
+        <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 340px; top: 291px; position: absolute" Text="Cancel" OnClick="btnCancel_Click" />
         <asp:Label ID="lblPaymentsLogin" runat="server" style="z-index: 1; left: 108px; top: 86px; position: absolute" Text="Payments Login Page"></asp:Label>
         <asp:Label ID="lblUsername" runat="server" style="z-index: 1; left: 228px; top: 182px; position: absolute" Text="Username"></asp:Label>
         <asp:Label ID="lblPassword" runat="server" style="z-index: 1; left: 230px; top: 226px; position: absolute" Text="Password"></asp:Label>

@@ -28,6 +28,8 @@ public partial class PaymentsLogin : System.Web.UI.Page
         Password = Convert.ToString(txtPassword.Text);
         //find the record
         Found = AnUser.FindUser(Username, Password);
+        //add a session to capture the username
+        Session["AnUser"] = AnUser;
         //if username and/or password is empty
         if(txtUserName.Text== "")
         {
@@ -53,5 +55,11 @@ public partial class PaymentsLogin : System.Web.UI.Page
 
 
 
+    }
+
+    protected void btnCancel_Click(object sender, EventArgs e)
+    {
+        //redirect to the main menu
+        Response.Redirect("TeamMainMenu.aspx");
     }
 }

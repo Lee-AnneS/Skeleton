@@ -16,6 +16,14 @@ public partial class _1_List : System.Web.UI.Page
             //update the list box
             DisplayPayments();
         }
+        //create an instance of clsPaymentsUser
+        clsPaymentsUser AnUser = new clsPaymentsUser();
+        //get the data from the session object
+        AnUser = (clsPaymentsUser)Session["AnUser"];
+        //display the username
+        Response.Write("Logged in as: " + AnUser.UserName);
+
+
     }
 
     void DisplayPayments()
@@ -27,7 +35,7 @@ public partial class _1_List : System.Web.UI.Page
         //Set the name of the primary key
         lstPaymentsList.DataValueField = "PaymentsId";
         //set the data field to display
-        lstPaymentsList.DataTextField = "BillingAddress";
+        lstPaymentsList.DataTextField = "PaymentsMethod";
         //bind the data to the list
         lstPaymentsList.DataBind();
     }
@@ -123,5 +131,11 @@ public partial class _1_List : System.Web.UI.Page
         lstPaymentsList.DataTextField = "PaymentsMethod";
         //bind the data to the list
         lstPaymentsList.DataBind();
+    }
+
+    protected void btnReturn_Click(object sender, EventArgs e)
+    {
+        //redirect to the main menu
+        Response.Redirect("TeamMainMenu.aspx");
     }
 }
