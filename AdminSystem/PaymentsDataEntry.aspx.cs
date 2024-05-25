@@ -142,4 +142,16 @@ public partial class _1_DataEntry : System.Web.UI.Page
         chkPaymentsStatus.Checked = Payments.ThisPayments.PaymentsStatus;
         
     }
+
+    protected void btnReturn_Click(object sender, EventArgs e)
+    {
+        //redirect to the main menu
+        Response.Redirect("TeamMainMenu.aspx");
+    }
+
+    protected void btnCancel_Click(object sender, EventArgs e)
+    {
+        //redirect to the list page
+        Response.Redirect("PaymentsList.aspx");
+    }
 }

@@ -32,12 +32,13 @@
         <asp:Label ID="lblPaymentsDate" runat="server" height="19px" style="z-index: 1; left: 25px; top: 216px; position: absolute" Text="Payment Date" width="104px"></asp:Label>
         <asp:Label ID="lblAmount" runat="server" height="19px" style="z-index: 1; left: 25px; top: 178px; position: absolute" Text="Amount" width="104px"></asp:Label>
         <p>
-            &nbsp;</p>
+            <asp:Button ID="btnReturn" runat="server" OnClick="btnReturn_Click" style="z-index: 1; left: 340px; top: 342px; position: absolute" Text="Return to Main Menu" />
+        </p>
         <p>
             <asp:CheckBox ID="chkPaymentsStatus" runat="server" style="z-index: 1; left: 140px; top: 273px; position: absolute" Text="Payment Status" />
         </p>
         <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 48px; top: 308px; position: absolute; margin-top: 3px"></asp:Label>
-        <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 143px; top: 342px; position: absolute" Text="Cancel" />
+        <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 143px; top: 342px; position: absolute" Text="Cancel" OnClick="btnCancel_Click" />
        
         <p>
             <asp:Button ID="btnOK" runat="server" OnClick="btnOK_Click" style="z-index: 1; left: 41px; position: absolute; top: 342px; height: 26px; width: 65px" Text="OK" />
