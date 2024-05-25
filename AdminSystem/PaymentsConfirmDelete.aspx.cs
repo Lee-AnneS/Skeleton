@@ -18,11 +18,18 @@ public partial class _1_ConfirmDelete : System.Web.UI.Page
 
     protected void btnYes_Click(object sender, EventArgs e)
     {
-        //create a new instance of the paymentsbook collection
-        clsPaymentsCollection PaymentsBook = new clsPaymentsCollection();
+        //create a new instance of the payments class collection
+        clsPaymentsCollection Payments = new clsPaymentsCollection();
         //find the record to delete
-        PaymentsBook.Delete();
+        Payments.ThisPayments.Find(PaymentsId);
+        Payments.Delete();
         //rediract to the main page
-        Response.Redirect("PaymentsBookList.aspx");
+        Response.Redirect("PaymentsList.aspx");
+    }
+
+    protected void btnNo_Click(object sender, EventArgs e)
+    {
+        //redirect back to the main page
+        Response.Redirect("PaymentsList.aspx");
     }
 }

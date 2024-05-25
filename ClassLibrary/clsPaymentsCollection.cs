@@ -15,6 +15,8 @@ namespace ClassLibrary
             clsDataConnection DB = new clsDataConnection();
             //Execute the stored procedure
             DB.Execute("sproc_tblPayments_SelectAll");
+            //populate the array list with the data table
+            PopulateArray(DB);
             //get the count of records
                RecordCount = DB.Count;
               //WHILE THERE ARE RECORDS TO PROCESS
@@ -130,6 +132,49 @@ namespace ClassLibrary
             DB.AddParameter("@PaymentsId", mThisPayments.PaymentsId);
             //execute the stored procedure
             DB.Execute("sproc_tblPayments_Delete");
+        }
+
+        public void ReportByPaymentsMethod(string PaymentsMethod)
+        {
+            //filters the records based on a full or partial payment method
+            //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            //send the PaymentsMethod parameter to the database
+            DB.AddParameter("@PaymentsMethod", PaymentsMethod);
+            //execute the stored procedure
+            DB.Execute("sproc_tblPayments_FilterByPaymentsMethod");
+            //populate the arraylist with the data table
+            PopulateArray(DB);
+        }
+        void PopulateArray(clsDataConnection DB)
+        {
+            //populates the array list based on the data table in the parameter DB
+            //variable for the index
+            Int32 Index = 0;
+            //variable to store the record count
+            Int32 RecordCount;
+            //get the count of records
+            RecordCount = DB.Count;
+            //clear the private array list
+            mPaymentsList = new List<clsPayments>();
+            //while there are no records to process
+            while(Index< RecordCount) 
+            {
+                //create a blank address object
+                clsPayments APayments = new clsPayments();
+                //read in the fields from the current rceord
+                APayments.PaymentsStatus = Convert.ToBoolean(DB.DataTable.Rows[Index]["PaymentsStatus"]);
+                APayments.OrderId = Convert.ToInt32(DB.DataTable.Rows[Index]["OrderId"]);
+                APayments.PaymentsId = Convert.ToInt32(DB.DataTable.Rows[Index]["PaymentsId"]);
+                APayments.BillingAddress = Convert.ToString(DB.DataTable.Rows[Index]["BillingAddress"]);
+                APayments.PaymentsMethod = Convert.ToString(DB.DataTable.Rows[Index]["PaymentsMethod"]);
+                APayments.Amount = Convert.ToDouble(DB.DataTable.Rows[Index]["Amount"]);
+                APayments.PaymentsDate = Convert.ToDateTime(DB.DataTable.Rows[Index]["PaymentsDate"]);
+                //add the record to the private data member
+                mPaymentsList.Add(APayments);
+                //point at the next record
+                Index++;
+            }
         }
     }
 }
