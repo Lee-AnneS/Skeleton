@@ -33,10 +33,10 @@ public partial class _1_DataEntry : System.Web.UI.Page
         StaffBook.ThisStaff.Find(StaffId);
         //display the data for the record
         txtStaffId.Text = StaffBook.ThisStaff.StaffID.ToString();
-        txtStaffFullName.Text = StaffBook.ThisStaff.StaffFullName;
+        txtStaffFullName.Text = StaffBook.ThisStaff.StaffFullName.ToString();
         txtStaffDoB.Text = StaffBook.ThisStaff.StaffDoB.ToString();
-        txtStaffEmail.Text = StaffBook.ThisStaff.StaffEmail;
-        txtNINumber.Text = StaffBook.ThisStaff.NINumber;
+        txtStaffEmail.Text = StaffBook.ThisStaff.StaffEmail.ToString();
+        txtNINumber.Text = StaffBook.ThisStaff.NINumber.ToString();
         txtSalary.Text = StaffBook.ThisStaff.Salary.ToString();
         chkPresentInBuilding.Text = StaffBook.ThisStaff.PresentInBuilding.ToString();
     }
