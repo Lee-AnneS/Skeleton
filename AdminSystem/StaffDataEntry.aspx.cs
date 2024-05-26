@@ -118,7 +118,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //get the primary key entered by the user 
         StaffId = Convert.ToInt32(txtStaffId.Text);
         //find the record
-        Found = AStaff.Find(StaffId); 
+        Found = AStaff.Find(StaffId);
         //if found
         if (Found == true)
         {
@@ -131,13 +131,12 @@ public partial class _1_DataEntry : System.Web.UI.Page
             chkPresentInBuilding.Text = AStaff.PresentInBuilding.ToString();
         }
     }
-    protected void txtStaffId_TextChanged(object sender, EventArgs e){}
-
+    protected void txtStaffId_TextChanged(object sender, EventArgs e) { }
     protected void btnRtnToMenu_Click(object sender, EventArgs e)
     {
-            //redirect user to the main menu page
-            Response.Redirect("TeamMainMenu.aspx");
-        }
+        //redirect user to the main menu page
+        Response.Redirect("TeamMainMenu.aspx");
+    }
 
     protected void btnCancel_Click(object sender, EventArgs e)
     {
