@@ -123,10 +123,10 @@ public partial class _1_DataEntry : System.Web.UI.Page
         if (Found == true)
         {
             txtStaffId.Text = StaffId.ToString();
-            txtStaffFullName.Text = AStaff.StaffFullName;
+            txtStaffFullName.Text = AStaff.StaffFullName.ToString();
             txtStaffDoB.Text = AStaff.StaffDoB.ToString();
-            txtStaffEmail.Text = AStaff.StaffEmail;
-            txtNINumber.Text = AStaff.NINumber;
+            txtStaffEmail.Text = AStaff.StaffEmail.ToString();
+            txtNINumber.Text = AStaff.NINumber.ToString();
             txtSalary.Text = AStaff.Salary.ToString();
             chkPresentInBuilding.Text = AStaff.PresentInBuilding.ToString();
         }
