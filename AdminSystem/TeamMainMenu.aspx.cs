@@ -11,4 +11,11 @@ public partial class TeamMainMenu : System.Web.UI.Page
     {
 
     }
+
+    protected void btnStaffManagement_Click(object sender, EventArgs e)
+    {
+        //redirect user to the staff management login page
+        Response.Redirect("StaffLogin.aspx");
+    }
+
 }

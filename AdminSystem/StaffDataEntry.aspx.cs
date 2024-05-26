@@ -123,13 +123,25 @@ public partial class _1_DataEntry : System.Web.UI.Page
         if (Found == true)
         {
             txtStaffId.Text = StaffId.ToString();
-            txtStaffFullName.Text = AStaff.StaffFullName;
+            txtStaffFullName.Text = AStaff.StaffFullName.ToString();
             txtStaffDoB.Text = AStaff.StaffDoB.ToString();
-            txtStaffEmail.Text = AStaff.StaffEmail;
-            txtNINumber.Text = AStaff.NINumber;
+            txtStaffEmail.Text = AStaff.StaffEmail.ToString();
+            txtNINumber.Text = AStaff.NINumber.ToString();
             txtSalary.Text = AStaff.Salary.ToString();
             chkPresentInBuilding.Text = AStaff.PresentInBuilding.ToString();
         }
     }
     protected void txtStaffId_TextChanged(object sender, EventArgs e){}
+
+    protected void btnRtnToMenu_Click(object sender, EventArgs e)
+    {
+            //redirect user to the main menu page
+            Response.Redirect("TeamMainMenu.aspx");
+        }
+
+    protected void btnCancel_Click(object sender, EventArgs e)
+    {
+        //redirect user to the staff list page
+        Response.Redirect("StaffList.aspx");
+    }
 }
