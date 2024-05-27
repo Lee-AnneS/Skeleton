@@ -142,4 +142,11 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Response.Redirect("StockList.aspx");
 
     }
+
+    protected void btnReturnToMainMenu_Click(object sender, EventArgs e)
+    {
+        //navigate to the main menu page page
+        Response.Redirect("TeamMainMenu.aspx");
+
+    }
 }

@@ -15,6 +15,7 @@
         <asp:Button ID="btnDelete" runat="server" OnClick="btnDelete_Click" Style="z-index: 1; left: 163px; top: 396px; position: absolute; right: 607px;" Text="Delete" Width="55px" />
         <asp:Button ID="btnApplyFilter" runat="server" OnClick="btnApplyFilter_Click" Style="z-index: 1; left: 23px; top: 496px; position: absolute; right: 607px;" Text="Apply Filter" Width="90px" />
         <asp:Button ID="btnClearFilter" runat="server" OnClick="btnClearFilter_Click" Style="z-index: 1; left: 126px; top: 496px; position: absolute; right: 607px;" Text="Clear Filter" Width="90px" />
+        <asp:Button ID="btnReturnToMainMenu" runat="server" OnClick="btnReturnToMainMenu_Click" Style="z-index: 1; left: 236px; top: 496px; position: absolute; right: 607px;" Text="Return to Main Menu" Width="150px" />
         <asp:Label ID="lblError" runat="server" Style="z-index: 1; left: 23px; top: 546px; position: absolute; right: 607px;" Text="" Width="345px"  />
         <asp:Label ID="lblName" runat="server" Style="z-index: 1; left: 23px; top: 453px; position: absolute; right: 667px;" Text="Enter a Name" Width="150px"  />
         <asp:TextBox ID="txtNameFilter" runat="server" Style="z-index: 1; left: 123px; top: 453px; position: absolute; right: 667px;" Text="" Width="110px"  />

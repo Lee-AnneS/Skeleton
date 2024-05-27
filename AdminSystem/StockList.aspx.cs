@@ -17,6 +17,12 @@ public partial class _1_List : System.Web.UI.Page
             //update the list box
             DisplayName();
         }
+        //create new instance of clsStockuser
+        clsStockUser AnUser = new clsStockUser();
+        //get data from the session object 
+        AnUser = (clsStockUser)Session["AnUser"];
+        //display the username
+        Response.Write("Logged in as: " + AnUser.UserName);
     }
     void DisplayName()
     {
@@ -118,6 +124,12 @@ public partial class _1_List : System.Web.UI.Page
         //bind the data to the list
         lstStockList.DataBind();
 
+    }
+
+    protected void btnReturnToMainMenu_Click(object sender, EventArgs e)
+    {
+        //redirect to the main menu page
+        Response.Redirect("TeamMainMenu.aspx");
     }
 }
 
