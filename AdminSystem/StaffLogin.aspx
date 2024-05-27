@@ -5,13 +5,19 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
+    <style type="text/css">
+        .auto-style1 {
+            font-size: medium;
+        }
+    </style>
 </head>
 <body>
     <form id="form1" runat="server">
         <div>
         </div>
         <p>
-            Staff Login Page</p>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong><span class="auto-style1">&nbsp;&nbsp;&nbsp;
+            Staff Login Page</span></strong></p>
         <br />
         <br />
         <br />
