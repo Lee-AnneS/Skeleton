@@ -8,6 +8,7 @@
 </head>
 <body style="width: 500px; height: 600px;">
     <form id="form1" runat="server">
+        <strong> <asp:Label ID="lblStockLogin" runat="server" Style="z-index: 1; left: 83px; top: 35px; position: absolute; right: 883px;" Text="Stock Login Page: " Width="155px" Height="60px" /></strong>
         <asp:Label ID="lblUserName" runat="server" Style="z-index: 1; left: 53px; top: 90px; position: absolute; right: 883px;" Text="UserName: " Width="85px" />
         <asp:Label ID="lblPassword" runat="server" Style="z-index: 1; left: 53px; top: 140px; position: absolute; right: 883px;" Text="Password: " Width="85px" />
         <asp:TextBox ID="txtUserName" runat="server" Style="z-index: 1; left: 145px; top: 85px; position: absolute" Height="20px" Width="130px"></asp:TextBox>
