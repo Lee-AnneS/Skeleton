@@ -12,6 +12,7 @@ public partial class TeamMainMenu : System.Web.UI.Page
 
     }
 
+HEAD
     protected void btnStaff_Click(object sender, EventArgs e)
     {
         //redirect the user to the staff login page
@@ -41,4 +42,11 @@ public partial class TeamMainMenu : System.Web.UI.Page
         //redirect the user to the payments login page
         Response.Redirect("PaymentsLogin.aspx");
     }
+
+    protected void btnStaffManagement_Click(object sender, EventArgs e)
+    {
+        //redirect user to the staff management login page
+        Response.Redirect("StaffLogin.aspx");
+    }
+
 }

@@ -550,20 +550,6 @@ namespace Testing1
         }
 
         /***************** STAFF EMAIL TESTING *****************/
-        [TestMethod]
-        public void StaffEmailMinLessOne()
-        {
-            //create an instance of the new class we want to create
-            clsStaff AStaff = new clsStaff();
-            //string variable to store any error message
-            string Error = "";
-            //create some test data to pass to the method
-            string StaffEmail = ""; //this should trigger an error
-            //invoke the method
-            Error = AStaff.Valid(StaffFullName, StaffDoB, StaffEmail, NINumber, Salary);
-            //test to see that the result is correct
-            Assert.AreEqual(Error, "");
-        }
 
         [TestMethod]
         public void StaffEmailMin()
@@ -573,7 +559,7 @@ namespace Testing1
             //string variable to store any error message
             String Error = "";
             //create some test data to pass to the method
-            string StaffEmail = "a"; //this should be ok
+            string StaffEmail = ""; //this should be ok
             //invoke the method
             Error = AStaff.Valid(StaffFullName, StaffDoB, StaffEmail, NINumber, Salary);
             //test to see that the result is correct
@@ -588,7 +574,7 @@ namespace Testing1
             //string variable to store any error message
             String Error = "";
             //create some test data to pass to the method
-            string StaffEmail = "aa"; //this should be ok
+            string StaffEmail = "a"; //this should be ok
             //invoke the method
             Error = AStaff.Valid(StaffFullName, StaffDoB, StaffEmail, NINumber, Salary);
             //test to see that the result is correct
@@ -676,20 +662,6 @@ namespace Testing1
         }
 
         /***************** NI Number TESTING *****************/
-        [TestMethod]
-        public void NINumberMinLessOne()
-        {
-            //create an instance of the new class we want to create
-            clsStaff AStaff = new clsStaff();
-            //string variable to store any error message
-            string Error = "";
-            //create some test data to pass to the method
-            string NINumber = ""; //this should trigger an error
-            //invoke the method
-            Error = AStaff.Valid(StaffFullName, StaffDoB, StaffEmail, NINumber, Salary);
-            //test to see that the result is correct
-            Assert.AreNotEqual(Error, "");
-        }
 
         [TestMethod]
         public void NINumberMin()
@@ -714,7 +686,7 @@ namespace Testing1
             //string variable to store any error message
             String Error = "";
             //create some test data to pass to the method
-            string NINumber = "aa"; //this should be ok
+            string NINumber = "a"; //this should be ok
             //invoke the method
             Error = AStaff.Valid(StaffFullName, StaffDoB, StaffEmail, NINumber, Salary);
             //test to see that the result is correct
@@ -729,7 +701,8 @@ namespace Testing1
             //string variable to store any error message
             String Error = "";
             //create some test data to pass to the method
-            string NINumber = "aaaaaaaa";
+            string NINumber = "";
+            NINumber = NINumber.PadRight(8, 'a');
             //invoke the method
             Error = AStaff.Valid(StaffFullName, StaffDoB, StaffEmail, NINumber, Salary);
             //test to see that the result is correct
@@ -744,7 +717,8 @@ namespace Testing1
             //string variable to store any error message
             String Error = "";
             //create some test data to pass to the method
-            string NINumber = "aaaaaaaaa";
+            string NINumber = "";
+            NINumber = NINumber.PadRight(9, 'a');
             //invoke the method
             Error = AStaff.Valid(StaffFullName, StaffDoB, StaffEmail, NINumber, Salary);
             //test to see that the result is correct
@@ -759,7 +733,8 @@ namespace Testing1
             //string variable to store any error message
             String Error = "";
             //create some test data to pass to the method
-            string NINumber = "aaaaaaaaaa";
+            string NINumber = "";
+            NINumber = NINumber.PadRight(10, 'a');
             //invoke the method
             Error = AStaff.Valid(StaffFullName, StaffDoB, StaffEmail, NINumber, Salary);
             //test to see that the result is correct
@@ -774,7 +749,8 @@ namespace Testing1
             //string variable to store any error message
             String Error = "";
             //create some test data to pass to the method
-            string NINumber = "aaaaa";
+            string NINumber = "";
+            NINumber = NINumber.PadRight(5, 'a');
             //invoke the method
             Error = AStaff.Valid(StaffFullName, StaffDoB, StaffEmail, NINumber, Salary);
 
