@@ -212,7 +212,7 @@ namespace Testing1
             //create an instance of the filtered data
             clsStaffCollection FilteredStaff = new clsStaffCollection();
             //apply a full name that doesnt exist
-            FilteredStaff.ReportByStaffFullName("adam help");
+            FilteredStaff.ReportByStaffFullName("xxx xxx");
             //test to see that there are no records
             Assert.AreEqual(0, FilteredStaff.Count);
         }
