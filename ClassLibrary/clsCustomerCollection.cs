@@ -133,5 +133,21 @@ namespace ClassLibrary
             //execute the stored procedure
             DB.Execute("sproc_tblCustomer_Update");
         }
+
+        public void Delete()
+        {
+            //delete the record pointed to by thisCustomer
+            //connect to the database
+            clsDataConnection DB = new clsDataConnection();
+
+            //set the parameters for the stored procedure 
+            DB.AddParameter("@CustomerId", mThisCustomer.CustomerId);
+
+            //execute the stored procedure
+            DB.Execute("sproc_tblCustomer_Delete");
+
+        }
+
+
     }
 }
