@@ -16,6 +16,14 @@ public partial class _1_List : System.Web.UI.Page
             //update the list box
             DisplayPayments();
         }
+        //create an instance of clsPaymentsUser
+        clsPaymentsUser AnUser = new clsPaymentsUser();
+        //get the data from the session object
+        AnUser = (clsPaymentsUser)Session["AnUser"];
+        //display the username
+        Response.Write("Logged in as: " + AnUser.UserName);
+
+
     }
 
     void DisplayPayments()
@@ -27,7 +35,7 @@ public partial class _1_List : System.Web.UI.Page
         //Set the name of the primary key
         lstPaymentsList.DataValueField = "PaymentsId";
         //set the data field to display
-        lstPaymentsList.DataTextField = "BillingAddress";
+        lstPaymentsList.DataTextField = "PaymentsMethod";
         //bind the data to the list
         lstPaymentsList.DataBind();
     }
@@ -81,12 +89,53 @@ public partial class _1_List : System.Web.UI.Page
             //store the data in the session object 
             Session["PaymentsId"] = PaymentsId;
             //redirect to the delete page
-            Response.Redirect("PaymentsBookConfirmDelete");
+            Response.Redirect("PaymentsConfirmDelete.aspx");
         }
         else //if no record has been selected
         {
             //display an error message
             lblError.Text = "Please select a record from the list to delete";
         }
+    }
+
+
+    protected void btnApplyFilter_Click(object sender, EventArgs e)
+    {
+        //create an instance of the payments object
+        clsPaymentsCollection APayments = new clsPaymentsCollection();
+        //retrieve the value of paymentsmethod from the presentation layer
+        APayments.ReportByPaymentsMethod(txtFilter.Text);
+        //set the data source to the list of addresses in the collection
+        lstPaymentsList.DataSource = APayments.PaymentsList;
+        //set the name of the primary key
+        lstPaymentsList.DataValueField = "PaymentsId";
+        //set the name of the field to display
+        lstPaymentsList.DataTextField = "PaymentsMethod";
+        //bind the data to the list
+        lstPaymentsList.DataBind();
+    }
+
+    protected void btnClearFilter_Click(object sender, EventArgs e)
+    {
+        //create an instance of the payments object
+        clsPaymentsCollection APayments = new clsPaymentsCollection();
+        //set an empty string
+        APayments.ReportByPaymentsMethod("");
+        //clear any existing filter to tidy up the interface
+        txtFilter.Text = "";
+        //set the data source to the list of addresses in the collection
+        lstPaymentsList.DataSource = APayments.PaymentsList;
+        //set the name of the primary key
+        lstPaymentsList.DataValueField = "PaymentsId";
+        //set the name of the field to display
+        lstPaymentsList.DataTextField = "PaymentsMethod";
+        //bind the data to the list
+        lstPaymentsList.DataBind();
+    }
+
+    protected void btnReturn_Click(object sender, EventArgs e)
+    {
+        //redirect to the main menu
+        Response.Redirect("TeamMainMenu.aspx");
     }
 }

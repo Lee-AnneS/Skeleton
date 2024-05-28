@@ -33,10 +33,10 @@ public partial class _1_DataEntry : System.Web.UI.Page
         StaffBook.ThisStaff.Find(StaffId);
         //display the data for the record
         txtStaffId.Text = StaffBook.ThisStaff.StaffID.ToString();
-        txtStaffFullName.Text = StaffBook.ThisStaff.StaffFullName;
+        txtStaffFullName.Text = StaffBook.ThisStaff.StaffFullName.ToString();
         txtStaffDoB.Text = StaffBook.ThisStaff.StaffDoB.ToString();
-        txtStaffEmail.Text = StaffBook.ThisStaff.StaffEmail;
-        txtNINumber.Text = StaffBook.ThisStaff.NINumber;
+        txtStaffEmail.Text = StaffBook.ThisStaff.StaffEmail.ToString();
+        txtNINumber.Text = StaffBook.ThisStaff.NINumber.ToString();
         txtSalary.Text = StaffBook.ThisStaff.Salary.ToString();
         chkPresentInBuilding.Text = StaffBook.ThisStaff.PresentInBuilding.ToString();
     }
@@ -118,18 +118,29 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //get the primary key entered by the user 
         StaffId = Convert.ToInt32(txtStaffId.Text);
         //find the record
-        Found = AStaff.Find(StaffId); 
+        Found = AStaff.Find(StaffId);
         //if found
         if (Found == true)
         {
             txtStaffId.Text = StaffId.ToString();
-            txtStaffFullName.Text = AStaff.StaffFullName;
+            txtStaffFullName.Text = AStaff.StaffFullName.ToString();
             txtStaffDoB.Text = AStaff.StaffDoB.ToString();
-            txtStaffEmail.Text = AStaff.StaffEmail;
-            txtNINumber.Text = AStaff.NINumber;
+            txtStaffEmail.Text = AStaff.StaffEmail.ToString();
+            txtNINumber.Text = AStaff.NINumber.ToString();
             txtSalary.Text = AStaff.Salary.ToString();
             chkPresentInBuilding.Text = AStaff.PresentInBuilding.ToString();
         }
     }
-    protected void txtStaffId_TextChanged(object sender, EventArgs e){}
+    protected void txtStaffId_TextChanged(object sender, EventArgs e) { }
+    protected void btnRtnToMenu_Click(object sender, EventArgs e)
+    {
+        //redirect user to the main menu page
+        Response.Redirect("TeamMainMenu.aspx");
+    }
+
+    protected void btnCancel_Click(object sender, EventArgs e)
+    {
+        //redirect user to the staff list page
+        Response.Redirect("StaffList.aspx");
+    }
 }

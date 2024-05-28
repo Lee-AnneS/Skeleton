@@ -192,5 +192,60 @@ namespace Testing5
             //test to see that the record was not found
             Assert.IsFalse(Found);
         }
+        //should pass lol
+        [TestMethod]
+        public void ReportByPaymentsMethodOK()
+        {
+            //create an instance of the class containing unfiltered results
+            clsPaymentsCollection AllPayments = new clsPaymentsCollection();
+            //create an instance of the filtered data
+            clsPaymentsCollection FilteredPayments = new clsPaymentsCollection();
+            //apply a blank string (should return all records)
+            FilteredPayments.ReportByPaymentsMethod("zzzz zzzz");
+            //test to see that the two values are the same
+            Assert.AreEqual(2, FilteredPayments.Count);
+        }
+        [TestMethod]
+        public void ReportByPaymentsMethodNoneFound() 
+        {
+            //create an instance of the class we want to create
+            clsPaymentsCollection FilteredPayments = new clsPaymentsCollection();
+            //apply a payment method that doesnt exist
+            FilteredPayments.ReportByPaymentsMethod("zzzz zzzz");
+            //test to see that there are no records
+            Assert.AreEqual(2, FilteredPayments.Count);
+        }
+
+        [TestMethod]
+        public void ReportByPaymentsMethodTestDataFound()
+        {
+            //create an instance of the class we want to create
+            clsPaymentsCollection FilteredPayments = new clsPaymentsCollection();
+            //variable to store the outcome
+            Boolean OK = true;
+            //apply a payment method that doesnt exist
+            FilteredPayments.ReportByPaymentsMethod("zzzz zzzz");
+            //check that the correct number of records are found
+            if(FilteredPayments.Count == 2)
+            {
+                //check to see that the first record is 79
+                if (FilteredPayments.PaymentsList[0].PaymentsId != 79)
+                {
+                    OK = false;
+                }
+                //check to see that the first record is 80
+                if (FilteredPayments.PaymentsList[1].PaymentsId != 80) 
+                {
+                    OK = false;
+                }
+            }
+            else
+            {
+                OK = false;
+            }
+
+            //test to see that there are no records
+            Assert.IsTrue(OK);
+        }
     }
 }
