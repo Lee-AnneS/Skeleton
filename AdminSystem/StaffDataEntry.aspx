@@ -36,20 +36,27 @@
         <asp:TextBox ID="txtStaffEmail" runat="server" height="22px" style="z-index: 1; left: 137px; top: 154px; position: absolute" width="128px"></asp:TextBox>
         <br />
         <br />
-        <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 10px; top: 269px; position: absolute"></asp:Label>
+        <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 10px; top: 290px; position: absolute"></asp:Label>
         <br />
         <asp:TextBox ID="txtNINumber" runat="server" height="22px" style="z-index: 1; left: 138px; top: 186px; position: absolute" width="128px"></asp:TextBox>
         <br />
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:Button ID="btnFind" runat="server" OnClick="btnFind_Click" Text="Find" height="26px" width="60px" />
+        <br />
+        <br />
+        <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+        <br />
+        &nbsp;&nbsp;
         <br />
         <asp:TextBox ID="txtSalary" runat="server" style="z-index: 1; left: 138px; top: 213px; position: absolute" width="128px" height="22px"></asp:TextBox>
         <br />
         <asp:CheckBox ID="chkPresentInBuilding" runat="server" height="19px" style="z-index: 1; left: 139px; top: 250px; position: absolute" Text="Present In Building" />
-        <asp:Button ID="btnOK" runat="server" height="26px" OnClick="btnOK_Click" style="z-index: 1; left: 20px; top: 308px; position: absolute" Text="OK" width="60px" />
-        <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 110px; top: 307px; position: absolute; width: 60px;" Text="Cancel" OnClick="btnCancel_Click" height="26px" />
+        <asp:Button ID="btnOK" runat="server" height="22px" OnClick="btnOK_Click" style="z-index: 1; left: 21px; top: 357px; position: absolute" Text="OK" width="60px" />
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:Button ID="btnRtnToMenu" runat="server" OnClick="btnRtnToMenu_Click" Text="Return to Main Menu" />
+        <asp:Button ID="btnRtnToMenu" runat="server" OnClick="btnRtnToMenu_Click" Text="Return to Main Menu" style="z-index: 1; left: 20px; top: 438px; position: absolute" />
+        <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 113px; top: 357px; position: absolute; width: 60px;" Text="Cancel" OnClick="btnCancel_Click" height="22px" />
+        <asp:Button ID="btnFind" runat="server" OnClick="btnFind_Click" Text="Find" width="60px" style="top: 357px; left: 224px; position: absolute; height: 22px" />
+        <p>
+            &nbsp;</p>
     </form>
 </body>
 </html>
