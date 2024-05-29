@@ -36,6 +36,7 @@
         <asp:TextBox ID="txtStaffEmail" runat="server" height="22px" style="z-index: 1; left: 137px; top: 154px; position: absolute" width="128px"></asp:TextBox>
         <br />
         <br />
+        <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 10px; top: 269px; position: absolute"></asp:Label>
         <br />
         <asp:TextBox ID="txtNINumber" runat="server" height="22px" style="z-index: 1; left: 138px; top: 186px; position: absolute" width="128px"></asp:TextBox>
         <br />
