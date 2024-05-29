@@ -219,8 +219,8 @@ namespace Testing3
                 {
                     OK = false;
                 }
-                //check to see that the first record is 89
-                if (FilterStock.StockList[1].ProductId != 89) 
+                //check to see that the first record is 1164
+                if (FilterStock.StockList[1].ProductId != 1164) 
                 {
                     OK = false;
                 }
