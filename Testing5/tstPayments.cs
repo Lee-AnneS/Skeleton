@@ -578,7 +578,20 @@ namespace Testing5
             // Test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
-
+        [TestMethod]
+        public void OrderIdExtremeMin()
+        {
+            // Create an instance of the class we want to test
+            clsPayments APayments = new clsPayments();
+            // String variable to store any error message
+            string Error = "";
+            // Test data
+            string OrderId = "a"; // this should be ok
+            // Invoke the method
+            Error = APayments.Valid(OrderId, BillingAddress, PaymentsMethod, Amount, PaymentsDate);
+            // Test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
         [TestMethod]
         public void OrderIdMinPlusOne()
         {
@@ -647,7 +660,7 @@ namespace Testing5
             // String variable to store any error message
             string Error = "";
             // Test data
-            string OrderId = "aaaaaaaaaa"; // this should be ok
+            string OrderId = "aaaaaaaaaaa"; // this should be ok
             // Invoke the method
             Error = APayments.Valid(OrderId, BillingAddress, PaymentsMethod, Amount, PaymentsDate);
             // Test to see that the result is correct
@@ -743,6 +756,21 @@ namespace Testing5
             Assert.AreEqual(Error, "");
         }
         [TestMethod]
+        public void BillingAddressMax()
+        {
+            //create an instance of the class we want to create
+            clsPayments APayments = new clsPayments();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string BillingAddress = "";
+            BillingAddress = BillingAddress.PadRight(100, 'a');//this should be okay
+            // Invoke the method
+            Error = APayments.Valid(OrderId, BillingAddress, PaymentsMethod, Amount, PaymentsDate);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
         public void BillingAddressMaxPlusOne()
         {
             //create an instance of the class we want to create
@@ -802,6 +830,21 @@ namespace Testing5
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
+
+        [TestMethod]
+        public void PaymentsMethodExtremeMin()
+        {
+            //create an instance of the class we want to create
+            clsPayments APayments = new clsPayments();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string PaymentsMethod = ""; //should fail
+            // Invoke the method
+            Error = APayments.Valid(OrderId, BillingAddress, PaymentsMethod, Amount, PaymentsDate);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
         [TestMethod]
         public void PaymentsMethodMin()
         {
@@ -844,6 +887,22 @@ namespace Testing5
             Error = APayments.Valid(OrderId, BillingAddress, PaymentsMethod, Amount, PaymentsDate);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PaymentsMethodMax()
+        {
+            //create an instance of the class we want to create
+            clsPayments APayments = new clsPayments();
+            //string variable to store any error message
+            String Error = "";
+            //create some test data to pass to the method
+            string PaymentsMethod = "";
+            PaymentsMethod = PaymentsMethod.PadRight(50, 'a');//this should be okay
+            // Invoke the method
+            Error = APayments.Valid(OrderId, BillingAddress, PaymentsMethod, Amount, PaymentsDate);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
         }
         [TestMethod]
         public void PaymentsMethodMaxPlusOne()
