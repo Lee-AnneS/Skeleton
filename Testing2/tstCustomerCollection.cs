@@ -249,8 +249,44 @@ namespace Testing2
             Assert.IsFalse(Found);
         }
 
+        [TestMethod]
+        public void ReportByCustomerNameMethodOK()
+        {
+            //create an instance of the class we want to create
+            clsCustomerCollection AllCustomers = new clsCustomerCollection();
 
-        
+            //create an instance of the filtered data 
+            clsCustomerCollection FilteredCustomers = new clsCustomerCollection();
+
+            //apply a blank string  (should return all records);
+            FilteredCustomers.ReportByCustomerName("");
+
+            //test to see that the two values are the same
+            Assert.AreEqual(AllCustomers.Count, FilteredCustomers.Count);
+        }
+
+        [TestMethod]
+        public void ReportByCustomerNameFound() 
+        {
+            //create an instance of the class we want to create
+            clsCustomerCollection FilteredCustomers = new clsCustomerCollection();
+
+            //apply a customer name that doesnt exist
+            FilteredCustomers.ReportByCustomerName("Any Name");
+
+            //test to see that there are no records
+            Assert.AreEqual(0, FilteredCustomers.Count);
+        }
+
+        [TestMethod]
+        public void ReportByCustomerNameTestDatFound()
+        {
+            //create an instance of the class we want to create
+            clsCustomerCollection FilteredCustomers = new clsCustomerCollection();
+
+            //variable to store the outcome 
+
+        }
 
     }
 }
