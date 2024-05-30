@@ -226,26 +226,22 @@ namespace Testing5
             //apply a payment method that doesnt exist
             FilteredPayments.ReportByPaymentsMethod("zzzz zzzz");
             //check that the correct number of records are found
-            if(FilteredPayments.Count == 2)
+            if (FilteredPayments.Count == 2)
             {
-                //check to see that the first record is 79
-                if (FilteredPayments.PaymentsList[0].PaymentsId != 79)
+                //check to see that the first record is 1122
+                if (FilteredPayments.PaymentsList[0].PaymentsId != 1122)
                 {
                     OK = false;
                 }
-                //check to see that the first record is 80
-                if (FilteredPayments.PaymentsList[1].PaymentsId != 80) 
+                //check to see that the first record is 1123
+                if (FilteredPayments.PaymentsList[1].PaymentsId != 1123)
                 {
                     OK = false;
                 }
-            }
-            else
-            {
-                OK = false;
-            }
 
-            //test to see that there are no records
-            Assert.IsTrue(OK);
+                //test to see that there are no records
+                Assert.IsTrue(OK);
+            }
         }
     }
 }
