@@ -230,12 +230,12 @@ namespace Testing1
             if (FilteredStaff.Count == 2)
             {
                 //checks to see if the first record is 11
-                if (FilteredStaff.StaffList[0].StaffID != 9)
+                if (FilteredStaff.StaffList[0].StaffID != 3130)
                 {
                     OK = false;
                 }
                 //checks to see the first record is 12
-                if (FilteredStaff.StaffList[1].StaffID != 10)
+                if (FilteredStaff.StaffList[1].StaffID != 3131)
                 {
                     OK = false;
                 }
