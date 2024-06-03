@@ -26,6 +26,7 @@ public partial class _1_List : System.Web.UI.Page
         //display the username
         Response.Write("Logged in as: " + AnUser.UserName);
 
+
     }
 
     void DisplayCustomers()
