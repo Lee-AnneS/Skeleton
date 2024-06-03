@@ -17,6 +17,15 @@ public partial class _1_List : System.Web.UI.Page
             DisplayCustomers();
         }
 
+        //create a new instance of clsCustomerUser
+        clsCustomerUser AnUser = new clsCustomerUser();
+
+        //get data from the session object 
+        AnUser = (clsCustomerUser)Session["AnUser"];
+
+        //display the user name
+        Response.Write("Logged in as: " + AnUser.UserName);
+
     }
 
     void DisplayCustomers()
@@ -141,5 +150,11 @@ public partial class _1_List : System.Web.UI.Page
 
     }
 
-    
+
+
+    protected void btnMainMenu_Click(object sender, EventArgs e)
+    {
+        //redirect to the main menu
+        Response.Redirect("TeamMainMenu.aspx");
+    }
 }
