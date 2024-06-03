@@ -23,8 +23,9 @@ public partial class _1_List : System.Web.UI.Page
         //get data from the session object 
         AnUser = (clsCustomerUser)Session["AnUser"];
 
-        //display the user name
+        //display the username
         Response.Write("Logged in as: " + AnUser.UserName);
+
 
     }
 
