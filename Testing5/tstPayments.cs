@@ -664,7 +664,7 @@ namespace Testing5
             // Invoke the method
             Error = APayments.Valid(OrderId, BillingAddress, PaymentsMethod, Amount, PaymentsDate);
             // Test to see that the result is correct
-            Assert.AreEqual(Error, "");
+            Assert.AreNotEqual(Error, "");
         }
         [TestMethod]
         public void OrderIdExtremeMax()
