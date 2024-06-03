@@ -5,7 +5,7 @@ namespace ClassLibrary
     public class clsStaffUser
     {
         //private data member for the user id property
-        private int mUserID;
+        private Int32 mUserID;
         //private data member for the username property
         private string mUsername;
         //private data member for the password property
@@ -80,6 +80,7 @@ namespace ClassLibrary
             {
                 //copy the data from the database to the private data members 
                 mUserID = Convert.ToInt32(DB.DataTable.Rows[0]["UserID"]);
+                mUsername = Convert.ToString(DB.DataTable.Rows[0]["Username"]);
                 mPassword = Convert.ToString(DB.DataTable.Rows[0]["Password"]);
                 mDepartment = Convert.ToString(DB.DataTable.Rows[0]["Department"]);
                 //retutrn true to cofirm everything worked ok
