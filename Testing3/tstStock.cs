@@ -188,7 +188,7 @@ namespace Testing3
             //invoke the method
             Found = AStock.Find(ProductId);
             //check the Description property
-            if (AStock.Description != "test")
+            if (AStock.Description != "Our milk tea is a classic aromatic with green tea flavour.")
             {
                 OK = false;
             }
