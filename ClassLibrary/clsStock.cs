@@ -164,7 +164,7 @@ namespace ClassLibrary
                 //record the error 
                 Error = Error + "The name may not be blank : ";
             }
-            if (Name.Length > 10)
+            if (Name.Length > 15)
             {
                 //record the error
                 Error = Error + "The name must be less than 10 characters : ";
@@ -207,7 +207,7 @@ namespace ClassLibrary
                 Error = Error + "The description not be blank : ";
             }
             //if the description is too long
-            if (Description.Length > 50)
+            if (Description.Length > 170)
             {
                 //record the error
                 Error = Error + "The description must be less than 50 characters : ";
