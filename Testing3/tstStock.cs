@@ -348,7 +348,7 @@ namespace Testing3
             String Error = "";
             //create some test data to pass to the method
             string Name = ""; //this should be ok
-            Name = Name.PadRight(9, 'a');
+            Name = Name.PadRight(14, 'a');
             //invoke the method
             Error = AStock.Valid(Name, Description, Price, StockQuantity, DateAdded);
             //test to see that the result is correct
@@ -364,7 +364,7 @@ namespace Testing3
             //create some test data to pass to the method
             string Name = "";
             //this should be ok
-            Name = Name.PadRight(10, 'a');                        //invoke the method
+            Name = Name.PadRight(15, 'a');                        //invoke the method
             Error = AStock.Valid(Name, Description, Price, StockQuantity, DateAdded);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
@@ -392,7 +392,7 @@ namespace Testing3
             String Error = "";
             //create some test data to pass to the method
             string Name = ""; //this should fail
-            Name = Name.PadRight(11, 'a');
+            Name = Name.PadRight(16, 'a');
             //invoke the method
             Error = AStock.Valid(Name, Description, Price, StockQuantity, DateAdded);
             //test to see that the result is correct
@@ -578,7 +578,8 @@ namespace Testing3
             //string variable to store any error message
             String Error = "";
             //this should pass
-            string Description = "aaaaaaaa";
+            string Description = "";
+            Description = Description.PadRight(169, 'a');
             //invoke the method
             Error = AStock.Valid(Name, Description, Price, StockQuantity, DateAdded);
             //test to see that the result is correct
@@ -592,7 +593,8 @@ namespace Testing3
             //string variable to store any error message
             String Error = "";
             //this should pass
-            string Description = "aaaaaaaaa";
+            string Description = "";
+            Description = Description.PadRight(170, 'a');
             //invoke the method
             Error = AStock.Valid(Name, Description, Price, StockQuantity, DateAdded);
             //test to see that the result is correct
@@ -607,7 +609,7 @@ namespace Testing3
             String Error = "";
             //this should fail
             string Description = "";
-            Description = Description.PadRight(51, 'a');
+            Description = Description.PadRight(171, 'a');
             //invoke the method
             Error = AStock.Valid(Name, Description, Price, StockQuantity, DateAdded);
             //test to see that the result is correct
@@ -621,7 +623,8 @@ namespace Testing3
             //string variable to store any error message
             String Error = "";
             //this should pass
-            string Description = "aaaa";
+            string Description = "";
+            Description = Description.PadRight(85, 'a');
             //invoke the method
             Error = AStock.Valid(Name, Description, Price, StockQuantity, DateAdded);
             //test to see that the result is correct
