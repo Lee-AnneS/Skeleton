@@ -279,12 +279,37 @@ namespace Testing2
         }
 
         [TestMethod]
-        public void ReportByCustomerNameTestDatFound()
+        public void ReportByCustomerNameTestDataFound()
         {
             //create an instance of the class we want to create
             clsCustomerCollection FilteredCustomers = new clsCustomerCollection();
 
             //variable to store the outcome 
+            Boolean OK = true;
+
+            //apply a full name that doesnt exist
+            FilteredCustomers.ReportByCustomerName("Kate William");
+
+            //check that the correct number of records are found 
+            if (FilteredCustomers.Count == 2)
+            {
+                //check to see that the first record is 1052
+                if (FilteredCustomers.CustomerList[0].CustomerId != 4062)
+                {
+                    OK = false;
+                }
+                //check to see that the first record is 1053
+                if (FilteredCustomers.CustomerList[1].CustomerId != 4063)
+                {
+                    OK = false;
+                }
+            }
+            else
+            {
+                OK = false;
+            }
+            //test to see that there are no records 
+            Assert.IsTrue(OK);
 
         }
 
