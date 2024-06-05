@@ -74,6 +74,9 @@ namespace ClassLibrary
             }
         }
 
+        /****** FIND METHOD ******/
+        /*************************/
+
         public bool FindUser(string UserName, string Password)
         {
             //create an instance of the data connection

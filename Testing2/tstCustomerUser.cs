@@ -7,6 +7,10 @@ namespace Testing2
     [TestClass]
     public class tstCustomerUser
     {
+
+        /******************INSTANCE OF THE CLASS TEST******************/
+        /**************************************************************/
+
         [TestMethod]
         public void InstanceOK()
         {
@@ -16,6 +20,9 @@ namespace Testing2
             //test to see that it exits
             Assert.IsNotNull(AnUser);
         }
+
+        /******************PROPERTY OK TESTS******************/
+        /*****************************************************/
 
         [TestMethod]
         public void UserIDPropertyOK()
@@ -81,6 +88,9 @@ namespace Testing2
             Assert.AreEqual(AnUser.Department, TestData);
         }
 
+        /******************FIND METHOD TEST******************/
+        /****************************************************/
+
         [TestMethod]
         public void FindUserMethod() 
         {
@@ -100,6 +110,9 @@ namespace Testing2
             //test to see if the results is true
             Assert.IsTrue(Found);
         }
+
+        /******************USERNAME TEST******************/
+        /****************************************************/
 
         [TestMethod]
         public void TestUsernamePWFound()

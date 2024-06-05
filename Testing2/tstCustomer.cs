@@ -1060,7 +1060,7 @@ namespace Testing2
             String Error = "";
 
             //create some test data to pass to the method
-            string NumOrder = "a"; //this should be ok
+            string NumOrder = ""; //this should be ok
 
             //invoke the method
             Error = ACustomer.Valid(CustomerName, CustomerDoB, CustomerEmail, CustomerAddress, NumOrder);
@@ -1079,7 +1079,7 @@ namespace Testing2
             String Error = "";
 
             //create some test data to pass to the method
-            string NumOrder = "aa"; //this should be ok
+            string NumOrder = "a"; //this should be ok
 
             //invoke the method
             Error = ACustomer.Valid(CustomerName, CustomerDoB, CustomerEmail, CustomerAddress, NumOrder);

@@ -68,6 +68,9 @@ namespace ClassLibrary
             }
         }
 
+        /****** ADD METHOD ******/
+        /************************/
+
         public int Add()
         {
             //adds a record to the database based on the values of mThisCustomer
@@ -85,6 +88,9 @@ namespace ClassLibrary
             //execute the query returning primary key value 
             return DB.Execute("sproc_tblCustomer_Insert");
         }
+
+        /****** UPDATE METHOD ******/
+        /***************************/
 
         public void Update()
         {
@@ -105,6 +111,9 @@ namespace ClassLibrary
             DB.Execute("sproc_tblCustomer_Update");
         }
 
+        /****** DELETE METHOD ******/
+        /***************************/
+
         public void Delete()
         {
             //delete the record pointed to by thisCustomer
@@ -118,6 +127,9 @@ namespace ClassLibrary
             DB.Execute("sproc_tblCustomer_Delete");
 
         }
+
+        /****** FILTER METHOD ******/
+        /***************************/
 
         public void ReportByCustomerName(string CustomerName)
         {
@@ -135,6 +147,9 @@ namespace ClassLibrary
             PopulateArray(DB);
 
         }
+
+        /*****************************/
+        /*****************************/
 
         void PopulateArray(clsDataConnection DB)
         {

@@ -169,6 +169,9 @@ namespace ClassLibrary
     
         }
 
+        /****** VALID METHOD ******/
+        /**************************/
+
         public string Valid(string customerName, string customerDoB, string customerEmail, string customerAddress, string numOrder)
         {
             //create a string variable to store the error
@@ -197,11 +200,11 @@ namespace ClassLibrary
             {
                 //copy the customerDoB value to the DateTemp variable
                 DateTemp = Convert.ToDateTime(customerDoB);
-                if (DateTemp < DateComp)//compare customerDoB added with date
+                /*if (DateTemp < DateComp)//compare customerDoB added with date
                 {
                     //record the error
                     Error = Error + "The date cannot be in the past : ";
-                }
+                }*/
                 //check to see if the date is greater than todays date
                 if (DateTemp > DateComp)
                 {
@@ -215,7 +218,13 @@ namespace ClassLibrary
                 Error = Error + "The date was not a valid date : ";
             }
 
-            
+            //if the customerEmail is blank
+            if (customerEmail.Length == 0)
+            {
+                //record the error
+                Error = Error + "";
+            }
+
             //if the customerEmail is greater than 75
             if (customerEmail.Length > 75)
             {
@@ -242,13 +251,13 @@ namespace ClassLibrary
             {
                 Error = Error + "The Numorder must be a valid number : ";
             }*/
-            //if the customerAddress is blank
-            /*if (numOrder.Length == 0)
+
+            //if the numOtrder is blank
+            if (numOrder.Length == 0)
             {
                 //record the error
-                Error = Error + "The NumOrder may not be blank : ";
-            }*/
-
+                Error = Error + "The NumOrder should be set to 0, if no orders have been placed : ";
+            }
 
             //if the NumOrder is greater than 100
             if (numOrder.Length > 100)
