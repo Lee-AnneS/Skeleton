@@ -177,7 +177,9 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
     protected void btnCancel_Click(object sender, EventArgs e)
     {
-        //redirect user to the staff list page
+        //redirect user to the customer list page
         Response.Redirect("CustomerList.aspx");
     }
+
+    
 }

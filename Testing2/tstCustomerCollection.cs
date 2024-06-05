@@ -8,6 +8,10 @@ namespace Testing2
     [TestClass]
     public class tstCustomerCollection
     {
+
+        /******************INSTANCE OF THE CLASS TEST******************/
+        /**************************************************************/
+
         [TestMethod]
         public void InstanceOK()
         {
@@ -17,6 +21,10 @@ namespace Testing2
             //test to see that it exists
             Assert.IsNotNull(AllCustomers);
         }
+
+
+        /******************PROPERTY OK TESTS******************/
+        /*****************************************************/
 
         [TestMethod]
         public void CustomerListOK()
@@ -119,6 +127,10 @@ namespace Testing2
             Assert.AreEqual(AllCustomers.Count, 2);
         }*/
 
+
+        /******************ADD METHOD TEST******************/
+        /***************************************************/
+
         [TestMethod]
         public void AddMethodOK()
         {
@@ -156,8 +168,11 @@ namespace Testing2
             Assert.AreEqual(AllCustomers.ThisCustomer, TestItem);
         }
 
-        [TestMethod]
 
+        /******************UPDATE METHOD TEST******************/
+        /******************************************************/
+
+        [TestMethod]
         public void UpdateMethodOK()
         {
             //create an instance of the class we want to create
@@ -208,6 +223,10 @@ namespace Testing2
             Assert.AreEqual(AllCustomers.ThisCustomer, TestItem);
         }
 
+        /******************DELETE METHOD TEST******************/
+        /******************************************************/
+
+        [TestMethod]
         public void DeleteMethodOK()
         {
             //create an instance of the class we want to create
@@ -248,6 +267,9 @@ namespace Testing2
             //test to see that the record was not found
             Assert.IsFalse(Found);
         }
+
+        /******************CUSTOMER NAME TESTING******************/
+        /*********************************************************/
 
         [TestMethod]
         public void ReportByCustomerNameMethodOK()
