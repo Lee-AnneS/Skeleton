@@ -699,7 +699,7 @@ namespace Testing3
             String Error = "";
             //this should pass
             string Price = "";
-            Price = Price.PadRight(19, 'a');
+            Price = Price.PadRight(9, 'a');
             //invoke the method
             Error = AStock.Valid(Name, Description, Price, StockQuantity, DateAdded);
             //test to see that the result is correct
@@ -714,7 +714,7 @@ namespace Testing3
             String Error = "";
             //this should pass
             string Price = "";
-            Price = Price.PadRight(20, 'a');
+            Price = Price.PadRight(10, 'a');
             //invoke the method
             Error = AStock.Valid(Name, Description, Price, StockQuantity, DateAdded);
             //test to see that the result is correct
@@ -729,7 +729,7 @@ namespace Testing3
             String Error = "";
             //this should fail
             string Price = "";
-            Price = Price.PadRight(21, 'a');
+            Price = Price.PadRight(11, 'a');
             //invoke the method
             Error = AStock.Valid(Name, Description, Price, StockQuantity, DateAdded);
             //test to see that the result is correct
@@ -744,7 +744,7 @@ namespace Testing3
             String Error = "";
             //this should pass
             string Price = "";
-            Price = Price.PadRight(10, 'a');
+            Price = Price.PadRight(5, 'a');
             //invoke the method
             Error = AStock.Valid(Name, Description, Price, StockQuantity, DateAdded);
             //test to see that the result is correct
