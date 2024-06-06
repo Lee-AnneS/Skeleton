@@ -167,7 +167,7 @@ namespace ClassLibrary
             if (Name.Length > 15)
             {
                 //record the error
-                Error = Error + "The name must be less than 10 characters : ";
+                Error = Error + "The name must be less than 15 characters : ";
                 
             }
             /**************** Date Added *************************/
@@ -210,7 +210,7 @@ namespace ClassLibrary
             if (Description.Length > 170)
             {
                 //record the error
-                Error = Error + "The description must be less than 50 characters : ";
+                Error = Error + "The description must be less than 170 characters : ";
             }
             /**************** Price *************************/
             //is the Price blank
@@ -223,7 +223,7 @@ namespace ClassLibrary
             if (Price.Length > 20)
             {
                 //record the error
-                Error = Error + "The Price must be less than 50 characters : ";
+                Error = Error + "The Price must be less than 20 characters : ";
             }
             /**************** StockQuantity *************************/
             //is the StockQuantity blank
@@ -233,10 +233,10 @@ namespace ClassLibrary
                 Error = Error + "The Stock Quantity may not be blank : ";
             }
             //if the town is too long
-            if (StockQuantity.Length > 50)
+            if (StockQuantity.Length > 1000)
             {
                 //record the error
-                Error = Error + "The Stock Quantity must be less than 50 characters : ";
+                Error = Error + "The Stock Quantity must be less than 1000 characters : ";
             }
 
             //return the error
