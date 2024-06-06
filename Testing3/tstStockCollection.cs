@@ -101,7 +101,7 @@ namespace Testing3
             Int32 PrimaryKey = 0;
             //set its properties
             TestItem.ProductId = 1;
-            TestItem.Name = "Add";
+            TestItem.Name = "TestAdd";
             TestItem.Description = "This is a test";
             TestItem.Price = 5.00;
             TestItem.StockQuantity = 100;
@@ -142,7 +142,7 @@ namespace Testing3
             //set this product to the test data
             TestItem.ProductId = PrimaryKey;
             //modify the test record
-            TestItem.Name = "modified";
+            TestItem.Name = "Testmodified";
             TestItem.Description = "Another test";
             TestItem.Price = 7.00;
             TestItem.StockQuantity = 2;

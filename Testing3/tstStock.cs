@@ -9,8 +9,8 @@ namespace Testing3
     public class tstStock
     {
         string Name = "Milk";
-        string Description = "test";
-        string Price = "5.50";
+        string Description = "Our milk tea is a classic aromatic with green tea flavour.";
+        string Price = "3.45";
         string StockQuantity = "100";
         string DateAdded = DateTime.Now.ToShortDateString();
         /*******************************************************/
@@ -93,8 +93,7 @@ namespace Testing3
             //create an instance of the class we want to create
             clsStock AStock = new clsStock();
             //create some test data to assign to the property
-            string TestData = "A refreshing combination of brewed black tea, milk, and (optional)" +
-                " tapioca pearls. Thai Tea: A strong black tea combined with sweetened condensed";
+            string TestData = "Our milk tea is a classic aromatic with green tea flavour.";
             //assign the data to the property
             AStock.Description = TestData;
             //test to see that the two values are the same
@@ -377,8 +376,10 @@ namespace Testing3
             //string variable to store any error message
             String Error = "";
             //create some test data to pass to the method
-            string Name = "aaaaa"; //this should be ok
-                                 //invoke the method
+            string Name = "";
+            //this should be ok
+            Name = Name.PadRight(7, 'a');
+            //invoke the method
             Error = AStock.Valid(Name, Description, Price, StockQuantity, DateAdded);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
@@ -831,7 +832,7 @@ namespace Testing3
             String Error = "";
             //this should pass
             string StockQuantity = "";
-            StockQuantity = StockQuantity.PadRight(49, 'a');
+            StockQuantity = StockQuantity.PadRight(999, 'a');
             //invoke the method
             Error = AStock.Valid(Name, Description, Price, StockQuantity, DateAdded);
             //test to see that the result is correct
@@ -846,7 +847,7 @@ namespace Testing3
             String Error = "";
             //this should pass
             string StockQuantity = "";
-            StockQuantity = StockQuantity.PadRight(50, 'a');
+            StockQuantity = StockQuantity.PadRight(1000, 'a');
             //invoke the method
             Error = AStock.Valid(Name, Description, Price, StockQuantity, DateAdded);
             //test to see that the result is correct
@@ -861,7 +862,7 @@ namespace Testing3
             String Error = "";
             //this shold fail
             string StockQuantity = "";
-            StockQuantity = StockQuantity.PadRight(51, 'a');
+            StockQuantity = StockQuantity.PadRight(1001, 'a');
             //invoke the method
             Error = AStock.Valid(Name, Description, Price, StockQuantity, DateAdded);
             //test to see that the result is correct
@@ -876,7 +877,7 @@ namespace Testing3
             String Error = "";
             //this should pass
             string StockQuantity = "";
-            StockQuantity = StockQuantity.PadRight(25, 'a');
+            StockQuantity = StockQuantity.PadRight(500, 'a');
             //invoke the method
             Error = AStock.Valid(Name, Description, Price, StockQuantity, DateAdded);
             //test to see that the result is correct
@@ -891,7 +892,7 @@ namespace Testing3
             String Error = "";
             //this shold fail
             string StockQuantity = "";
-            StockQuantity = StockQuantity.PadRight(500, 'a');
+            StockQuantity = StockQuantity.PadRight(5000, 'a');
             //invoke the method
             Error = AStock.Valid(Name, Description, Price, StockQuantity, DateAdded);
             //test to see that the result is correct
