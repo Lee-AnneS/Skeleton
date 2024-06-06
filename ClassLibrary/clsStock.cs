@@ -220,10 +220,10 @@ namespace ClassLibrary
                 Error = Error + "The Price may not be blank : ";
             }
             //if the Price is too long
-            if (Price.Length > 20)
+            if (Price.Length > 10)
             {
                 //record the error
-                Error = Error + "The Price must be less than 20 characters : ";
+                Error = Error + "The Price must be less than 10 characters :£99,999,999.99 ";
             }
             /**************** StockQuantity *************************/
             //is the StockQuantity blank
