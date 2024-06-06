@@ -1047,7 +1047,7 @@ namespace Testing2
             Error = ACustomer.Valid(CustomerName, CustomerDoB, CustomerEmail, CustomerAddress, NumOrder);
 
             //test to see that the result is correct
-            Assert.AreEqual(Error, "");
+            Assert.AreNotEqual(Error, "");
         }
 
         [TestMethod]
@@ -1066,7 +1066,7 @@ namespace Testing2
             Error = ACustomer.Valid(CustomerName, CustomerDoB, CustomerEmail, CustomerAddress, NumOrder);
 
             //test to see that the result is correct
-            Assert.AreEqual(Error, "");
+            Assert.AreNotEqual(Error, "");
         }
 
         [TestMethod]
@@ -1079,7 +1079,7 @@ namespace Testing2
             String Error = "";
 
             //create some test data to pass to the method
-            string NumOrder = "a"; //this should be ok
+            string NumOrder = "1"; //this should be ok
 
             //invoke the method
             Error = ACustomer.Valid(CustomerName, CustomerDoB, CustomerEmail, CustomerAddress, NumOrder);
@@ -1099,7 +1099,7 @@ namespace Testing2
 
             //create some test data to pass to the method
             string NumOrder = "";
-            NumOrder = NumOrder.PadRight(99, 'a');
+            NumOrder = NumOrder.PadRight(99, '1');
 
             //invoke the method
             Error = ACustomer.Valid(CustomerName, CustomerDoB, CustomerEmail, CustomerAddress, NumOrder);
@@ -1119,7 +1119,7 @@ namespace Testing2
 
             //create some test data to pass to the method
             string NumOrder = "";
-            NumOrder = NumOrder.PadRight(100, 'a');
+            NumOrder = NumOrder.PadRight(100, '1');
 
             //invoke the method
             Error = ACustomer.Valid(CustomerName, CustomerDoB, CustomerEmail, CustomerAddress, NumOrder);
@@ -1139,7 +1139,7 @@ namespace Testing2
 
             //create some test data to pass to the method
             string NumOrder = "";
-            NumOrder = NumOrder.PadRight(101, 'a'); //this should fail
+            NumOrder = NumOrder.PadRight(101, '1'); //this should fail
 
             //invoke the method
             Error = ACustomer.Valid(CustomerName, CustomerDoB, CustomerEmail, CustomerAddress, NumOrder);
@@ -1159,7 +1159,7 @@ namespace Testing2
 
             //create some test data to pass to the method
             string NumOrder = "";
-            NumOrder = NumOrder.PadRight(50, 'a');
+            NumOrder = NumOrder.PadRight(50, '1');
 
             //invoke the method
             Error = ACustomer.Valid(CustomerName, CustomerDoB, CustomerEmail, CustomerAddress, NumOrder);

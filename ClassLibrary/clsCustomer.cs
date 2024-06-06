@@ -200,11 +200,11 @@ namespace ClassLibrary
             {
                 //copy the customerDoB value to the DateTemp variable
                 DateTemp = Convert.ToDateTime(customerDoB);
-                /*if (DateTemp < DateComp)//compare customerDoB added with date
+                if (DateTemp < DateComp)//compare customerDoB added with date
                 {
                     //record the error
                     Error = Error + "The date cannot be in the past : ";
-                }*/
+                }
                 //check to see if the date is greater than todays date
                 if (DateTemp > DateComp)
                 {
