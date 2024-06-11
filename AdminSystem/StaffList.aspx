@@ -31,7 +31,7 @@
             &nbsp;</p>
         <p>
         <asp:Button ID="btnRtnToMenu" runat="server" OnClick="btnRtnToMenu_Click" Text="Return to Main Menu" style="top: 576px; left: 58px; position: absolute; height: 26px; width: 183px" />
-            <asp:Label ID="lblError" runat="server" style="top: 519px; left: 21px; position: absolute; height: 19px; width: 56px"></asp:Label>
+            <asp:Label ID="lblError" runat="server" style="top: 519px; left: 21px; position: absolute; height: 19px; width: 620px"></asp:Label>
         </p>
     </form>
 </body>
